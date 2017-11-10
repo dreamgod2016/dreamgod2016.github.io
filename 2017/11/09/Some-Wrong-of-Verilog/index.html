@@ -95,18 +95,18 @@
 
 
 
-<meta name="description" content="在Verilog中遇到的坑们。 本文持续更新。谨以此文献给Bug们。  1. Reg和Wire的赋值在Register file中，遇到了Reg和Wire赋值的问题。时序电路中，没有考虑到Reg读数据需要周期时间的问题，之前随后定义的就GG了。这里有一个讲区分的PDF 2.有符号数的问题在写某一个判断条件的时候，比较两个数的大小的是。很自然的做减法然后比如是否大于零。模拟的时候结果就不对，后来尝试">
+<meta name="description" content="在Verilog中遇到的坑们。 本文持续更新。谨以此文献给Bug们。">
 <meta name="keywords" content="coding,Verilog">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在Verilog中遇到的坑们。">
 <meta property="og:url" content="http://www.mengfansong.me/2017/11/09/Some-Wrong-of-Verilog/index.html">
 <meta property="og:site_name" content="松鹅的博客">
-<meta property="og:description" content="在Verilog中遇到的坑们。 本文持续更新。谨以此文献给Bug们。  1. Reg和Wire的赋值在Register file中，遇到了Reg和Wire赋值的问题。时序电路中，没有考虑到Reg读数据需要周期时间的问题，之前随后定义的就GG了。这里有一个讲区分的PDF 2.有符号数的问题在写某一个判断条件的时候，比较两个数的大小的是。很自然的做减法然后比如是否大于零。模拟的时候结果就不对，后来尝试">
+<meta property="og:description" content="在Verilog中遇到的坑们。 本文持续更新。谨以此文献给Bug们。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-11-09T14:57:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Verilog中遇到的坑们。">
-<meta name="twitter:description" content="在Verilog中遇到的坑们。 本文持续更新。谨以此文献给Bug们。  1. Reg和Wire的赋值在Register file中，遇到了Reg和Wire赋值的问题。时序电路中，没有考虑到Reg读数据需要周期时间的问题，之前随后定义的就GG了。这里有一个讲区分的PDF 2.有符号数的问题在写某一个判断条件的时候，比较两个数的大小的是。很自然的做减法然后比如是否大于零。模拟的时候结果就不对，后来尝试">
+<meta name="twitter:description" content="在Verilog中遇到的坑们。 本文持续更新。谨以此文献给Bug们。">
 
 
 
@@ -331,6 +331,7 @@
         <h1 id="在Verilog中遇到的坑们。"><a href="#在Verilog中遇到的坑们。" class="headerlink" title="在Verilog中遇到的坑们。"></a>在Verilog中遇到的坑们。</h1><blockquote>
 <p>本文持续更新。<br>谨以此文献给Bug们。</p>
 </blockquote>
+<a id="more"></a>
 <h3 id="1-Reg和Wire的赋值"><a href="#1-Reg和Wire的赋值" class="headerlink" title="1. Reg和Wire的赋值"></a>1. Reg和Wire的赋值</h3><p>在Register file中，遇到了Reg和Wire赋值的问题。<br>时序电路中，没有考虑到Reg读数据需要周期时间的问题，之前随后定义的就GG了。<br>这里有一个讲区分的<a href="http://inst.eecs.berkeley.edu/~cs150/Documents/Nets.pdf" target="_blank" rel="external">PDF</a></p>
 <h3 id="2-有符号数的问题"><a href="#2-有符号数的问题" class="headerlink" title="2.有符号数的问题"></a>2.有符号数的问题</h3><p>在写某一个判断条件的时候，比较两个数的大小的是。很自然的做减法然后比如是否大于零。<br>模拟的时候结果就不对，后来尝试用作差以后的符号位去判断数值的大小，才把这个问题解决。<br>现在Verilog可以用signed关键字来处理有符号数的问题。</p>
 <h3 id="未来还会有很多坑的，待续。"><a href="#未来还会有很多坑的，待续。" class="headerlink" title="未来还会有很多坑的，待续。"></a>未来还会有很多坑的，待续。</h3>
@@ -365,8 +366,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/09/record/" rel="next" title="record">
-                <i class="fa fa-chevron-left"></i> record
+              <a href="/2017/11/08/Coursera-Machine-Learning-1/" rel="next" title="《Machine Learning》第一周随记">
+                <i class="fa fa-chevron-left"></i> 《Machine Learning》第一周随记
               </a>
             
           </div>
@@ -449,7 +450,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -488,6 +489,12 @@
                 <a href="https://github.com/dreamgod2016" target="_blank" title="GitHub">
                   
                     <i class="fa fa-fw fa-github"></i>GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:dreamgod007@gmail.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
               </span>
             
           
