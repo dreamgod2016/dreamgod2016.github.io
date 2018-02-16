@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="松鹅的博客">
 <meta property="og:description" content="MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]} });      第一章 简介篇1.1 机器学习综述所谓具备“学习”能力的程序都是指它能够从不断地从经历和数据中吸取经验教训，从而应对未来的预测任务。这种对未知的预测能力叫做泛化力（Generalization）。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-11T15:42:27.551Z">
+<meta property="og:updated_time" content="2018-02-16T15:41:56.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Python机器学习及实践：从零开始通往Kaggle竞赛之路》笔记">
 <meta name="twitter:description" content="MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]} });      第一章 简介篇1.1 机器学习综述所谓具备“学习”能力的程序都是指它能够从不断地从经历和数据中吸取经验教训，从而应对未来的预测任务。这种对未知的预测能力叫做泛化力（Generalization）。">
@@ -545,6 +545,55 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 </ul>
 </li>
 </ul>
+<h5 id="2-1-2-5-集成模型（回归）"><a href="#2-1-2-5-集成模型（回归）" class="headerlink" title="2.1.2.5 集成模型（回归）"></a>2.1.2.5 集成模型（回归）</h5><ul>
+<li><strong>模型介绍</strong>：<ul>
+<li><strong>极端随机森林（Extremely Randomized Trees）</strong>：每当构建一棵树的分裂节点的时候，不会任意地选取特征；而是先随机收集一部分特征，然后利用信息熵和基尼不纯性等指标挑选最佳的节点特征。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-无监督学习经典模型"><a href="#2-2-无监督学习经典模型" class="headerlink" title="2.2 无监督学习经典模型"></a>2.2 无监督学习经典模型</h3><p>无监督学习不需要对数据进行标记，可以帮助我们发现数据的“群落”，同时也可以寻找“离群”的样本；对于特征维度非常高的数据样本，可以对数据进行降维。</p>
+<h4 id="数据聚类"><a href="#数据聚类" class="headerlink" title="数据聚类"></a>数据聚类</h4><h5 id="2-2-1-1-K均值算法"><a href="#2-2-1-1-K均值算法" class="headerlink" title="2.2.1.1 K均值算法"></a>2.2.1.1 K均值算法</h5><ul>
+<li><p><strong>模型介绍</strong>：</p>
+<ul>
+<li>最经典、相对容易理解的模型。</li>
+<li>步骤：<ol>
+<li>随机布设K个特征空间内的点作为初始的聚类中心</li>
+<li>对于每个数据的特征向量，从K个聚类中心中寻找距离最近的一个，并且把这个数据标记为从属于这个聚类中心</li>
+<li>在所有数据都被标记过聚类中心后，根据数据新分配的类簇，重新对中心进行计算。</li>
+<li>如果一轮结束，所有的数据点从属的聚类中心与上一次分配的没有变化，则可以停止。否则循环。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>数据描述</strong>：</p>
+</li>
+<li><p><strong>性能测评</strong>：</p>
+<ul>
+<li><p><strong>Adjusted Rand Index（ARI）</strong>，评估的数据本身带有正确的类别信息。</p>
+</li>
+<li><p><strong>轮廓系数（Silhouette Coefficient）</strong>，兼顾聚类的凝聚度（Cohesion）和分离度（Separation），取值范围为[-1,1]。</p>
+<ol>
+<li>对于已聚类数据中的第i个样本$x^i$，计算其与同一个类簇内的所有其他样本距离的平均值，记作$a^i$，用来量化凝聚度。</li>
+<li>选取$x^i$外的一个簇b，计算其与b中所有样本的平均距离，遍历所有其他簇，找到最近的这个平均距离，记作$b^i$，用于量化分离度。</li>
+<li>对于样本$x^i$，轮廓系数 $sc^i = \cfrac{b^i - a^i}{max(b^i, a^i)}$</li>
+<li>对所有样本X求出平均值，即为当前聚类结果的整体轮廓系数。</li>
+</ol>
+<p>如果$sc^i$小于0，说明簇内元素的平均距离大于最近的其他簇，聚类效果不好；如果$a^i$趋于0，或者$b^i$足够大，那么$sc^i$趋于1，说明聚类效果比较好。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>特点分析</strong>：</p>
+<ul>
+<li>直观易懂非常实用</li>
+<li>两大缺陷：<ol>
+<li>容易收敛到局部最优解</li>
+<li>需要预先设定簇的数量。</li>
+</ol>
+</li>
+<li>​</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -734,7 +783,7 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-简介篇"><span class="nav-number">1.</span> <span class="nav-text">第一章 简介篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-机器学习综述"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 机器学习综述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-任务（Task）"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 任务（Task）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-经验（Experience）"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 经验（Experience）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-3-性能（Performence）"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3 性能（Performence）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Python编程库"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Python编程库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Python环境配置"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Python环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-Python编程基础"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Python编程基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Python数据类型"><span class="nav-number">1.4.1.</span> <span class="nav-text">Python数据类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础篇"><span class="nav-number">2.</span> <span class="nav-text">基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-监督学习经典模型"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 监督学习经典模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-分类学习"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 分类学习</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-1-线性分类器"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">2.1.1.1 线性分类器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-2-支持向量机（分类）"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">2.1.1.2 支持向量机（分类）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-3-朴素贝叶斯（Naive-Bayes）"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">2.1.1.3 朴素贝叶斯（Naive Bayes）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-4-K近邻（分类）"><span class="nav-number">2.1.1.4.</span> <span class="nav-text">2.1.1.4 K近邻（分类）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-5-决策树"><span class="nav-number">2.1.1.5.</span> <span class="nav-text">2.1.1.5 决策树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-6-集成模型（分类）"><span class="nav-number">2.1.1.6.</span> <span class="nav-text">2.1.1.6 集成模型（分类）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-回归预测"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 回归预测</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-1-线性回归器"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">2.1.2.1 线性回归器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-2-支持向量机（回归）"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">2.1.2.2 支持向量机（回归）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-3-K近邻（回归）"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">2.1.2.3 K近邻（回归）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-4-回归树"><span class="nav-number">2.1.2.4.</span> <span class="nav-text">2.1.2.4 回归树</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-简介篇"><span class="nav-number">1.</span> <span class="nav-text">第一章 简介篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-机器学习综述"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 机器学习综述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-任务（Task）"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 任务（Task）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-经验（Experience）"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 经验（Experience）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-3-性能（Performence）"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3 性能（Performence）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Python编程库"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Python编程库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Python环境配置"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Python环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-Python编程基础"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Python编程基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Python数据类型"><span class="nav-number">1.4.1.</span> <span class="nav-text">Python数据类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础篇"><span class="nav-number">2.</span> <span class="nav-text">基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-监督学习经典模型"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 监督学习经典模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-分类学习"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 分类学习</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-1-线性分类器"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">2.1.1.1 线性分类器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-2-支持向量机（分类）"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">2.1.1.2 支持向量机（分类）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-3-朴素贝叶斯（Naive-Bayes）"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">2.1.1.3 朴素贝叶斯（Naive Bayes）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-4-K近邻（分类）"><span class="nav-number">2.1.1.4.</span> <span class="nav-text">2.1.1.4 K近邻（分类）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-5-决策树"><span class="nav-number">2.1.1.5.</span> <span class="nav-text">2.1.1.5 决策树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-6-集成模型（分类）"><span class="nav-number">2.1.1.6.</span> <span class="nav-text">2.1.1.6 集成模型（分类）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-回归预测"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 回归预测</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-1-线性回归器"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">2.1.2.1 线性回归器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-2-支持向量机（回归）"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">2.1.2.2 支持向量机（回归）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-3-K近邻（回归）"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">2.1.2.3 K近邻（回归）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-4-回归树"><span class="nav-number">2.1.2.4.</span> <span class="nav-text">2.1.2.4 回归树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-5-集成模型（回归）"><span class="nav-number">2.1.2.5.</span> <span class="nav-text">2.1.2.5 集成模型（回归）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-无监督学习经典模型"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 无监督学习经典模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据聚类"><span class="nav-number">2.2.1.</span> <span class="nav-text">数据聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-1-1-K均值算法"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">2.2.1.1 K均值算法</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
