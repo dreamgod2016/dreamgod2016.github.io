@@ -403,6 +403,314 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2018/03/20/PAT-B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="松鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="松鹅的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/20/PAT-B/" itemprop="url">PAT-乙级题目汇总及回顾</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-20T21:44:25+08:00">
+                2018-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/notes/" itemprop="url" rel="index">
+                    <span itemprop="name">notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="PAT乙级真题思路（前八十题）："><a href="#PAT乙级真题思路（前八十题）：" class="headerlink" title="PAT乙级真题思路（前八十题）："></a>PAT乙级真题思路（前八十题）：</h2><h3 id="1001-害死人不偿命的-3n-1-猜想-15"><a href="#1001-害死人不偿命的-3n-1-猜想-15" class="headerlink" title="1001 - 害死人不偿命的(3n+1)猜想(15)"></a>1001 - 害死人不偿命的(3n+1)猜想(15)</h3><p>对应”(3n+1) - first”</p>
+<h3 id="1002-写出这个数（20）"><a href="#1002-写出这个数（20）" class="headerlink" title="1002 - 写出这个数（20）"></a>1002 - 写出这个数（20）</h3><p>对应”write-the-world”（大概是起名字的时候脑子Bug了…</p>
+<h3 id="1003-我要通过！（20）"><a href="#1003-我要通过！（20）" class="headerlink" title="1003 - 我要通过！（20）"></a>1003 - 我要通过！（20）</h3><p>在<a href="https://www.liuchuo.net/archives/460" target="_blank" rel="external">柳婼</a>给出的题解中，寻找到题目生成的规律来简化问题。我的第一个反应就是根据表达式生成，在字符串长度100以内存在哪些式子，然后再进行匹配。</p>
+<p>对应”want-to-pass”</p>
+<h3 id="1004-成绩排名（20）"><a href="#1004-成绩排名（20）" class="headerlink" title="1004 - 成绩排名（20）"></a>1004 - 成绩排名（20）</h3><p>简单的比一下最大最小值，对应”grades-rank”</p>
+<h3 id="1005-继续-3n-1-猜想（25）"><a href="#1005-继续-3n-1-猜想（25）" class="headerlink" title="1005 - 继续(3n+1)猜想（25）"></a>1005 - 继续(3n+1)猜想（25）</h3><p><a href="https://www.liuchuo.net/archives/455" target="_blank" rel="external">柳婼</a>的题解中，是利用一个arr作为标记，将验证过的数字标记为1，最后把arr=0的数字输出出来。</p>
+<p>我这里是用两个<code>set</code>，取一个差集得到没有验证过的数字。</p>
+<p>###1006 - 换个格式输出整数 （15）</p>
+<p>对应”change-print-format”</p>
+<h3 id="1007-素数对猜想（20）"><a href="#1007-素数对猜想（20）" class="headerlink" title="1007 - 素数对猜想（20）"></a>1007 - 素数对猜想（20）</h3><p>对应”prime-pair”</p>
+<h3 id="1008-数组元素循环右移问题-（20）"><a href="#1008-数组元素循环右移问题-（20）" class="headerlink" title="1008 - 数组元素循环右移问题 （20）"></a>1008 - 数组元素循环右移问题 （20）</h3><p>对于这种问题，没必要完全模拟。这里利用三次反转进行。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">reverse(nums.begin(), nums.end());</div><div class="line">reverse(nums.begin(), nums.begin()+m);</div><div class="line">reverse(nums.begin() + m, nums.end());</div></pre></td></tr></table></figure>
+<h3 id="1009-说反话（20）"><a href="#1009-说反话（20）" class="headerlink" title="1009 - 说反话（20）"></a>1009 - 说反话（20）</h3><p>可以使用<code>reverse</code>函数，也可以用栈。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">stack</span>&lt;<span class="built_in">string</span>&gt; v;</div><div class="line">v.push(s);</div><div class="line"><span class="built_in">cout</span> &lt;&lt; v.top();</div><div class="line">v.pop();</div></pre></td></tr></table></figure>
+<h3 id="1010-一元多项式求导"><a href="#1010-一元多项式求导" class="headerlink" title="1010 - 一元多项式求导"></a>1010 - 一元多项式求导</h3><p>这里要注意，当没有输出的时候，要输出”0 0”才可以。</p>
+<p>另外，这种问题中，可以即时输入/输出的。</p>
+<h3 id="1011-A-B和C（15）"><a href="#1011-A-B和C（15）" class="headerlink" title="1011 - A+B和C（15）"></a>1011 - A+B和C（15）</h3><h3 id="1012-数字分类（20）"><a href="#1012-数字分类（20）" class="headerlink" title="1012 - 数字分类（20）"></a>1012 - 数字分类（20）</h3><p>根据不同要求对数字进行分类。</p>
+<h3 id="1013-数素数（20）"><a href="#1013-数素数（20）" class="headerlink" title="1013 - 数素数（20）"></a>1013 - 数素数（20）</h3><h3 id="1014-福尔摩斯的约会（20）"><a href="#1014-福尔摩斯的约会（20）" class="headerlink" title="1014 - 福尔摩斯的约会（20）"></a>1014 - 福尔摩斯的约会（20）</h3><p>找到对应字符以后进行判断即可。注意最后输出的时候要前面加0补位。</p>
+<h3 id="1015-德才论（25）"><a href="#1015-德才论（25）" class="headerlink" title="1015 - 德才论（25）"></a>1015 - 德才论（25）</h3><p>这里没有AC，主要问题是超时。</p>
+<p>因为对不同人的分类是在一个结构体中用<code>state</code>变量表示，在排序的时候采取的是所有人的排序，就会超时。</p>
+<p>应该对不同<code>state</code>的人分别排序，然后再按照<code>state</code>进行输出，比如可以用<code>vector&lt;node&gt; v[4]</code>这样的<code>vector</code>数组。</p>
+<h3 id="1016-部分A-B"><a href="#1016-部分A-B" class="headerlink" title="1016 - 部分A+B"></a>1016 - 部分A+B</h3><p>遍历一下字符串，再乘十计算就可以了。</p>
+<h3 id="1017-A除以B（20）"><a href="#1017-A除以B（20）" class="headerlink" title="1017 - A除以B（20）"></a>1017 - A除以B（20）</h3><p>手动模拟除法，难度不大。</p>
+<h3 id="1018-锤子剪刀布-（20）"><a href="#1018-锤子剪刀布-（20）" class="headerlink" title="1018 - 锤子剪刀布 （20）"></a>1018 - 锤子剪刀布 （20）</h3><p>问题不大，这里用了<code>map</code>来记录，没有发现<code>map</code>可以直接比较大小的，只封装了一个函数来做。</p>
+<h3 id="1019-数字黑洞（20）"><a href="#1019-数字黑洞（20）" class="headerlink" title="1019 - 数字黑洞（20）"></a>1019 - 数字黑洞（20）</h3><p>这道题我是对每一位进行处理，但是看<a href="https://www.liuchuo.net/archives/541" target="_blank" rel="external">柳婼的题解</a>可以输入<code>string</code>然后利用<code>sort</code>调整位置。在对于位数较多的时候，<code>sort</code>是个比较好的方法。</p>
+<h3 id="1020-月饼（25）"><a href="#1020-月饼（25）" class="headerlink" title="1020 - 月饼（25）"></a>1020 - 月饼（25）</h3><p>一个规划的问题，但题目内容很简单，只要注意到浮点数和位数问题就不大了。</p>
+<h3 id="1021-个位数统计（15）"><a href="#1021-个位数统计（15）" class="headerlink" title="1021 - 个位数统计（15）"></a>1021 - 个位数统计（15）</h3><p>从开始遍历一遍即可。</p>
+<h3 id="1022-D进制的A-B（20）"><a href="#1022-D进制的A-B（20）" class="headerlink" title="1022 - D进制的A+B（20）"></a>1022 - D进制的A+B（20）</h3><p>和后面的比，这个就太容易了</p>
+<h3 id="1023-组个最小数（20）"><a href="#1023-组个最小数（20）" class="headerlink" title="1023 - 组个最小数（20）"></a>1023 - 组个最小数（20）</h3><p>先找到最小的不为零的数作为第一个数字，其余数字升序排列即可。这里有一个可以加速的地方，当已知位置t之前没有合适的数字了，可以直接跳过这些进行输出。</p>
+<h3 id="1024-科学计数法（20）"><a href="#1024-科学计数法（20）" class="headerlink" title="1024 - 科学计数法（20）"></a>1024 - 科学计数法（20）</h3><p>我这里是用字符串进行处理的，把几个部分分开，然后再合并在一起。更多的是纯字符串的处理，没有过多用数学的办法。</p>
+<h3 id="1025-反转链表（25）"><a href="#1025-反转链表（25）" class="headerlink" title="1025 - 反转链表（25）"></a>1025 - 反转链表（25）</h3><p>【感觉是目前，乙级真题中最复杂的一个了】</p>
+<p><strong>关键是要知道<code>&lt;algorithm&gt;</code>中有一个<code>reverse</code>函数</strong>。</p>
+<p>这里借鉴<a href="https://www.liuchuo.net/archives/463" target="_blank" rel="external">柳婼小姐姐</a>的思路：</p>
+<p><em>注意，不是所有的元素都有用</em></p>
+<p>所以输入以后，需要<code>sum</code>统计一下有多少在链表中的元素。</p>
+<p>接下来把链表按照顺序存入一个list中，但是实际上，对于这道题而言并不需要修改链表的<code>next</code>指针，只需要在输出的时候，输出<code>list[i+1]</code>就可以了。</p>
+<p>利用<code>reverse</code>就可以反转链表，判断条件<code>sum</code>上需要去掉不能整除的部分：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (sum - sum % k); i += k)</div><div class="line">        reverse(begin(<span class="built_in">list</span>) + i, begin(<span class="built_in">list</span>) + i + k);</div></pre></td></tr></table></figure>
+<h3 id="1026-程序运行时间（15）"><a href="#1026-程序运行时间（15）" class="headerlink" title="1026 - 程序运行时间（15）"></a>1026 - 程序运行时间（15）</h3><p>类比<code>clock()</code>函数进行计算，主要就是进位的问题。</p>
+<h3 id="1027-打印沙漏（20）"><a href="#1027-打印沙漏（20）" class="headerlink" title="1027 - 打印沙漏（20）"></a>1027 - 打印沙漏（20）</h3><p>注意，这个沙漏！右面不能有空格。</p>
+<p>这里使用了<code>string</code>的一种定义方法产生相同的字符串：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">stars</span><span class="params">(num, symbol)</span></span>;</div></pre></td></tr></table></figure>
+<h3 id="1028-人口普查（20）"><a href="#1028-人口普查（20）" class="headerlink" title="1028 - 人口普查（20）"></a>1028 - 人口普查（20）</h3><p>只要判断好时间界限，问题就比较容易啦~</p>
+<h3 id="1029-旧键盘（20）"><a href="#1029-旧键盘（20）" class="headerlink" title="1029 - 旧键盘（20）"></a>1029 - 旧键盘（20）</h3><p>【参考<a href="https://www.liuchuo.net/archives/559" target="_blank" rel="external">柳婼小姐姐的题解</a>比较好~</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="built_in">string</span> s1, s2, ans;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; s1 &gt;&gt; s2;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s1.length(); i++)</div><div class="line">        <span class="keyword">if</span> (s2.find(s1[i]) == <span class="built_in">string</span>::npos &amp;&amp; ans.find(<span class="built_in">toupper</span>(s1[i])) == <span class="built_in">string</span>::npos)</div><div class="line">            ans += <span class="built_in">toupper</span>(s1[i]);</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; ans;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>后面有一道题目比这个还要复杂一些。</p>
+<h3 id="1030-完美数列（25）"><a href="#1030-完美数列（25）" class="headerlink" title="1030 - 完美数列（25）"></a>1030 - 完美数列（25）</h3><p>排个序，问题就很容易解决啦~</p>
+<h3 id="1031-查验身份证（15）"><a href="#1031-查验身份证（15）" class="headerlink" title="1031 - 查验身份证（15）"></a>1031 - 查验身份证（15）</h3><p>其实还挺有用的:)</p>
+<p>字符串处理一下，记得最后的对应关系就可以啦~</p>
+<h3 id="1032-挖掘机技术哪家强（20）"><a href="#1032-挖掘机技术哪家强（20）" class="headerlink" title="1032 - 挖掘机技术哪家强（20）"></a>1032 - 挖掘机技术哪家强（20）</h3><p>用个<code>vector</code>存一下就好啦</p>
+<h3 id="1033-旧键盘打字（20）"><a href="#1033-旧键盘打字（20）" class="headerlink" title="1033 - 旧键盘打字（20）"></a>1033 - 旧键盘打字（20）</h3><p>承接<code>1029</code>题目，多加了一些错误的情况。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="built_in">string</span> bad, should;</div><div class="line">  getline(<span class="built_in">cin</span>, bad);  <span class="comment">//为了防止第一行是空的，不能用cin &gt;&gt; ,用getline(cin, ...)</span></div><div class="line">  getline(<span class="built_in">cin</span>, should);</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, length = should.length(); i &lt; length; i++) &#123;</div><div class="line">    <span class="keyword">if</span> (bad.find(<span class="built_in">toupper</span>(should[i])) != <span class="built_in">string</span>::npos) <span class="keyword">continue</span>;<span class="comment">//如果字母有错误的话</span></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">isupper</span>(should[i]) &amp;&amp; bad.find(<span class="string">'+'</span>) != <span class="built_in">string</span>::npos) <span class="keyword">continue</span>;<span class="comment">//如果输出应该是大写字母，但是上档坏掉了</span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; should[i];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="1034-有理数四则运算（20）"><a href="#1034-有理数四则运算（20）" class="headerlink" title="1034 - 有理数四则运算（20）"></a>1034 - 有理数四则运算（20）</h3><p>【这道题有一些麻烦，因为涉及到分数的四则运算，四种运算都需要写出来。</p>
+<p>我的思路是建一个结构体用来存储，同时有化简分数、带分数化成假分数的函数。在结构体外重构了加减乘除的运算，同时实现了通分的操作。</p>
+<p>这样是先化简再进行通分，最后再根据结果要求调整格式。</p>
+<h3 id="1035-插入与归并（25）-important"><a href="#1035-插入与归并（25）-important" class="headerlink" title="1035 - 插入与归并（25） important"></a>1035 - 插入与归并（25） important</h3><p>判断当前的序列是处于插入排序还是归并排序，二者的主要区别是在经过前面的一段有序队列后，剩余的队列是否有序。</p>
+<p>先用一个指针<code>i</code>找到从头开始最后一个排好序的位置，注意这里的限定条件要到<code>n-1</code>，因为判断的时候会用到<code>i+1</code>。</p>
+<p>接下来用指针<code>j</code>从<code>i+1</code>的位置开始寻找第一个不满足<code>a[j]==b[j]</code>，如果<code>j</code>能够到结尾，就说明是插入排序。<code>j</code>的判断是寻找后面有没有变动，如果都没变动，就判断是插入排序。</p>
+<p>模拟递归排序的过程：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"Merge Sort"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"><span class="keyword">int</span> k = <span class="number">1</span>, flag = <span class="number">1</span>;</div><div class="line"><span class="keyword">while</span>(flag) &#123;</div><div class="line">    flag = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (a[i] != b[i])</div><div class="line">            flag = <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    k = k * <span class="number">2</span>;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n / k; i++)</div><div class="line">        sort(a + i * k, a + (i + <span class="number">1</span>) * k);</div><div class="line">    sort(a + n / k * k, a + n);</div></pre></td></tr></table></figure>
+<p>注意，最后一句的<code>sort</code>是为了处理剩余的内容，由于是正整数，所以$n/k\times k \neq n $</p>
+<h3 id="1036-跟奥巴马一起编程（15）"><a href="#1036-跟奥巴马一起编程（15）" class="headerlink" title="1036 - 跟奥巴马一起编程（15）"></a>1036 - 跟奥巴马一起编程（15）</h3><p>那就编呗-。-期待以后还有川普的</p>
+<h3 id="1037-在霍格沃茨找零钱（20）"><a href="#1037-在霍格沃茨找零钱（20）" class="headerlink" title="1037 - 在霍格沃茨找零钱（20）"></a>1037 - 在霍格沃茨找零钱（20）</h3><p>就是一个进制的问题，盘算一下就好啦</p>
+<h3 id="1038-统计同成绩学生（20）"><a href="#1038-统计同成绩学生（20）" class="headerlink" title="1038 - 统计同成绩学生（20）"></a>1038 - 统计同成绩学生（20）</h3><p>可以用一个数组，也可以用一个<code>map</code>来记录数字。</p>
+<h3 id="1039-到底买不买（20）"><a href="#1039-到底买不买（20）" class="headerlink" title="1039 - 到底买不买（20）"></a>1039 - 到底买不买（20）</h3><p>第一直觉是用<code>map</code>来解决，然后每一项进行对比。</p>
+<p>也可以用两个数组来搞定，遇到相同的就“消消乐”变成’#’，然后再统计其他的数量。</p>
+<h3 id="1040-有几个PAT（25）"><a href="#1040-有几个PAT（25）" class="headerlink" title="1040 - 有几个PAT（25）"></a>1040 - 有几个PAT（25）</h3><p>首先来一段柳婼同学活泼的分析：</p>
+<blockquote>
+<p>要想知道构成多少个PAT，那么遍历字符串后对于每一A，它前面的P的个数和它后面的T的个数的乘积就是能构成的PAT的个数。然后把对于每一个A的结果相加即可~~辣么就简单啦，只需要先遍历字符串数一数有多少个T~~然后每遇到一个T呢~countt–;每遇到一个P呢，countp++;然后一遇到字母A呢就countt * countp~~~把这个结果累加到result中~~~~最后输出结果就好啦~~对了别忘记要对10000000007取余哦~~~~</p>
+</blockquote>
+<p>这种问题最好抽象出数学规律~这样会极大降低计算的难度的。本来想用三层循环来模拟，暴力的求解，结果超时了…</p>
+<h3 id="1041-考试座位号（15）"><a href="#1041-考试座位号（15）" class="headerlink" title="1041 - 考试座位号（15）"></a>1041 - 考试座位号（15）</h3><p>一个搜索的问题，后面用试机位置号，那前面的标记也是用试机来做。</p>
+<h3 id="1042-字符统计（20）"><a href="#1042-字符统计（20）" class="headerlink" title="1042 - 字符统计（20）"></a>1042 - 字符统计（20）</h3><p>注意<strong>包含空格</strong>，所以不能用<code>cin &gt;&gt;</code></p>
+<p>统计的内容只包括英文字母，所以只需要一个长度为26的数组来保存。</p>
+<h3 id="1043-输出PATest（20）"><a href="#1043-输出PATest（20）" class="headerlink" title="1043 - 输出PATest（20）"></a>1043 - 输出PATest（20）</h3><p>整理现有的字母然后输出。</p>
+<h3 id="1044-火星数字（20）"><a href="#1044-火星数字（20）" class="headerlink" title="1044 - 火星数字（20）"></a>1044 - 火星数字（20）</h3><p>进制转换问题的基础上又加了一些新的内容，将火星人的两位用不同的表示。</p>
+<p>就是处理的时候，稍微麻烦了一些，难度还好。</p>
+<h3 id="1045-快速排序（25）"><a href="#1045-快速排序（25）" class="headerlink" title="1045 - 快速排序（25）"></a>1045 - 快速排序（25）</h3><p>如果重复遍历，很容易超时。就用空间来换取时间，定义一个<code>max</code>和一个<code>min</code>的数组，分别存储由前到后和由后到前的最大最小值。最后再遍历一遍和前后的最大最小值比较一下就可以啦~</p>
+<p>而<a href="https://www.liuchuo.net/archives/505" target="_blank" rel="external">柳婼小姐姐</a>的思路是先整体排序，如果<strong>当前元素没有变化</strong>而且<strong>它左边的所有值的最大值都比它小</strong>的时候，它就可能是主元。</p>
+<h3 id="1046-划拳（15）"><a href="#1046-划拳（15）" class="headerlink" title="1046 - 划拳（15）"></a>1046 - 划拳（15）</h3><p>简单算一下就好啦~</p>
+<p>（不过划拳这么麻烦呀…感觉会懵的hh</p>
+<h3 id="1047-编程团体赛（20）"><a href="#1047-编程团体赛（20）" class="headerlink" title="1047 - 编程团体赛（20）"></a>1047 - 编程团体赛（20）</h3><p>记录一下参赛的队伍就可以啦~</p>
+<h3 id="1048-数字加密（20）"><a href="#1048-数字加密（20）" class="headerlink" title="1048 - 数字加密（20）"></a>1048 - 数字加密（20）</h3><p>这里需要注意两个数字位数不一样的情况，如果A比B长，就把B前面补零补齐。</p>
+<h3 id="1049-数列的片段和（20）"><a href="#1049-数列的片段和（20）" class="headerlink" title="1049 - 数列的片段和（20）"></a>1049 - 数列的片段和（20）</h3><p>注意是<code>double</code>就可以啦~</p>
+<h3 id="1050-螺旋矩阵（25"><a href="#1050-螺旋矩阵（25" class="headerlink" title="1050 - 螺旋矩阵（25)"></a>1050 - 螺旋矩阵（25)</h3><p>这个似乎是一次期末考试的题目，思路也比较清晰，但是要注意各种边界情况。在计算范围的时候，也要格外小心，是谁减一的问题。</p>
+<h3 id="1051-复数乘法（15）"><a href="#1051-复数乘法（15）" class="headerlink" title="1051 - 复数乘法（15）"></a>1051 - 复数乘法（15）</h3><p><strong>一个很重要的点：当A或者B小于0但是大于-0.005(比如-0.00001)时候，如果按照A&gt;=0的判断，会输出“-0.00”这样的结果,事实上应该输出“0.00”【B同理，应该输出“+0.00i”】</strong></p>
+<h3 id="1052-卖个萌（20）"><a href="#1052-卖个萌（20）" class="headerlink" title="1052 - 卖个萌（20）"></a>1052 - 卖个萌（20）</h3><p><strong>转义字符</strong>、注意，有空格的要用<code>getline</code>。</p>
+<h3 id="1053-住房空置率-（20）"><a href="#1053-住房空置率-（20）" class="headerlink" title="1053 - 住房空置率 （20）"></a>1053 - 住房空置率 （20）</h3><p>输出百分号要用<code>%%</code>，另外，要<strong>认真读题！！！</strong></p>
+<h3 id="1054-求平均值（20）"><a href="#1054-求平均值（20）" class="headerlink" title="1054 - 求平均值（20）"></a>1054 - 求平均值（20）</h3><p>这题目也可以抛出异常来写。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//sscanf() – 从一个字符串中读进与指定格式相符的数据</span></div><div class="line"><span class="built_in">sscanf</span>(a, <span class="string">"%lf"</span>, &amp;temp);</div><div class="line"><span class="comment">//sprintf() – 字符串格式化命令，主要功能是把格式化的数据写入某个字符串中</span></div><div class="line"><span class="built_in">sprintf</span>(b, <span class="string">"%.2lf"</span>, temp);</div><div class="line"><span class="keyword">int</span> flag = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="built_in">strlen</span>(a); j++) &#123;</div><div class="line">    <span class="keyword">if</span>(a[j] != b[j]) flag = <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="1055-集体照（25）这个再做一做hh"><a href="#1055-集体照（25）这个再做一做hh" class="headerlink" title="1055 - 集体照（25）这个再做一做hh"></a>1055 - 集体照（25）这个再做一做hh</h3><h3 id="1056-组合数的和（15）"><a href="#1056-组合数的和（15）" class="headerlink" title="1056 - 组合数的和（15）"></a>1056 - 组合数的和（15）</h3><p>给出N个不同的非零个位数字，难度已经降低非常非常多了。如果是包括重复的，丢进<code>set</code>里就可以。然后两层遍历就可以啦~但是要注意到相同数字的问题。</p>
+<h3 id="1057-数零壹（20）"><a href="#1057-数零壹（20）" class="headerlink" title="1057 - 数零壹（20）"></a>1057 - 数零壹（20）</h3><p>统计、转化进制，注意不分大小写，所以要把字母统一一下。</p>
+<h3 id="1058-选择题（20）"><a href="#1058-选择题（20）" class="headerlink" title="1058 - 选择题（20）*"></a>1058 - 选择题（20）*</h3><p>这道题目要求输出的内容偏多，我的第一直觉是用一个<code>题目</code>的结构体数组来存储题目，单独一个数组存储成绩，最后再遍历一遍数组。</p>
+<p><a href="https://www.liuchuo.net/archives/2496" target="_blank" rel="external">柳婼</a>在实现的时候，使用了几个数组来分别存储。虽然竞赛可以这样写，但是工程这样写可能要被打洗了hhh</p>
+<h3 id="1059-C语言竞赛（20）"><a href="#1059-C语言竞赛（20）" class="headerlink" title="1059 - C语言竞赛（20）"></a>1059 - C语言竞赛（20）</h3><p>这道题目的输出也涉及到几个部分，首先要有一个存储<code>id</code>与排名对应的数组或者<code>map</code>。至于重复查询的问题，我的第一反应是用一个数组来表示，但是实际上用<code>set</code>更方便一些。</p>
+<p>这类问题的关键点是寻找，用哪个变量寻找哪个变量，决定<code>index</code>和<code>value</code>的值。</p>
+<h3 id="1060-爱丁顿数（25）"><a href="#1060-爱丁顿数（25）" class="headerlink" title="1060 - 爱丁顿数（25）"></a>1060 - 爱丁顿数（25）</h3><p>这类逻辑题要注意寻找数学规律，看起来很苛刻的条件其实并没有很难实现。</p>
+<p>我的思路是对应的寻找，发现<code>对应的数字够大，剩下的数字不那么大。</code>就是找到了爱丁顿数，但实际思考的过程中，还是出现了一些问题，包括何时<code>break</code>的问题。另外，要弄清楚是<code>index</code>和序号的问题。可以考虑从1开始存储~</p>
+<h3 id="1061-判断题（15）"><a href="#1061-判断题（15）" class="headerlink" title="1061 - 判断题（15）"></a>1061 - 判断题（15）</h3><p>比上面的判选择题简单了很多hhh</p>
+<h3 id="1062-最简分数（20）"><a href="#1062-最简分数（20）" class="headerlink" title="1062 - 最简分数（20）"></a>1062 - 最简分数（20）</h3><p>这道题，我的第一个思路是把两个端点的值算出来，变成<code>double</code>类型，再在中间一个一个一个算，不断和端点值进行匹配。</p>
+<p>要注意：<strong>输入的大小关系</strong>！</p>
+<p>在比较的时候，如果用两个整数相乘，会更省时间而且准确度更高。</p>
+<h3 id="1063-计算谱半径（20）"><a href="#1063-计算谱半径（20）" class="headerlink" title="1063 - 计算谱半径（20）"></a>1063 - 计算谱半径（20）</h3><p>就是一个最大值的题目，像是15分的题</p>
+<h3 id="1064-朋友数（20）"><a href="#1064-朋友数（20）" class="headerlink" title="1064 - 朋友数（20）"></a>1064 - 朋友数（20）</h3><blockquote>
+<p><strong>我们默认一个整数自己是自己的朋友。</strong></p>
+</blockquote>
+<p>这一句话就把这道题的难度拉到最低点了…只需要把所有数各位的和丢进一个<code>set</code>里就解决了。</p>
+<h3 id="1065-单身狗（25）"><a href="#1065-单身狗（25）" class="headerlink" title="1065 - 单身狗（25）"></a>1065 - 单身狗（25）</h3><p>这里<a href="https://www.liuchuo.net/archives/2740" target="_blank" rel="external">柳婼</a>给出了一个简洁的思路，在一个数组中，<code>couple</code>之间相互存对方的<code>id</code>来进行匹配。</p>
+<h3 id="1066-图像过滤（15）"><a href="#1066-图像过滤（15）" class="headerlink" title="1066 - 图像过滤（15）"></a>1066 - 图像过滤（15）</h3><p>看起来很复杂，是一个像素一个像素处理，其实只是对每一个数值进行更改。这种问题不用存储到数组中，可以边输入边处理输出这样~</p>
+<h3 id="1067-试密码（20）"><a href="#1067-试密码（20）" class="headerlink" title="1067 - 试密码（20）"></a>1067 - 试密码（20）</h3><p>字符串匹配的问题，很简单。</p>
+<h3 id="1068-万绿丛中一点红（20）"><a href="#1068-万绿丛中一点红（20）" class="headerlink" title="1068 - 万绿丛中一点红（20）*"></a>1068 - 万绿丛中一点红（20）*</h3><ol>
+<li>读题的时候要仔细！必须是<strong>唯一</strong>的！</li>
+<li>这道题目的难点在寻找周围八个像素点，类似扫雷一样。可以用一些简便的形式来写，不然就要copy代码了…</li>
+</ol>
+<h3 id="1069-微博抽奖（20）"><a href="#1069-微博抽奖（20）" class="headerlink" title="1069 - 微博抽奖（20）"></a>1069 - 微博抽奖（20）</h3><p>仔细读题就好啦~主要要怎么抽，抽到曾经抽过的人应该怎么办~</p>
+<h3 id="1070-结绳（25）"><a href="#1070-结绳（25）" class="headerlink" title="1070 - 结绳（25）"></a>1070 - 结绳（25）</h3><p>只要让最短的绳子不断不断的折叠就可以啦~最长的绳子尽量少的折叠~还蛮简单的~</p>
+<h3 id="1071-小赌怡情（15）"><a href="#1071-小赌怡情（15）" class="headerlink" title="1071 - 小赌怡情（15）"></a>1071 - 小赌怡情（15）</h3><p>简单的IO…</p>
+<h3 id="1072-开学寄语（20）"><a href="#1072-开学寄语（20）" class="headerlink" title="1072 - 开学寄语（20）"></a>1072 - 开学寄语（20）</h3><p>四位数的标号，就可以用<code>forbid[10000]</code>来存储，但是对于实际中不定长的问题，还是用<code>set</code>可能比较好。这类问题都可以即时输入/输出。</p>
+<h3 id="1073-多选题常见计分法（20）"><a href="#1073-多选题常见计分法（20）" class="headerlink" title="1073 - 多选题常见计分法（20）"></a>1073 - 多选题常见计分法（20）</h3><p>之前就有一道多选的题目，但要求略有变化。这里考虑了部分选项正确的情况，计算分数更复杂；同时要求输出统计成绩的情况。</p>
+<p> 这题写了一个下午…最后还有一个测试点没有通过，整理一下坑点啦~</p>
+<ol>
+<li>错误计数就是错选</li>
+<li>在选项计数中，选错的、漏选的，都要计算</li>
+<li>最终判断最多的不是题目错的人数最多，是<strong>选项错误次数最多</strong>（迷醉…</li>
+</ol>
+<h3 id="1074-宇宙无敌加法器（20）"><a href="#1074-宇宙无敌加法器（20）" class="headerlink" title="1074 - 宇宙无敌加法器（20）"></a>1074 - 宇宙无敌加法器（20）</h3><p>综合性进制转换的题目，但是思路是类似的啦~</p>
+<h3 id="1075-链表元素分类（25）"><a href="#1075-链表元素分类（25）" class="headerlink" title="1075 - 链表元素分类（25）"></a>1075 - 链表元素分类（25）</h3><p>看到这个题目就想起来之前反转链表的噩梦…</p>
+<h3 id="1076-Wifi密码（15）"><a href="#1076-Wifi密码（15）" class="headerlink" title="1076 - Wifi密码（15）"></a>1076 - Wifi密码（15）</h3><p>只要不断<code>while( cin &gt;&gt; s)</code>并且判断<code>s[2] == &#39;T&#39;</code>，将对应数字加入密码字符串即可。</p>
+<h3 id="1077-互评成绩计算（20）"><a href="#1077-互评成绩计算（20）" class="headerlink" title="1077 - 互评成绩计算（20）"></a>1077 - 互评成绩计算（20）</h3><p>可以存储<code>maxn</code>和<code>minn</code>，计算<code>sum</code>再删掉即可，难度不大。</p>
+<h3 id="1078-字符串压缩与解压（20）"><a href="#1078-字符串压缩与解压（20）" class="headerlink" title="1078 - 字符串压缩与解压（20）"></a>1078 - 字符串压缩与解压（20）</h3><p>压缩：一次遍历，一个计数，一个临时存储判断，遇到不同的就压缩进去。</p>
+<p>解压：判断数字or字母，字母则输出，数字则取下一个然后加倍输出。</p>
+<h3 id="1079-延迟的回文数（20）"><a href="#1079-延迟的回文数（20）" class="headerlink" title="1079 - 延迟的回文数（20）"></a>1079 - 延迟的回文数（20）</h3><p>利用<code>algorithm</code>中的<code>reverse</code>可以把字符串快速反转过来，然后转换成数字相加得到下一个值。</p>
+<p>可以像<a href="https://www.liuchuo.net/archives/4200" target="_blank" rel="external">柳婼</a>的思路，写一个类似全加器的算法~考虑到进位的问题。</p>
+<p>也可以每次把两个数都读出来，再进行计算。</p>
+<h3 id="1080-Mooc期终成绩（25）"><a href="#1080-Mooc期终成绩（25）" class="headerlink" title="1080 - Mooc期终成绩（25）"></a>1080 - Mooc期终成绩（25）</h3><p>关键在于定义好数据结构和<code>map</code>，看清题目以后，按照需求进行处理就可以了~</p>
+<h2 id="将练习中出现的问题进行整理。"><a href="#将练习中出现的问题进行整理。" class="headerlink" title="将练习中出现的问题进行整理。"></a>将练习中出现的问题进行整理。</h2><h3 id="int-to-string-的转换"><a href="#int-to-string-的转换" class="headerlink" title="int to string 的转换"></a>int to string 的转换</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="built_in">string</span> num = to_string(sum);</div></pre></td></tr></table></figure>
+<h3 id="string-to-int-的转换"><a href="#string-to-int-的转换" class="headerlink" title="string to int 的转换"></a>string to int 的转换</h3><ul>
+<li>对于每一个<code>char</code>类型<code>a</code>,只需要<code>a - &#39;0&#39;</code>即可。</li>
+<li>利用<code>stoi()</code>函数进行转换。</li>
+</ul>
+<h3 id="使用greater-lt-int-gt"><a href="#使用greater-lt-int-gt" class="headerlink" title="使用greater&lt;int&gt;"></a>使用<code>greater&lt;int&gt;</code></h3><p><code>#include &lt;functional&gt; //greater&lt;int&gt;</code></p>
+<h3 id="set-difference"><a href="#set-difference" class="headerlink" title="set_difference()"></a>set_difference()</h3><p>对比两个<code>set</code>之间的区别，最后是插入到一个新的set中。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">std</span>::set_difference(nums.begin(), nums.end(), result.begin(), result.end(), inserter(v, v.begin()));</div></pre></td></tr></table></figure>
+<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><p>迭代器的定义：<code>set&lt;int&gt;::iterator it</code> </p>
+<p>初始值：<code>v.begin()</code></p>
+<p>循环条件：<code>it != v.end()</code></p>
+<p>注意，迭代器不能往回走，只能前进。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;::iterator it = v.begin(); it != v.end(); ++it)</div><div class="line">	&#123;</div><div class="line">		printRes = printRes + to_string(*it) + <span class="string">" "</span>;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h3 id="去掉字符串结尾空格的办法"><a href="#去掉字符串结尾空格的办法" class="headerlink" title="去掉字符串结尾空格的办法"></a>去掉字符串结尾空格的办法</h3><p>寻找到最后一个不是空格的元素，再+1，erase掉。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">printRes.erase(printRes.find_last_not_of(<span class="string">" "</span>)+<span class="number">1</span>);</div></pre></td></tr></table></figure>
+<h4 id="erase的用法"><a href="#erase的用法" class="headerlink" title="erase的用法"></a>erase的用法</h4><blockquote>
+<p>erase的原型有三个：<br>（1）string&amp; erase ( size_t pos = 0, size_t n = npos );<br>（2）iterator erase ( iterator position );<br>（3）iterator erase ( iterator first, iterator last );<br>也就是说有三种用法：<br>（1）erase(pos,n); 删除从pos开始的n个字符，比如erase(0,1)就是删除第一个字符<br>（2）erase(position);删除position处的一个字符(position是个string类型的迭代器)<br>（3）erase(first,last);删除从first到last之间的字符（first和last都是迭代器）</p>
+</blockquote>
+<h4 id="C-中利用find-first-of等进行匹配"><a href="#C-中利用find-first-of等进行匹配" class="headerlink" title="C++中利用find_first_of等进行匹配"></a>C++中利用find_first_of等进行匹配</h4> <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int find_first_of(char c, int start = 0):</div></pre></td></tr></table></figure>
+<p>查找字符串中第1个出现的c,由位置start开始。<br>如果有匹配，则返回匹配位置；否则，返回-1.默认情况下，start为0，函数搜索整个字符串。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int find_last_of(char c):</div></pre></td></tr></table></figure></p>
+<p>查找字符串中最后一个出现的c。有匹配，则返回匹配位置；否则返回-1.</p>
+<p>类似的还有<code>find_last_not_of</code></p>
+<h3 id="判断是否为素数"><a href="#判断是否为素数" class="headerlink" title="判断是否为素数"></a>判断是否为素数</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isprime</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i * i &lt;= a; i++)</div><div class="line">        <span class="keyword">if</span> (a % i == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="求最大公约数"><a href="#求最大公约数" class="headerlink" title="求最大公约数"></a>求最大公约数</h3><p>辗转相除法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> t1, <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> t2)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> t2 == <span class="number">0</span> ? t1 : gcd(t2, t1 % t2);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="结构体！一定要想起来！"><a href="#结构体！一定要想起来！" class="headerlink" title="结构体！一定要想起来！"></a>结构体！一定要想起来！</h3><h4 id="重构小于比较"><a href="#重构小于比较" class="headerlink" title="重构小于比较"></a>重构小于比较</h4><p>在结构体外，比较的时候，参数就需要两个元素。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (mooncake a, mooncake b)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">return</span> a.unit &gt; b.unit;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="while-cin-gt-gt-temp-num-amp-amp-cin-gt-gt-temp-index"><a href="#while-cin-gt-gt-temp-num-amp-amp-cin-gt-gt-temp-index" class="headerlink" title="while (cin &gt;&gt; temp_num &amp;&amp; cin &gt;&gt; temp_index)"></a>while (cin &gt;&gt; temp_num &amp;&amp; cin &gt;&gt; temp_index)</h3><p>在条件这里直接<code>cin</code>输入，如果没有足够的数据，就不会继续循环了。</p>
+<h3 id="字符串的substr"><a href="#字符串的substr" class="headerlink" title="字符串的substr()"></a>字符串的substr()</h3><p>返回一个子串拷贝的对象，分别是pos和len。</p>
+<figure class="highlight plain"><figcaption><span>substr (size_t pos = 0, size_t len = npos) const;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 关于String的find()函数</div><div class="line"></div><div class="line">`find()`函数在找不到指定值的情况下会返回`string::npos`</div><div class="line"></div><div class="line">其中`string::npos`也可以表示`直到字符串结束`</div><div class="line"></div><div class="line">### 留心输入为空的情况</div><div class="line"></div><div class="line">这个时候要使用`getline`而不能用`cin` &gt;&gt;</div><div class="line"></div><div class="line">### 对1000000007取模的原因</div><div class="line"></div><div class="line">1000000007有八个零，一共十位。</div><div class="line"></div><div class="line">1. 1000000007是个质数</div><div class="line">2. int_32位的最大值为2147483647，所以对于int32位来说1000000007足够大</div><div class="line">3. int_64位的最大值为2^63-1，对于1000000007来说它的平方不会在int64中溢出</div><div class="line">4. 所以在大数相乘的时候，因为(a∗b)%c=((a%c)∗(b%c))%c，所以相乘时两边都对1000000007取模，再保存在int64里面不会溢出</div><div class="line"></div><div class="line"></div><div class="line">### `set`的查找</div><div class="line"></div><div class="line">如果没有找到就会遍历到结尾。</div><div class="line"></div><div class="line">```C++</div><div class="line">if(ss.find(id) == ss.end()) &#123;</div><div class="line">    ss.insert(id);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>最后-。-，第一次考PAT乙级，因为超时只有94分…</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2018/03/07/delete-code-comments-by-regexp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1579,7 +1887,7 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
