@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="coding,Verilog," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -95,18 +95,13 @@
 
 
 
-<meta name="description" content="在Verilog中遇到的坑们。 本文持续更新。谨以此文献给Bug们。">
-<meta name="keywords" content="coding,Verilog">
-<meta property="og:type" content="article">
-<meta property="og:title" content="在Verilog中遇到的坑们。">
-<meta property="og:url" content="http://www.mengfansong.me/2017/11/09/Some-Wrong-of-Verilog/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="松鹅的博客">
+<meta property="og:url" content="http://www.mengfansong.me/categories/papers/index.html">
 <meta property="og:site_name" content="松鹅的博客">
-<meta property="og:description" content="在Verilog中遇到的坑们。 本文持续更新。谨以此文献给Bug们。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-09T14:57:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在Verilog中遇到的坑们。">
-<meta name="twitter:description" content="在Verilog中遇到的坑们。 本文持续更新。谨以此文献给Bug们。">
+<meta name="twitter:title" content="松鹅的博客">
 
 
 
@@ -136,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://www.mengfansong.me/2017/11/09/Some-Wrong-of-Verilog/"/>
+  <link rel="canonical" href="http://www.mengfansong.me/categories/papers/"/>
 
 
 
 
 
-  <title>在Verilog中遇到的坑们。 | 松鹅的博客</title>
+  <title>分类: papers | 松鹅的博客</title>
   
 
 
@@ -161,7 +156,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -245,180 +240,55 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block category">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>papers<small>分类</small>
+        </h1>
+      </div>
 
-  
-  
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2017/11/09/Some-Wrong-of-Verilog/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="松鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="松鹅的博客">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+            <a class="post-title-link" href="/2018/05/03/papers/" itemprop="url">
+              
+                <span itemprop="name">技术文章分享打卡~</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">在Verilog中遇到的坑们。</h1>
-        
+      </h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T21:33:00+08:00">
-                2017-11-09
-              </time>
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-05-03T23:39:25+08:00"
+              content="2018-05-03" >
+          05-03
+        </time>
+      </div>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/" itemprop="url" rel="index">
-                    <span itemprop="name">notes</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="在Verilog中遇到的坑们。"><a href="#在Verilog中遇到的坑们。" class="headerlink" title="在Verilog中遇到的坑们。"></a>在Verilog中遇到的坑们。</h1><blockquote>
-<p>本文持续更新。<br>谨以此文献给Bug们。</p>
-</blockquote>
-<a id="more"></a>
-<h3 id="1-Reg和Wire的赋值"><a href="#1-Reg和Wire的赋值" class="headerlink" title="1. Reg和Wire的赋值"></a>1. Reg和Wire的赋值</h3><p>在Register file中，遇到了Reg和Wire赋值的问题。<br>时序电路中，没有考虑到Reg读数据需要周期时间的问题，之前随后定义的就GG了。<br>这里有一个讲区分的<a href="http://inst.eecs.berkeley.edu/~cs150/Documents/Nets.pdf" target="_blank" rel="external">PDF</a></p>
-<h3 id="2-有符号数的问题"><a href="#2-有符号数的问题" class="headerlink" title="2.有符号数的问题"></a>2.有符号数的问题</h3><p>在写某一个判断条件的时候，比较两个数的大小的是。很自然的做减法然后比如是否大于零。<br>模拟的时候结果就不对，后来尝试用作差以后的符号位去判断数值的大小，才把这个问题解决。<br>现在Verilog可以用signed关键字来处理有符号数的问题。</p>
-<h3 id="未来还会有很多坑的，待续。"><a href="#未来还会有很多坑的，待续。" class="headerlink" title="未来还会有很多坑的，待续。"></a>未来还会有很多坑的，待续。</h3>
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/coding/" rel="tag"># coding</a>
-          
-            <a href="/tags/Verilog/" rel="tag"># Verilog</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/11/08/Coursera-Machine-Learning-1/" rel="next" title="《Machine Learning》第一周随记">
-                <i class="fa fa-chevron-left"></i> 《Machine Learning》第一周随记
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/29/puzzle-and-eight-digital/" rel="prev" title="拼图问题可解性与八数码问题">
-                拼图问题可解性与八数码问题 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
       
     </div>
+
   </div>
+  
+  
+  
+
+  
+
 
 
           </div>
@@ -426,10 +296,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -450,17 +316,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <p class="site-author-name" itemprop="name">松鹅</p>
@@ -535,22 +392,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#在Verilog中遇到的坑们。"><span class="nav-number">1.</span> <span class="nav-text">在Verilog中遇到的坑们。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Reg和Wire的赋值"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. Reg和Wire的赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-有符号数的问题"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.有符号数的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未来还会有很多坑的，待续。"><span class="nav-number">1.0.3.</span> <span class="nav-text">未来还会有很多坑的，待续。</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -685,10 +526,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-
 
   
 
