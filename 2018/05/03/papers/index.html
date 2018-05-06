@@ -95,18 +95,18 @@
 
 
 
-<meta name="description" content="爱立Flag的我打算现在开始，每天看一篇技术有关的文章。这个作为打卡和汇总贴~">
+<meta name="description" content="爱立Flag的我打算现在开始，每天看一篇技术有关的文章。这个作为打卡和汇总贴~ Redis《Redis教程》 2018/05/05简单了解了Redis的数据类型和指令，内容不够详细，仅仅够稍微了解一下~ Redis底层原理 2018/05/06简单的介绍了Redis中的字符串对象、哈希对象、列表、集合、有序集合五种数据类型的实现方式。 Redis持久化方式 2018/05/07 RDB方式：定期备">
 <meta name="keywords" content="coding">
 <meta property="og:type" content="article">
 <meta property="og:title" content="技术文章分享打卡~">
 <meta property="og:url" content="http://www.mengfansong.me/2018/05/03/papers/index.html">
 <meta property="og:site_name" content="松鹅的博客">
-<meta property="og:description" content="爱立Flag的我打算现在开始，每天看一篇技术有关的文章。这个作为打卡和汇总贴~">
+<meta property="og:description" content="爱立Flag的我打算现在开始，每天看一篇技术有关的文章。这个作为打卡和汇总贴~ Redis《Redis教程》 2018/05/05简单了解了Redis的数据类型和指令，内容不够详细，仅仅够稍微了解一下~ Redis底层原理 2018/05/06简单的介绍了Redis中的字符串对象、哈希对象、列表、集合、有序集合五种数据类型的实现方式。 Redis持久化方式 2018/05/07 RDB方式：定期备">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-03T15:47:54.290Z">
+<meta property="og:updated_time" content="2018-05-06T07:32:52.778Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术文章分享打卡~">
-<meta name="twitter:description" content="爱立Flag的我打算现在开始，每天看一篇技术有关的文章。这个作为打卡和汇总贴~">
+<meta name="twitter:description" content="爱立Flag的我打算现在开始，每天看一篇技术有关的文章。这个作为打卡和汇总贴~ Redis《Redis教程》 2018/05/05简单了解了Redis的数据类型和指令，内容不够详细，仅仅够稍微了解一下~ Redis底层原理 2018/05/06简单的介绍了Redis中的字符串对象、哈希对象、列表、集合、有序集合五种数据类型的实现方式。 Redis持久化方式 2018/05/07 RDB方式：定期备">
 
 
 
@@ -349,6 +349,18 @@
 
       
         <p>爱立Flag的我打算现在开始，每天看一篇技术有关的文章。这个作为打卡和汇总贴~</p>
+<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><h4 id="《Redis教程》-2018-05-05"><a href="#《Redis教程》-2018-05-05" class="headerlink" title="《Redis教程》 2018/05/05"></a><a href="http://www.runoob.com/redis/redis-tutorial.html" target="_blank" rel="external">《Redis教程》</a> 2018/05/05</h4><p>简单了解了Redis的数据类型和指令，内容不够详细，仅仅够稍微了解一下~</p>
+<h4 id="Redis底层原理-2018-05-06"><a href="#Redis底层原理-2018-05-06" class="headerlink" title="Redis底层原理 2018/05/06"></a><a href="https://blog.csdn.net/wcf373722432/article/details/78678504" target="_blank" rel="external">Redis底层原理</a> 2018/05/06</h4><p>简单的介绍了Redis中的字符串对象、哈希对象、列表、集合、有序集合五种数据类型的实现方式。</p>
+<h4 id="Redis持久化方式-2018-05-07"><a href="#Redis持久化方式-2018-05-07" class="headerlink" title="Redis持久化方式 2018/05/07"></a><a href="http://doc.redisfans.com/topic/persistence.html" target="_blank" rel="external">Redis持久化方式</a> 2018/05/07</h4><ul>
+<li>RDB方式：定期备份快照。</li>
+<li>AOF方式：保存操作日志方式，Redis提供减少容量的rebuild</li>
+<li>两者结合使用</li>
+<li>容灾备份：<ul>
+<li>Amazon S3，以及其他类似S3服务。</li>
+<li>传送快照可以使用SCP来完成。</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -439,8 +451,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <p class="site-author-name" itemprop="name">松鹅</p>
@@ -515,6 +536,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis"><span class="nav-number">1.</span> <span class="nav-text">Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#《Redis教程》-2018-05-05"><span class="nav-number">1.1.</span> <span class="nav-text">《Redis教程》 2018/05/05</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis底层原理-2018-05-06"><span class="nav-number">1.2.</span> <span class="nav-text">Redis底层原理 2018/05/06</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis持久化方式-2018-05-07"><span class="nav-number">1.3.</span> <span class="nav-text">Redis持久化方式 2018/05/07</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
