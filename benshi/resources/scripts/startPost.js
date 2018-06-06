@@ -1,4 +1,4 @@
-// 8.0.0.3355. Generated 8/24/2017 4:38:58 AM UTC
+﻿// 8.0.0.3355. Generated 8/24/2017 4:38:58 AM UTC
 
 //***** sitemap.js *****//
 var currentNodeUrl = '';
@@ -132,8 +132,12 @@ function openPreviousPage() {
             var conditionString = '';
             if(currView.condition == '>' || currView.condition == '>=') {
                 conditionString = ' and above';
-            } else if(currView.condition == '<' ||="" currview.condition="=" '<=") {
-                conditionString = " and="" below';="" }="" var="" viewstring="currView.name" +="" '="" ('="" widthstring="" x="" heightstring="" conditionstring="" ')';="" $adaptiveviewscontainer.append('<div="" class="adaptiveViewOption" val="' + currView.id + '"><div class="adaptiveCheckboxDiv"></div>' + viewString + '');
+            } else if(currView.condition == '<' || currView.condition == '<=') {
+                conditionString = ' and below';
+            }
+
+            var viewString = currView.name + ' (' + widthString + ' x ' + heightString + conditionString + ')';
+            $adaptiveViewsContainer.append('<div class="adaptiveViewOption" val="' + currView.id + '"><div class="adaptiveCheckboxDiv"></div>' + viewString + '</div>');
             $viewSelect.append('<option value="' + currView.id + '">' + viewString + '</option>');
         }
 
@@ -378,46 +382,46 @@ function openPreviousPage() {
     }
 
     function generateSitemap() {
-        var treeUl = "<div id="sitemapHeader" '="" class="sitemapHeader">";
-        treeUl += "<div id="sitemapToolbar" class="sitemapToolbar">";
-        treeUl += "<div class="pluginNameHeader">PAGES</div>";
-        treeUl += "<div class="pageNameHeader"></div>";
+        var treeUl = "<div id='sitemapHeader'' class='sitemapHeader'>";
+        treeUl += "<div id='sitemapToolbar' class='sitemapToolbar'>";
+        treeUl += "<div class='pluginNameHeader'>PAGES</div>";
+        treeUl += "<div class='pageNameHeader'></div>";
 
-        treeUl += "<div class="pageButtonHeader">";
+        treeUl += "<div class='pageButtonHeader'>";
 
         if($axure.document.configuration.enabledViewIds.length > 0) {
-            treeUl += "<a id="adaptiveButton" title="Select Adaptive View" class="sitemapToolbarButton"></a>";
+            treeUl += "<a id='adaptiveButton' title='Select Adaptive View' class='sitemapToolbarButton'></a>";
         }
 
-        treeUl += "<a id="linksButton" title="Get Links" class="sitemapToolbarButton"></a>";
-        treeUl += "<a id="highlightInteractiveButton" title="Highlight interactive elements" class="sitemapToolbarButton"></a>";
+        treeUl += "<a id='linksButton' title='Get Links' class='sitemapToolbarButton'></a>";
+        treeUl += "<a id='highlightInteractiveButton' title='Highlight interactive elements' class='sitemapToolbarButton'></a>";
         treeUl += "</div>";
         
         treeUl += "</div>";
 
         if($axure.document.adaptiveViews.length > 0) {
-            treeUl += "<div id="adaptiveViewsContainer"><div style="margin-bottom:10px;">Adaptive Views</div></div>";
+            treeUl += "<div id='adaptiveViewsContainer'><div style='margin-bottom:10px;'>Adaptive Views</div></div>";
         }
 
         //linkcontainer
-        treeUl += "<div id="sitemapLinksContainer" class="sitemapLinkContainer">";
-        treeUl += "<div style="margin-bottom:10px;">Generate sharable URLs</div>";
-        treeUl += "<input id="sitemapLinkWithPlayer" type="text" class="sitemapLinkField">";
-        treeUl += "<div class="sitemapOptionContainer">";
-        treeUl += "<div><label><input type="radio" name="sitemapToggle" value="withoutmap">Without Sidebar</label></div>";
-        treeUl += "<div style="margin-top:10px;"><label><input type="radio" name="sitemapToggle" value="withmap">With Sidebar</label>";
+        treeUl += "<div id='sitemapLinksContainer' class='sitemapLinkContainer'>";
+        treeUl += "<div style='margin-bottom:10px;'>Generate sharable URLs</div>";
+        treeUl += "<input id='sitemapLinkWithPlayer' type='text' class='sitemapLinkField'/>";
+        treeUl += "<div class='sitemapOptionContainer'>";
+        treeUl += "<div><label><input type='radio' name='sitemapToggle' value='withoutmap'/>Without Sidebar</label></div>";
+        treeUl += "<div style='margin-top:10px;'><label><input type='radio' name='sitemapToggle' value='withmap'/>With Sidebar</label>";
 
-        treeUl += "<div id="sitemapOptionsDiv">";
-        treeUl += "<div class="sitemapUrlOption"><label><input type="checkbox" id="minimizeBox">Minimize sidebar</label></div>";
-        treeUl += "<div class="sitemapUrlOption"><label><input type="checkbox" id="collapseBox">Pages closed</label></div>";
+        treeUl += "<div id='sitemapOptionsDiv'>";
+        treeUl += "<div class='sitemapUrlOption'><label><input type='checkbox' id='minimizeBox' />Minimize sidebar</label></div>";
+        treeUl += "<div class='sitemapUrlOption'><label><input type='checkbox' id='collapseBox' />Pages closed</label></div>";
         if($axure.document.configuration.showAnnotations == true) {
-            treeUl += "<div class="sitemapUrlOption"><label><input type="checkbox" id="footnotesBox">Hide footnotes</label></div>";
+            treeUl += "<div class='sitemapUrlOption'><label><input type='checkbox' id='footnotesBox' />Hide footnotes</label></div>";
         }
 
-        treeUl += "<div class="sitemapUrlOption"><label><input type="checkbox" id="highlightBox">Highlight interactive elements</label></div>";
+        treeUl += "<div class='sitemapUrlOption'><label><input type='checkbox' id='highlightBox' />Highlight interactive elements</label></div>";
 
         if($axure.document.configuration.enabledViewIds.length > 0) {
-            treeUl += "<div id="viewSelectDiv" class="sitemapUrlOption"><label>View: <select id="viewSelect"></select></label></div>";
+            treeUl += "<div id='viewSelectDiv' class='sitemapUrlOption'><label>View: <select id='viewSelect'></select></label></div>";
         }
 
         treeUl += "</div></div></div></div>";
@@ -425,11 +429,11 @@ function openPreviousPage() {
 
         treeUl += "</div>";
 
-        treeUl += "<div id="sitemapTreeContainer">";
+        treeUl += "<div id='sitemapTreeContainer'>";
 
-        treeUl += '<div id="searchDiv" style=""><input id="searchBox" style="" type="text"></div>';
+        treeUl += '<div id="searchDiv" style=""><input id="searchBox" style="" type="text"/></div>';
 
-        treeUl += "<ul class="sitemapTree" style="clear:both;">";
+        treeUl += "<ul class='sitemapTree' style='clear:both;'>";
         var rootNodes = $axure.document.sitemap.rootNodes;
         for(var i = 0; i < rootNodes.length; i++) {
             treeUl += generateNode(rootNodes[i], 0);
@@ -437,28 +441,34 @@ function openPreviousPage() {
         treeUl += "</ul></div>";
 
         $('#sitemapHost').html(treeUl);
-        if($axure.document.adaptiveViews.length <= 0)="" {="" $('#sitemaphost="" .pagenameheader').css('padding-right',="" '55px');="" }="" function="" generatenode(node,="" level)="" var="" haschildren="(node.children" &&="" node.children.length=""> 0);
+        if($axure.document.adaptiveViews.length <= 0) {
+            $('#sitemapHost .pageNameHeader').css('padding-right', '55px');
+        }
+    }
+
+    function generateNode(node, level) {
+        var hasChildren = (node.children && node.children.length > 0);
         var margin, returnVal;
         if(hasChildren) {
             margin = (9 + level * 17);
-            returnVal = "<li class="sitemapNode sitemapExpandableNode"><div><div class="sitemapPageLinkContainer" style="margin-left:" + margin + "px"><a class="sitemapPlusMinusLink"><span class="sitemapMinus"></span></a>";
+            returnVal = "<li class='sitemapNode sitemapExpandableNode'><div><div class='sitemapPageLinkContainer' style='margin-left:" + margin + "px'><a class='sitemapPlusMinusLink'><span class='sitemapMinus'></span></a>";
         } else {
             margin = (21 + level * 17);
-            returnVal = "<li class="sitemapNode sitemapLeafNode"><div><div class="sitemapPageLinkContainer" style="margin-left:" + margin + "px">";
+            returnVal = "<li class='sitemapNode sitemapLeafNode'><div><div class='sitemapPageLinkContainer' style='margin-left:" + margin + "px'>";
         }
 
         var isFolder = node.type == "Folder";
         if(!isFolder) {
-            returnVal += "<a class="sitemapPageLink" nodeurl="" + node.url + "">";
+            returnVal += "<a class='sitemapPageLink' nodeUrl='" + node.url + "'>";
             allNodeUrls.push(node.url);
         }
-        returnVal += "<span class="sitemapPageIcon";
+        returnVal += "<span class='sitemapPageIcon";
         if(node.type == "Flow") { returnVal += " sitemapFlowIcon"; }
         if(isFolder) { returnVal += " sitemapFolderIcon"; }
 
-        returnVal += ""></span><span class="sitemapPageName">";
-        returnVal += $('<div>').text(node.pageName).html();
-        returnVal += "</div></span>";
+        returnVal += "'></span><span class='sitemapPageName'>";
+        returnVal += $('<div/>').text(node.pageName).html();
+        returnVal += "</span>";
         if(!isFolder) returnVal += "</a>";
         returnVal += "</div></div>";
 
@@ -512,13 +522,13 @@ function openPreviousPage() {
                     var showNames = $axure.document.configuration.showPageNoteNames;
 
                     for(var noteName in notes) {
-                        var pageNoteUi = "<div class="pageNoteContainer">";
+                        var pageNoteUi = "<div class='pageNoteContainer'>";
                         if(showNames) {
-                            pageNoteUi += "<div class="pageNoteName">" + noteName + "</div>";
+                            pageNoteUi += "<div class='pageNoteName'>" + noteName + "</div>";
                         }
-                        pageNoteUi += "<div class="pageNote">" + linkify(notes[noteName]) + "</div>";
+                        pageNoteUi += "<div class='pageNote'>" + linkify(notes[noteName]) + "</div>";
                         pageNoteUi += "</div>";
-                        pageNoteUi += "<div class="dottedDivider"></div>";
+                        pageNoteUi += "<div class='dottedDivider'></div>";
                         $('#pageNotesContent').append(pageNoteUi);
 
                         hasNotes = true;
@@ -531,24 +541,24 @@ function openPreviousPage() {
                 if(widgetNotes) {
                     for(var i = 0; i < widgetNotes.length; i++) {
                         var widgetNote = widgetNotes[i];
-                        var widgetNoteUi = "<div class="widgetNoteContainer" data-id="" + widgetNote["id"] + "">";
-                        widgetNoteUi += "<div class="widgetNoteFootnote"></div>";
-                        widgetNoteUi += "<div class="widgetNoteLabel">" + widgetNote["label"] + "</div>";
+                        var widgetNoteUi = "<div class='widgetNoteContainer' data-id='" + widgetNote["id"] + "'>";
+                        widgetNoteUi += "<div class='widgetNoteFootnote'></div>";
+                        widgetNoteUi += "<div class='widgetNoteLabel'>" + widgetNote["label"] + "</div>";
 
                         for(var widgetNoteName in widgetNote) {
                             if(widgetNoteName != "label" && widgetNoteName != "id") {
-                                widgetNoteUi += "<div class="pageNoteName">" + widgetNoteName + "</div>";
-                                widgetNoteUi += "<div class="pageNote">" + linkify(widgetNote[widgetNoteName]) + "</div>";
-                                widgetNoteUi += "<div class="nondottedDivider"></div>";
+                                widgetNoteUi += "<div class='pageNoteName'>" + widgetNoteName + "</div>";
+                                widgetNoteUi += "<div class='pageNote'>" + linkify(widgetNote[widgetNoteName]) + "</div>";
+                                widgetNoteUi += "<div class='nondottedDivider'></div>";
                             }
                         }
                         widgetNoteUi += "</div>";
-                        widgetNoteUi += "<div class="nondottedDivider"></div>";
+                        widgetNoteUi += "<div class='nondottedDivider'></div>";
                         $('#pageNotesContent').append(widgetNoteUi);
                         hasNotes = true;
                     }
                     $('.widgetNoteContainer').children(':last-child').remove();
-                    $('.widgetNoteFootnote').append("<div class="annnoteline"></div><div class="annnoteline"></div><div class="annnoteline"></div>");
+                    $('.widgetNoteFootnote').append("<div class='annnoteline'></div><div class='annnoteline'></div><div class='annnoteline'></div>");
                     $('.widgetNoteContainer').click(function () {
                         var wasSelected = $(this).hasClass('widgetNoteContainerSelected');
                         $('.widgetNoteContainerSelected').removeClass('widgetNoteContainerSelected');
@@ -630,19 +640,19 @@ function openPreviousPage() {
     }
 
     function generatePageNotes() {
-        var pageNotesUi = "<div id="pageNotesHeader" '="" class="sitemapHeader">";
+        var pageNotesUi = "<div id='pageNotesHeader'' class='sitemapHeader'>";
 
-        pageNotesUi += "<div id="pageNotesToolbar" class="sitemapToolbar">";
-        pageNotesUi += "<div class="pluginNameHeader">NOTES</div>";
-        pageNotesUi += "<div class="pageNameHeader"></div>";
+        pageNotesUi += "<div id='pageNotesToolbar' class='sitemapToolbar'>";
+        pageNotesUi += "<div class='pluginNameHeader'>NOTES</div>";
+        pageNotesUi += "<div class='pageNameHeader'></div>";
 
-        pageNotesUi += "<div class="pageButtonHeader">";
+        pageNotesUi += "<div class='pageButtonHeader'>";
 
-        pageNotesUi += "<a id="notesPreviousButton" title="Previous Page" class="sitemapToolbarButton prevPageButton"></a>";
-        pageNotesUi += "<a id="notesNextButton" title="Next Page" class="sitemapToolbarButton nextPageButton"></a>";
+        pageNotesUi += "<a id='notesPreviousButton' title='Previous Page' class='sitemapToolbarButton prevPageButton'></a>";
+        pageNotesUi += "<a id='notesNextButton' title='Next Page' class='sitemapToolbarButton nextPageButton'></a>";
         
         if($axure.document.configuration.showAnnotations == true) {
-            pageNotesUi += "<a id="footnotesButton" title="Toggle Footnotes" class="sitemapToolbarButton"></a>";
+            pageNotesUi += "<a id='footnotesButton' title='Toggle Footnotes' class='sitemapToolbarButton'></a>";
         }
 
         pageNotesUi += "</div>";
@@ -650,10 +660,10 @@ function openPreviousPage() {
         pageNotesUi += "</div>";
 
 
-        pageNotesUi += "<div id="pageNotesScrollContainer">";
-        pageNotesUi += "<div id="pageNotesContainer">";
-        pageNotesUi += "<div id="pageNotesEmptyState" class="emptyStateContainer"><div class="emptyStateTitle">No notes for this page.</div><div class="emptyStateContent">Notes added in Axure RP will appear here.</div><div class="dottedDivider"></div></div>";
-        pageNotesUi += "<span id="pageNotesContent"></span>";
+        pageNotesUi += "<div id='pageNotesScrollContainer'>";
+        pageNotesUi += "<div id='pageNotesContainer'>";
+        pageNotesUi += "<div id='pageNotesEmptyState' class='emptyStateContainer'><div class='emptyStateTitle'>No notes for this page.</div><div class='emptyStateContent'>Notes added in Axure RP will appear here.</div><div class='dottedDivider'></div></div>";
+        pageNotesUi += "<span id='pageNotesContent'></span>";
         pageNotesUi += "</div></div>";
 
         $('#pageNotesHost').html(pageNotesUi);
@@ -715,13 +725,13 @@ function openPreviousPage() {
                 $('#variablesDiv').empty();
                 for(var key in data) {
                     var value = data[key] == '' ? '(blank)' : data[key];
-                    $('#variablesDiv').append('<div class="variableDiv"><span class="variableName">' + key + '</span><br>' + value + '</div>');
+                    $('#variablesDiv').append('<div class="variableDiv"><span class="variableName">' + key + '</span><br/>' + value + '</div>');
                 }
             } else if(message == 'axEvent') {
-                var addToStack = "<div class="axEventBlock">";
-                addToStack += "<div class="axTime">" + new Date().toLocaleTimeString() + "</div>";
-                addToStack += "<div class="axLabel">" + data.label + " (" + data.type + ")</div>";
-                addToStack += "<div class="axEvent">" + data.event.description + "</div>";
+                var addToStack = "<div class='axEventBlock'>";
+                addToStack += "<div class='axTime'>" + new Date().toLocaleTimeString() + "</div>";
+                addToStack += "<div class='axLabel'>" + data.label + " (" + data.type + ")</div>";
+                addToStack += "<div class='axEvent'>" + data.event.description + "</div>";
                 currentStack.push(addToStack);
             } else if (message == 'axEventComplete') {
                 currentStack[currentStack.length - 1] += "</div>";
@@ -739,9 +749,9 @@ function openPreviousPage() {
                     finishedStack = [];
                 }
             } else if (message == 'axCase') {
-                currentStack[currentStack.length - 1] += "<div class="axCase">" + data.description + "</div>";
+                currentStack[currentStack.length - 1] += "<div class='axCase'>" + data.description + "</div>";
             } else if (message == 'axAction') {
-                currentStack[currentStack.length - 1] += "<div class="axAction">" + data.description + "</div>";
+                currentStack[currentStack.length - 1] += "<div class='axAction'>" + data.description + "</div>";
             }
         }
 
@@ -769,33 +779,33 @@ function openPreviousPage() {
     }
 
     function generateDebug() {
-        var pageNotesUi = "<div id="debugHeader" '="" class="sitemapHeader">";
+        var pageNotesUi = "<div id='debugHeader'' class='sitemapHeader'>";
 
-        pageNotesUi += "<div id="debugToolbar" class="sitemapToolbar">";
-        pageNotesUi += "<div class="pluginNameHeader">CONSOLE</div>";
-        pageNotesUi += "<div class="pageNameHeader"></div>";
+        pageNotesUi += "<div id='debugToolbar' class='sitemapToolbar'>";
+        pageNotesUi += "<div class='pluginNameHeader'>CONSOLE</div>";
+        pageNotesUi += "<div class='pageNameHeader'></div>";
 
-        //pageNotesUi += "<div class="pageButtonHeader">";
+        //pageNotesUi += "<div class='pageButtonHeader'>";
 
-        //pageNotesUi += "<a id="previousPageButton" title="Previous Page" class="sitemapToolbarButton"></a>";
-        //pageNotesUi += "<a id="nextPageButton" title="Next Page" class="sitemapToolbarButton"></a>";
-        //pageNotesUi += "<a id="variablesClearLink" title="Reset Variables" class="sitemapToolbarButton"></a>";
+        //pageNotesUi += "<a id='previousPageButton' title='Previous Page' class='sitemapToolbarButton'></a>";
+        //pageNotesUi += "<a id='nextPageButton' title='Next Page' class='sitemapToolbarButton'></a>";
+        //pageNotesUi += "<a id='variablesClearLink' title='Reset Variables' class='sitemapToolbarButton'></a>";
 
         //pageNotesUi += "</div>";
         pageNotesUi += "</div>";
         pageNotesUi += "</div>";
 
-        //var pageNotesUi = "<div id="debugToolbar"><a id="debugVariablesLink" class="debugToolbarButton">Variables</a> | <a id="debugTraceLink" class="debugToolbarButton">Trace</a></div>";
-        pageNotesUi += "<div id="debugScrollContainer">";
-        pageNotesUi += "<div id="debugContainer">";
-        pageNotesUi += "<div id="variablesContainer">";
-        pageNotesUi += "<div id="variablesClearLinkContainer" class="debugLinksContainer"><a id="variablesClearLink" title="Reset Variables">Reset Variables</a></div>";
-        pageNotesUi += "<div id="variablesDiv"></div></div>";
-        pageNotesUi += "<div class="dottedDivider"></div>";
-        pageNotesUi += "<div id="traceContainer">";
-        pageNotesUi += "<div id="traceClearLinkContainer" class="debugLinksContainer"><a id="traceClearLink" title="Clear Trace">Clear Trace</a></div>";
-        pageNotesUi += "<div id="traceEmptyState" class="emptyStateContainer"><div class="emptyStateTitle">No interactions in the trace.</div><div class="emptyStateContent">Triggered interactions will appear here.</div><div class="dottedDivider"></div></div>";
-        pageNotesUi += "<div id="traceDiv"></div></div>";
+        //var pageNotesUi = "<div id='debugToolbar'><a id='debugVariablesLink' class='debugToolbarButton'>Variables</a> | <a id='debugTraceLink' class='debugToolbarButton'>Trace</a></div>";
+        pageNotesUi += "<div id='debugScrollContainer'>";
+        pageNotesUi += "<div id='debugContainer'>";
+        pageNotesUi += "<div id='variablesContainer'>";
+        pageNotesUi += "<div id='variablesClearLinkContainer' class='debugLinksContainer'><a id='variablesClearLink' title='Reset Variables'>Reset Variables</a></div>";
+        pageNotesUi += "<div id='variablesDiv'></div></div>";
+        pageNotesUi += "<div class='dottedDivider'></div>";
+        pageNotesUi += "<div id='traceContainer'>";
+        pageNotesUi += "<div id='traceClearLinkContainer' class='debugLinksContainer'><a id='traceClearLink' title='Clear Trace'>Clear Trace</a></div>";
+        pageNotesUi += "<div id='traceEmptyState' class='emptyStateContainer'><div class='emptyStateTitle'>No interactions in the trace.</div><div class='emptyStateContent'>Triggered interactions will appear here.</div><div class='dottedDivider'></div></div>";
+        pageNotesUi += "<div id='traceDiv'></div></div>";
         pageNotesUi += "</div></div>";
 
         $('#debugHost').html(pageNotesUi);
@@ -805,4 +815,4 @@ function openPreviousPage() {
         $('#traceEmptyState').show();
     }
 
-})();   </div></div></li></=></'>
+})();   

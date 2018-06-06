@@ -1,4 +1,4 @@
-// 8.0.0.3355. Generated 8/24/2017 4:38:58 AM UTC
+﻿// 8.0.0.3355. Generated 8/24/2017 4:38:58 AM UTC
 
 //***** splitter.js *****//
 /*
@@ -131,7 +131,7 @@ $.fn.splitter = function(args){
       var B = $(panes[1]);      // right or bottom
 
       // Focuser element, provides keyboard support; title is shown by Opera accessKeys
-      var focuser = $('<a href="javascript:void(0)" target="_blank" rel="external"></a>')
+      var focuser = $('<a href="javascript:void(0)"></a>')
          .attr({accessKey: opts.accessKey, tabIndex: opts.tabIndex, title: opts.splitbarClass})
          .bind($.browser.opera?"click":"focus", function(){ this.focus(); bar.addClass(opts.activeClass) })
          .bind("keydown", function(e){
@@ -210,7 +210,54 @@ $.fn.splitter = function(args){
          splitter._DF = splitter[0][opts.pxFixed] - splitter._PBF;
          splitter._DA = splitter[0][opts.pxSplit] - splitter._PBA;
          // Bail if splitter isn't visible or content isn't there yet
-         if ( splitter._DF <= 0="" ||="" splitter._da="" <="0" )="" return;="" re-divvy="" the="" adjustable="" dimension;="" maintain="" size="" of="" preferred="" pane="" resplit(!isnan(size)?="" :="" (!(opts.sizeright||opts.sizebottom)?="" a[0][opts.pxsplit]="" splitter._da-b[0][opts.pxsplit]-bar._da));="" }).trigger("resize"="" ,="" [initpos]);="" });="" };="" })(jquery);="" *****="" axutils.js="" *="" (function()="" {="" define="" root="" namespace="" object="" if(!window.$axure)="" window.$axure="{};" $axure.utils="{};" ------------------------------------------------------------------------="" makes="" an="" bindable="" $axure.utils.makebindable="function(obj," events)="" if(obj.registeredbindings="" !="null)" copy="" events="" obj.bindableevents="events.slice();" obj.registeredbindings="{};" obj.bind="function(eventName," fn)="" var="" binding="{};" binding.eventname="eventName;" binding.action="fn;" bindinglist="this.registeredBindings[eventName];" if(bindinglist="=" null)="" this.registeredbindings[eventname]="bindingList;" }="" bindinglist[bindinglist.length]="binding;" obj.unbind="function(eventName)" if(eventname.indexof('.')="">= 0) {
+         if ( splitter._DF <= 0 || splitter._DA <= 0 ) return;
+         // Re-divvy the adjustable dimension; maintain size of the preferred pane
+         resplit(!isNaN(size)? size : (!(opts.sizeRight||opts.sizeBottom)? A[0][opts.pxSplit] :
+            splitter._DA-B[0][opts.pxSplit]-bar._DA));
+      }).trigger("resize" , [initPos]);
+   });
+};
+
+})(jQuery);
+//***** axutils.js *****//
+/*
+ *
+ *
+ *
+ *
+ */
+
+ (function() {
+     // define the root namespace object
+     if(!window.$axure) window.$axure = {};
+
+     $axure.utils = {};
+
+     // ------------------------------------------------------------------------
+     // Makes an object bindable
+     // ------------------------------------------------------------------------
+     $axure.utils.makeBindable = function(obj, events) {
+         if(obj.registeredBindings != null) return;
+
+         // copy the events
+         obj.bindableEvents = events.slice();
+         obj.registeredBindings = {};
+
+         obj.bind = function(eventName, fn) {
+             var binding = {};
+             binding.eventName = eventName;
+             binding.action = fn;
+
+             var bindingList = this.registeredBindings[eventName];
+             if(bindingList == null) {
+                 bindingList = [];
+                 this.registeredBindings[eventName] = bindingList;
+             }
+             bindingList[bindingList.length] = binding;
+         };
+
+         obj.unbind = function(eventName) {
+             if(eventName.indexOf('.') >= 0) {
                  this.registeredBindings[eventName] = null;
              } else {
                  var event = eventName.split('.')[0];
@@ -240,7 +287,7 @@ $.fn.splitter = function(args){
 
 
      $axure.utils.loadCSS = function(url) {
-         $('head').append('<link text="text/css" href="' + url + '" rel="Stylesheet">');
+         $('head').append('<link text="text/css" href="' + url + '" rel="Stylesheet" />');
      };
 
      $axure.utils.loadJS = function(url) {
@@ -541,12 +588,12 @@ function setUpController() {
         }
         if (!settings.id) throw ('each plugin host needs an id');
 
-        var host = $('<div id=" + settings.id + "></div>')
+        var host = $('<div id=' + settings.id + '></div>')
             .appendTo('#interfaceControlFrameHostContainer');
 
         host.hide();
 
-        var headerLink = $('<a pluginid="' + settings.id + '">' + settings.title.toUpperCase() + '</a>');
+        var headerLink = $('<a pluginId="' + settings.id + '" >' + settings.title.toUpperCase() + '</a>');
 
         headerLink
             .click($axure.utils.curry(interfaceControlHeaderButton_click, settings.id)).wrap('<li id="' + settings.id + 'Btn">');
@@ -749,8 +796,8 @@ var BROWSER_VERSION = 5000;
 
     $(window.document).ready(function() {
         if (CHROME_5_LOCAL) {
-            $('body').append("<div id="axureEventReceiverDiv" style="display:none"></div>" +
-                "<div id="axureEventSenderDiv" style="display:none"></div>");
+            $('body').append("<div id='axureEventReceiverDiv' style='display:none'></div>" +
+                "<div id='axureEventSenderDiv' style='display:none'></div>");
 
 		    _eventObject = window.document.createEvent('Event');
 		    _eventObject.initEvent('axureMessageSenderEvent', true, true);            
@@ -903,4 +950,3 @@ var BROWSER_VERSION = 5000;
     };
 
 })();
-</li></=>

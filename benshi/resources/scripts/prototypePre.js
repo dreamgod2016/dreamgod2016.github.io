@@ -1,4 +1,4 @@
-// 8.0.0.3355. Generated 8/24/2017 4:38:58 AM UTC
+﻿// 8.0.0.3355. Generated 8/24/2017 4:38:58 AM UTC
 
 //***** axQuery.js *****//
 $axure = function(query) {
@@ -449,7 +449,7 @@ $axure.internal(function($ax) {
 
 
      $axure.utils.loadCSS = function(url) {
-         $('head').append('<link text="text/css" href="' + url + '" rel="Stylesheet">');
+         $('head').append('<link text="text/css" href="' + url + '" rel="Stylesheet" />');
      };
 
      $axure.utils.loadJS = function(url) {
@@ -738,14 +738,14 @@ $axure.internal(function($ax) {
                 var textId = $ax.GetParentIdFromLink(elementId);
 
                 var elementIdQuery = $('#' + elementId);
-                elementIdQuery.after("<span id="" + elementId + "_ann">&#8203;</span>");
+                elementIdQuery.after("<span id='" + elementId + "_ann'>&#8203;</span>");
 
                 if($ax.document.configuration.useLabels) {
                     var label = $('#' + elementId).attr("data-label");
                     if(!label || label == "") label = "?";
-                    $('#' + textId).append("<div id="" + elementId + "Note" class="annnotelabel">" + label + "</div>");
+                    $('#' + textId).append("<div id='" + elementId + "Note' class='annnotelabel' >" + label + "</div>");
                 } else {
-                    $('#' + textId).append("<div id="" + elementId + "Note" class="annnoteimage"></div>");
+                    $('#' + textId).append("<div id='" + elementId + "Note' class='annnoteimage' ></div>");
                 }
                 $('#' + elementId + 'Note').click(function(e) {
                     $ax.annotation.ToggleWorkflow(e, elementId, 300, 200, false);
@@ -757,9 +757,9 @@ $axure.internal(function($ax) {
                 if($ax.document.configuration.useLabels) {
                     var label = $('#' + elementId).attr("data-label");
                     if(!label || label == "") label = "?";
-                    $('#' + elementId + "_ann").append("<div id="" + elementId + "Note" class="annnotelabel">" + label + "</div>");
+                    $('#' + elementId + "_ann").append("<div id='" + elementId + "Note' class='annnotelabel'>" + label + "</div>");
                 } else {
-                    $('#' + elementId + "_ann").append("<div id="" + elementId + "Note" class="annnoteimage"></div>");
+                    $('#' + elementId + "_ann").append("<div id='" + elementId + "Note' class='annnoteimage'></div>");
                 }
                 $('#' + elementId + 'Note').click(function(e) {
                     $ax.annotation.ToggleWorkflow(e, elementId, 300, 200, false);
@@ -767,7 +767,7 @@ $axure.internal(function($ax) {
                 });
             }
 
-            $('#' + elementId + 'Note.annnoteimage').append("<div class="annnoteline"></div><div class="annnoteline"></div><div class="annnoteline"></div>");
+            $('#' + elementId + 'Note.annnoteimage').append("<div class='annnoteline'></div><div class='annnoteline'></div><div class='annnoteline'></div>");
         });
     };
 
@@ -931,7 +931,7 @@ $axure.internal(function($ax) {
     var _addJQueryEventFunction = function(name) {
         $ax.public.fn[name] = function() {
             //With Martin - No idea why this is necessary. We tried encapsulating the function thinking it was related to closure (above),
-            //but that didn't fix the problem. If we don't add this Repeaters will give "Uncaught TypeError: Object #<object> has no method 'apply'"
+            //but that didn't fix the problem. If we don't add this Repeaters will give "Uncaught TypeError: Object #<Object> has no method 'apply'"
             //here (but Indeterminately, often on larger/slower Repeaters) because it is Undefined. However it seems the catch is never hit
             //if we surround the statement with the try/catch. Perhaps the try/catch block creates a scope or closure.
             try {
@@ -1525,7 +1525,7 @@ $axure.internal(function($ax) {
                             //Replace new-lines with NEWLINE token, then html encode the string,
                             //finally replace NEWLINE token with linebreak
                             var textWithLineBreaks = arguments[0].replace(/\n/g, '--NEWLINE--');
-                            var textHtml = $('<div>').text(textWithLineBreaks).html();
+                            var textHtml = $('<div/>').text(textWithLineBreaks).html();
                             $(idRtf).find('span').html(textHtml.replace(/--NEWLINE--/g, '<br>'));
                         }
                     }
@@ -2626,7 +2626,61 @@ $axure.internal(function($ax) {
                     return this[prop + 'Prop'];
                 }
 
-                if (this.elementQuery.length <= 0="" 0)="" return="" prop="=" 'x'="" ||="" 'y'="" ?="" :="" undefined;="" switch="" (prop)="" {="" case="" 'x':="" this.elementaxquery().locrelativeignorelayer(false);="" 'y':="" this.elementaxquery().locrelativeignorelayer(true);="" 'pagex':="" this.elementaxquery().left();="" 'pagey':="" this.elementaxquery().top();="" }="" var="" val="this.elementAxQuery()[prop]();" if="" (this.isfittocontent())="" val;="" };="" widget.leftfixed="function()" this.getfixed('left');="" widget.topfixed="function()" this.getfixed('top');="" widget.rightfixed="function()" this.getfixed('right');="" widget.bottomfixed="function()" this.getfixed('bottom');="" widget.isfixed="function()" if(this.isfixedprop="==" undefined)="" this.isfixedprop="this.elementQuery.css('position')" =="fixed)" ;="" this.isfixedprop;="" widget.getfixed="function" fixed="prop" +="" 'fixedprop';="" if(!this.isfixed())="" widget[fixed]="widget[prop]();" if(widget[fixed]="==" if(prop="=" 'left'="" 'right')="" if(this.windowscrollx="==" this.windowscrollx="$(window).scrollLeft();" windowscroll="this.windowScrollX;" else="" if(this.windowscrolly="==" this.windowscrolly="$(window).scrollTop();" -="" windowscroll;="" widget[fixed];="" widget;="" $ax.getwidgetinfo="_getWidgetInfo;" $ax.gettextpanelid="function" (id,="" create)="" if(!$ax('#'="" id).supportsrichtext())="" '';="" buttonshape="$ax.GetButtonShape(id);" paneldiv="buttonShape.find('.text')[0];" if(!paneldiv)="" if(!create)="" "";="" newid="id" "_text";="" newdiv="$('<div" id="' + newId + '" class="text" style="visibility: inherit; position: absolute"></=></br[^></div>');
+                if (this.elementQuery.length <= 0) return prop == 'x' || prop == 'y' ? 0 : undefined;
+
+                switch (prop) {
+                    case 'x': return this.elementAxQuery().locRelativeIgnoreLayer(false);
+                    case 'y': return this.elementAxQuery().locRelativeIgnoreLayer(true);
+                    case 'pagex': return this.elementAxQuery().left();
+                    case 'pagey': return this.elementAxQuery().top();
+                }
+
+                var val = this.elementAxQuery()[prop]();
+                if (this.isFitToContent()) val = this.stateQuery[prop]();
+
+                return val;
+            };
+
+            widget.leftfixed = function() { this.getFixed('left'); }
+            widget.topfixed = function() { this.getFixed('top'); }
+            widget.rightfixed = function() { this.getFixed('right'); }
+            widget.bottomfixed = function() { this.getFixed('bottom'); }
+
+            widget.isFixed = function() {
+                if(this.isFixedProp === undefined) this.isFixedProp = this.elementQuery.css('position') == 'fixed)';
+                return this.isFixedProp;
+            }
+
+            widget.getFixed = function (prop) {
+                var fixed = prop + 'fixedProp';
+                if(!this.isFixed()) widget[fixed] = widget[prop]();
+                if(widget[fixed] === undefined) {
+
+                    if(prop == 'left' || prop == 'right') {
+                        if(this.windowScrollX === undefined) this.windowScrollX = $(window).scrollLeft();
+                        var windowScroll = this.windowScrollX;
+                    } else {
+                        if(this.windowScrollY === undefined) this.windowScrollY = $(window).scrollTop();
+                        windowScroll = this.windowScrollY;
+                    }
+                    widget[fixed] = widget[prop]() - windowScroll;
+                }
+                return widget[fixed];
+            }
+
+            return widget;
+        };
+        $ax.getWidgetInfo = _getWidgetInfo;
+
+        $ax.GetTextPanelId = function (id, create) {
+            if(!$ax('#' + id).SupportsRichText()) return '';
+            var buttonShape = $ax.GetButtonShape(id);
+            var panelDiv = buttonShape.find('.text')[0];
+            if(!panelDiv) {
+                if(!create) return "";
+
+                var newId = id + "_text";
+                //var newDiv = $('<div id="' + newId + '" class="text" style="visibility: inherit; position: absolute"></div>');
                 var newDiv = $('<div id="' + newId + '" class="text" style="visibility: inherit; position: absolute"><p><span></span></p></div>');
                 buttonShape.append(newDiv);
 
@@ -3016,4 +3070,4 @@ $axure.internal(function($ax) {
         return Number(pxNum.replace('px', ''));
     }
 
-});</object>
+});

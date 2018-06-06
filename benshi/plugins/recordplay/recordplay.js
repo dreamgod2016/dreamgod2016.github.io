@@ -1,4 +1,4 @@
-// use this to isolate the scope
+﻿// use this to isolate the scope
 (function() {
 
         if(!$axure.document.configuration.showRecordPlay) { return; }
@@ -367,7 +367,7 @@
     var _formAxRecordingBranch = function(axRecording) {
         var eventObject, eventID, RDOID;
         var recordPlayUi = '<ul class="recordingTree">';
-        recordPlayUi += "<li class="recordingNode recordingExpandableNode">";
+        recordPlayUi += "<li class='recordingNode recordingExpandableNode'>";
         recordPlayUi += '<div class="recordingContainer" style="margin-left:15px">';
         recordPlayUi += '<a class="recordingPlusMinusLink"><span class="recordingMinus"></span></a>';
         recordPlayUi += '<a class="recordingPageLink" nodeurl="home.html">';
@@ -385,19 +385,19 @@
             recordPlayUi += '<div class="recordingEventContainer" style="margin-left:44px">';
             var eventID = axRecording['recordingId'] + '_' + eventObject.timeStamp;
             recordPlayUi += '<a id="' + eventID + '" class="sitemapPageLink">';
-            recordPlayUi += 'Event ID: ' + eventID + '<br>';
+            recordPlayUi += 'Event ID: ' + eventID + '<br/>';
 
             recordPlayUi += '<span class="sitemapPageIcon"></span>';
             recordPlayUi += '<span class="sitemapPageName">';
 
-            recordPlayUi += 'elementID: ' + eventObject.elementID + '<br>';
-            recordPlayUi += 'eventType: ' + eventObject.eventType + '<br>';
-//            recordPlayUi += 'cursor: ' + eventObject.eventInfo.cursor.x + ',' + eventObject.eventInfo.cursor.y + '<br>';
+            recordPlayUi += 'elementID: ' + eventObject.elementID + '<br/>';
+            recordPlayUi += 'eventType: ' + eventObject.eventType + '<br/>';
+//            recordPlayUi += 'cursor: ' + eventObject.eventInfo.cursor.x + ',' + eventObject.eventInfo.cursor.y + '<br/>';
 
             for(RDOID in eventObject.path) {
                 recordPlayUi += '/' + eventObject.path[RDOID];
             }
-            recordPlayUi += '<br>';
+            recordPlayUi += '<br/>';
             recordPlayUi += '</span>';
             recordPlayUi += '</a>';
             recordPlayUi += '</div>';
@@ -458,22 +458,22 @@
     };
 
     var _generateRecordPlay = function() {
-        var recordPlayUi = "<div id="recordPlayContainer">";
+        var recordPlayUi = "<div id='recordPlayContainer'>";
 
-        recordPlayUi += "<div id="recordPlayToolbar">";
+        recordPlayUi += "<div id='recordPlayToolbar'>";
 
-        recordPlayUi += "<div style="height:30px;">";
+        recordPlayUi += "<div style='height:30px;'>";
 
-        recordPlayUi += "<a id="recordButton" title="Start a Recording" class="recordPlayButton"></a>";
-        recordPlayUi += "<a id="playButton" title="Play Back a Recording" class="recordPlayButton"></a>";
-        recordPlayUi += "<a id="stopButton" title="Stop" class="recordPlayButton"></a>";
-        recordPlayUi += "<a id="deleteButton" title="Delete All Recordings" class="recordPlayButton"></a>";
+        recordPlayUi += "<a id='recordButton' title='Start a Recording' class='recordPlayButton'></a>";
+        recordPlayUi += "<a id='playButton' title='Play Back a Recording' class='recordPlayButton'></a>";
+        recordPlayUi += "<a id='stopButton' title='Stop' class='recordPlayButton'></a>";
+        recordPlayUi += "<a id='deleteButton' title='Delete All Recordings' class='recordPlayButton'></a>";
         recordPlayUi += "</div>";
 
-        recordPlayUi += "<div id="recordingContainer"><li class="recordingNode recordingRootNode"></li></div>";
+        recordPlayUi += "<div id='recordingContainer'><li class='recordingNode recordingRootNode'></li></div>";
         recordPlayUi += "</div>";
 
         $('#recordPlayHost').html(recordPlayUi);
     };
 
-})();   </div>
+})();   

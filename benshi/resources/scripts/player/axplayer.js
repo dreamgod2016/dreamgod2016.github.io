@@ -1,4 +1,4 @@
-if (!window.$axure) window.$axure = function () { };
+﻿if (!window.$axure) window.$axure = function () { };
 if (typeof console == 'undefined') console = {
     log: function () { }
 };
@@ -123,12 +123,12 @@ function setUpController() {
         }
         if (!settings.id) throw ('each plugin host needs an id');
 
-        var host = $('<div id=" + settings.id + "></div>')
+        var host = $('<div id=' + settings.id + '></div>')
             .appendTo('#interfaceControlFrameHostContainer');
 
         host.hide();
 
-        var headerLink = $('<a pluginid="' + settings.id + '">' + settings.title.toUpperCase() + '</a>');
+        var headerLink = $('<a pluginId="' + settings.id + '" >' + settings.title.toUpperCase() + '</a>');
 
         headerLink
             .click($axure.utils.curry(interfaceControlHeaderButton_click, settings.id)).wrap('<li id="' + settings.id + 'Btn">');
@@ -204,4 +204,3 @@ function setUpPageStateManager() {
 
     mgr.panelToStateIds = {};
 }
-</li>

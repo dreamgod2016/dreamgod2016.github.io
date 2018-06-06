@@ -1,4 +1,4 @@
-if (typeof console == 'undefined') console = {
+﻿if (typeof console == 'undefined') console = {
     log: function () { }
 };
 
@@ -123,8 +123,8 @@ var BROWSER_VERSION = 5000;
 
     $(window.document).ready(function() {
         if (CHROME_5_LOCAL) {
-            $('body').append("<div id="axureEventReceiverDiv" style="display:none"></div>" +
-                "<div id="axureEventSenderDiv" style="display:none"></div>");
+            $('body').append("<div id='axureEventReceiverDiv' style='display:none'></div>" +
+                "<div id='axureEventSenderDiv' style='display:none'></div>");
 
 		    _eventObject = window.document.createEvent('Event');
 		    _eventObject.initEvent('axureMessageSenderEvent', true, true);            

@@ -1,4 +1,4 @@
-// 8.0.0.3355. Generated 8/24/2017 4:38:58 AM UTC
+﻿// 8.0.0.3355. Generated 8/24/2017 4:38:58 AM UTC
 
 //***** messagecenter.js *****//
 if (typeof console == 'undefined') console = {
@@ -126,8 +126,8 @@ var BROWSER_VERSION = 5000;
 
     $(window.document).ready(function() {
         if (CHROME_5_LOCAL) {
-            $('body').append("<div id="axureEventReceiverDiv" style="display:none"></div>" +
-                "<div id="axureEventSenderDiv" style="display:none"></div>");
+            $('body').append("<div id='axureEventReceiverDiv' style='display:none'></div>" +
+                "<div id='axureEventSenderDiv' style='display:none'></div>");
 
 		    _eventObject = window.document.createEvent('Event');
 		    _eventObject.initEvent('axureMessageSenderEvent', true, true);            
@@ -697,12 +697,12 @@ $axure.internal(function($ax) {
         var linksId = elementId + "linkBox";
         $('#' + linksId).remove();
 
-        var $container = $("<div class="intcases" id="" + linksId + ""></div>");
+        var $container = $("<div class='intcases' id='" + linksId + "'></div>");
 
         if(!_isEventSimulating(axEventObject)) {
             var copy = $ax.eventCopy(eventInfo);
             for(var i = 0; i < axEventObject.cases.length; i++) {
-                var $link = $("<div class="intcaselink">" + axEventObject.cases[i].description + "</div>");
+                var $link = $("<div class='intcaselink'>" + axEventObject.cases[i].description + "</div>");
                 $link.click(function(j) {
                     return function () {
                         var currentCase = axEventObject.cases[j];
@@ -733,7 +733,7 @@ $axure.internal(function($ax) {
             }
             fullDescription = fullDescription.substring(0, fullDescription.length - 4);
 
-            var $link = $("<div class="intcaselink">" + fullDescription + "</div>");
+            var $link = $("<div class='intcaselink'>" + fullDescription + "</div>");
             $link.click(function() {
                 _handleEvent(elementId, eventInfo, axEventObject, true, synthetic);
                 $ax.messageCenter.postMessage('axEventComplete');
@@ -2600,7 +2600,16 @@ $axure.internal(function($ax) {
         var options = state.queue[0].actionInfo;
         if(options.options) options = options.options;
         var optionDur = (options.easing && options.easing != 'none' && options.duration) || 0;
-        if(optionDur <= state.used)="" {="" $ax.splice(state.queue,="" 0,="" 1);="" state.used="0;" }="" var="" _dispatchaction="$ax.action.dispatchAction" =="" function(eventinfo,="" actions,="" currentindex)="" currentindex="currentIndex" ||="" 0;="" if="" no="" you="" can="" bubble="" if(currentindex="">= actions.length) return;
+        if(optionDur <= state.used) {
+            $ax.splice(state.queue, 0, 1);
+            state.used = 0;
+        }
+    }
+
+    var _dispatchAction = $ax.action.dispatchAction = function(eventInfo, actions, currentIndex) {
+        currentIndex = currentIndex || 0;
+        //If no actions, you can bubble
+        if(currentIndex >= actions.length) return;
         //actions are responsible for doing their own dispatching
         _actionHandlers[actions[currentIndex].action](eventInfo, actions, currentIndex);
     };
@@ -2754,7 +2763,7 @@ $axure.internal(function($ax) {
 
                                 // Make sure number is not NaN, is in range, and is a whole number.
                                 // Wasn't a state name or number, so return
-                                if(isNaN(stateNumber) || stateNumber <= 0="" ||="" statenumber=""> panelCount || Math.round(stateNumber) != stateNumber) return _fireAnimationFromQueue(elementId, queueTypes.setState);
+                                if(isNaN(stateNumber) || stateNumber <= 0 || stateNumber > panelCount || Math.round(stateNumber) != stateNumber) return _fireAnimationFromQueue(elementId, queueTypes.setState);
                             }
                         } else if(stateInfo.setStateType == 'next' || stateInfo.setStateType == 'previous') {
                             var info = $ax.deepCopy(stateInfo);
@@ -2802,7 +2811,23 @@ $axure.internal(function($ax) {
                 }
             } else if(direction == "previous") {
                 stateNumber = currentStateNumber;
-                if(stateNumber <= 0)="" {="" if(loop)="" statenumber="$ax.visibility.GetPanelStateCount(id);" else="" delete="" _repeatpanelmap[id];="" return="" _fireanimationfromqueue(id,="" queuetypes.setstate);="" }="" if(hasrepeat="" &&="" _repeatpanelmap[id]="" !="info)" if="" (!skipfirst)="" $ax('#'="" +="" id).setpanelstate(statenumber,="" options,="" info.showwhenset);="" if(hasrepeat)="" var="" animate="options" options.animatein;="" if(animate="" animate.easing="" animate.duration=""> repeat) repeat = animate.duration;
+                if(stateNumber <= 0) {
+                    if(loop) stateNumber = $ax.visibility.GetPanelStateCount(id);
+                    else {
+                        delete _repeatPanelMap[id];
+                        return _fireAnimationFromQueue(id, queueTypes.setState);
+                    }
+                }
+            }
+
+            if(hasRepeat && _repeatPanelMap[id] != info) return _fireAnimationFromQueue(id, queueTypes.setState);
+
+            if (!skipFirst) $ax('#' + id).SetPanelState(stateNumber, options, info.showWhenSet);
+            else _fireAnimationFromQueue(id, queueTypes.setState);
+
+            if(hasRepeat) {
+                var animate = options && options.animateIn;
+                if(animate && animate.easing && animate.easing != 'none' && animate.duration > repeat) repeat = animate.duration;
                 animate = options && options.animateOut;
                 if(animate && animate.easing && animate.easing != 'none' && animate.duration > repeat) repeat = animate.duration;
 
@@ -4300,8 +4325,169 @@ $axure.internal(function($ax) {
         '==': function(left, right) { return isEqual(left, right, true); },
         '!=': function(left, right) { return !isEqual(left, right, true); },
         '>': function(left, right) { return _binOpNum(left, right, function(left, right) { return left > right; }); },
-        '<': function(left,="" right)="" {="" return="" _binopnum(left,="" right,="" left="" <="" right;="" });="" },="" '="">=': function(left, right) { return _binOpNum(left, right, function(left, right) { return left >= right; }); },
-        '<=': 1="" 2="" function(left,="" right)="" {="" return="" _binopnum(left,="" right,="" left="" <="right;" });="" }="" };="" var="" checkops="function(left," undefined="" ||="" right="=" undefined;="" isequal="function" (left,="" isfunction)="" if="" (isfunction)="" and="" is="" function,="" then="" get="" the="" value="" otherwise="" should="" be="" already="" we="" want="" if(checkops(left,="" right))="" false;="" if(left="" instanceof="" date="" &&="" date)="" if(left.getmilliseconds()="" !="right.getMilliseconds())" if(left.getseconds()="" if(left.getminutes()="" if(left.gethours()="" if(left.getdate()="" if(left.getmonth()="" if(left.getyear()="" true;="" object="" object)="" prop;="" go="" through="" all="" of="" lefts="" properties="" compare="" them="" to="" rights.="" for(prop="" in="" left)="" if(!left.hasownproperty(prop))="" continue;="" has="" a="" property="" that="" doesn't="" they="" are="" not="" equal.="" if(!right.hasownproperty(prop))="" any="" their="" equal,="" if(!isequal(left[prop],="" right[prop],="" false))="" final="" check="" make="" sure="" have="" some="" extra="" if(left.hasownproperty(prop)="" $ax.getbool(left)="=" $ax.getbool(right);="" _binopoverride="function(left," func)="" undefined)="" res="func(left," right);="" ?="" false="" :="" res;="" _binopnum="function(left," func(left,="" number(right));="" _exprhandlers="{};" _exprhandlers.array="function(expr," eventinfo)="" returnval="[];" for(var="" i="0;" expr.items.length;="" i++)="" returnval[returnval.length]="_evaluateExpr(expr.items[i]," eventinfo);="" returnval;="" _exprhandlers.binaryop="function(expr," expr.leftexpr="" _evaluateexpr(expr.leftexpr,="" expr.rightexpr="" _evaluateexpr(expr.rightexpr,="" _binophandlers[expr.op](left,="" _exprhandlers.block="function(expr," subexprs="expr.subExprs;" subexprs.length;="" _evaluateexpr(subexprs[i],="" ignore="" result="" _exprhandlers.booleanliteral="function(expr)" expr.value;="" _exprhandlers.nullliteral="function()" null;="" _exprhandlers.pathliteral="function(expr," if(expr.isthis)="" [eventinfo.srcelement];="" if(expr.isfocused="" window.lastfocusedcontrol)="" $ax('#'="" +="" window.lastfocusedcontrol).focus();="" [window.lastfocusedcontrol];="" if(expr.istarget)="" [eventinfo.targetelement];="" $ax.getelementidsfrompath(expr.value,="" _exprhandlers.paneldiagramliteral="function(expr," elementids="$ax.getElementIdsFromPath(expr.panelPath," elementidswithsuffix="[];" suffix="_state" expr.panelindex;="" elementids.length;="" elementidswithsuffix[i]="$ax.repeater.applySuffixToElementId(elementIds[i]," suffix);="" string($jobj(elementidswithsuffix).data('label'));="" _exprhandlers.fcall="function(expr," oldtarget="eventInfo.targetElement;" targets="[];" fcallargs="[];" exprargs="expr.arguments;" expr.arguments.length;="" exprarg="exprArgs[i];" fcallarg="" ;="" if(targets.length)="" j="0;" targets.length;="" j++)="" if(exprarg="=" null)="" fcallargs[j][i]="null;" eventinfo.targetelement="targets[j];" if(typeof="" (fcallarg)="=" 'undefined')="" '';="" else="" fcallargs[i]="null;" do="" support="" null="" exprargs...="" todo:="" this="" makes="" assumptions="" may="" change="" future.="" 1.="" pathliteral="" always="" first="" arg.="" 2.="" there="" only="" exprarg.exprtype="=" 'pathliteral')="" now="" an="" array="" args="" for(j="0;" fcallargs[j]="[[fcallArg[j]]];" preserve="" target="" element="" from="" outside="" function.="" retval="" backwards="" so="" item.="" for(i="targets.length" -="" 1;="">= 0; i--) {
+        '<': function(left, right) { return _binOpNum(left, right, function(left, right) { return left < right; }); },
+        '>=': function(left, right) { return _binOpNum(left, right, function(left, right) { return left >= right; }); },
+        '<=': function(left, right) { return _binOpNum(left, right, function(left, right) { return left <= right; }); }
+    };
+
+    var checkOps = function(left, right) {
+        return left == undefined || right == undefined;
+    };
+
+    var isEqual = function (left, right, isFunction) {
+        if (isFunction) {
+            //if left and right is function, then get the value
+            //otherwise left and right should be already the value we want
+            left = left();
+            right = right();
+        }
+
+        if(checkOps(left, right)) return false;
+
+        if(left instanceof Date && right instanceof Date) {
+            if(left.getMilliseconds() != right.getMilliseconds()) return false;
+            if(left.getSeconds() != right.getSeconds()) return false;
+            if(left.getMinutes() != right.getMinutes()) return false;
+            if(left.getHours() != right.getHours()) return false;
+            if(left.getDate() != right.getDate()) return false;
+            if(left.getMonth() != right.getMonth()) return false;
+            if(left.getYear() != right.getYear()) return false;
+            return true;
+        }
+
+        if(left instanceof Object && right instanceof Object) {
+            var prop;
+            // Go through all of lefts properties and compare them to rights.
+            for(prop in left) {
+                if(!left.hasOwnProperty(prop)) continue;
+                // If left has a property that the right doesn't they are not equal.
+                if(!right.hasOwnProperty(prop)) return false;
+                // If any of their properties are not equal, they are not equal.
+                if(!isEqual(left[prop], right[prop], false)) return false;
+            }
+
+            for(prop in right) {
+                // final check to make sure right doesn't have some extra properties that make them not equal.
+                if(left.hasOwnProperty(prop) != right.hasOwnProperty(prop)) return false;
+            }
+
+            return true;
+        }
+        return $ax.getBool(left) == $ax.getBool(right);
+    };
+
+    var _binOpOverride = function(left, right, func) {
+        left = left();
+        if(left == undefined) return false;
+        var res = func(left, right);
+        return res == undefined ? false : res;
+    };
+
+    var _binOpNum = function(left, right, func) {
+        var left = left();
+        var right = right();
+        if(checkOps(left, right)) return false;
+
+        return func(left, Number(right));
+    };
+
+    var _exprHandlers = {};
+    _exprHandlers.array = function(expr, eventInfo) {
+        var returnVal = [];
+        for(var i = 0; i < expr.items.length; i++) {
+            returnVal[returnVal.length] = _evaluateExpr(expr.items[i], eventInfo);
+        }
+        return returnVal;
+    };
+
+    _exprHandlers.binaryOp = function(expr, eventInfo) {
+        var left = function() { return expr.leftExpr && _evaluateExpr(expr.leftExpr, eventInfo); };
+        var right = function() { return expr.rightExpr && _evaluateExpr(expr.rightExpr, eventInfo); };
+
+        if(left == undefined || right == undefined) return false;
+        return _binOpHandlers[expr.op](left, right);
+    };
+
+    _exprHandlers.block = function(expr, eventInfo) {
+        var subExprs = expr.subExprs;
+        for(var i = 0; i < subExprs.length; i++) {
+            _evaluateExpr(subExprs[i], eventInfo); //ignore the result
+        }
+    };
+
+    _exprHandlers.booleanLiteral = function(expr) {
+        return expr.value;
+    };
+
+    _exprHandlers.nullLiteral = function() { return null; };
+
+    _exprHandlers.pathLiteral = function(expr, eventInfo) {
+        if(expr.isThis) return [eventInfo.srcElement];
+        if(expr.isFocused && window.lastFocusedControl) {
+            $ax('#' + window.lastFocusedControl).focus();
+            return [window.lastFocusedControl];
+        }
+        if(expr.isTarget) return [eventInfo.targetElement];
+
+        return $ax.getElementIdsFromPath(expr.value, eventInfo);
+    };
+
+    _exprHandlers.panelDiagramLiteral = function(expr, eventInfo) {
+        var elementIds = $ax.getElementIdsFromPath(expr.panelPath, eventInfo);
+        var elementIdsWithSuffix = [];
+        var suffix = '_state' + expr.panelIndex;
+        for(var i = 0; i < elementIds.length; i++) {
+            elementIdsWithSuffix[i] = $ax.repeater.applySuffixToElementId(elementIds[i], suffix);
+        }
+        return String($jobj(elementIdsWithSuffix).data('label'));
+    };
+
+    _exprHandlers.fcall = function(expr, eventInfo) {
+        var oldTarget = eventInfo.targetElement;
+        var targets = [];
+        var fcallArgs = [];
+        var exprArgs = expr.arguments;
+        for(var i = 0; i < expr.arguments.length; i++) {
+            var exprArg = exprArgs[i];
+            var fcallArg = '';
+            if(targets.length) {
+                for(var j = 0; j < targets.length; j++) {
+                    if(exprArg == null) {
+                        fcallArgs[j][i] = null;
+                        continue;
+                    }
+                    eventInfo.targetElement = targets[j];
+                    fcallArg = _evaluateExpr(exprArg, eventInfo);
+                    if(typeof (fcallArg) == 'undefined') return '';
+                    fcallArgs[j][i] = fcallArg;
+                }
+            } else {
+                if(exprArg == null) {
+                    fcallArgs[i] = null;
+                    continue;
+                }
+                fcallArg = _evaluateExpr(exprArg, eventInfo);
+                if(typeof (fcallArg) == 'undefined') return '';
+                fcallArgs[i] = fcallArg;
+            }
+
+            // We do support null exprArgs...
+            // TODO: This makes 2 assumptions that may change in the future. 1. The pathLiteral is the always the first arg. 2. there is always only 1 pathLiteral
+            if(exprArg && exprArg.exprType == 'pathLiteral') {
+                targets = fcallArg;
+
+                // fcallArgs is now an array of an array of args
+                for(j = 0; j < targets.length; j++) fcallArgs[j] = [[fcallArg[j]]];
+            }
+        }
+
+        // we want to preserve the target element from outside this function.
+        eventInfo.targetElement = oldTarget;
+
+        var retval = '';
+        if(targets.length) {
+            // Go backwards so retval is the first item.
+            for(i = targets.length - 1; i >= 0; i--) {
                 var args = fcallArgs[i];
                 // Add event info to the end
                 args[args.length] = eventInfo;
@@ -4449,8 +4635,18 @@ $axure.internal(function($ax) {
             $ax.style.transformTextWithVerticalAlignment(id, function() {
                 var spans = $jobj(id).find('span');
                 if(plain) {
-                    // Can't set value as text because '<br>' doesn't actually do a line break
-                    // Can't set vaule as html because it doesn't like '<' 1="" and="" ignores="" all="" after="" it="" create="" tags="" yourself="" var="" lines="value.split(/\r\n|\n/);" if="" we="" are="" dealing="" with="" only="" one="" line,="" just="" reuse="" the="" old="" if(spans.length="==" &&="" lines.length="==" 1)="" {="" spans[0].innerhtml="value;" return;="" }="" wrap="" in="" span="" p,="" style="" them="" accordingly.="">');
+                    // Can't set value as text because '<br/>' doesn't actually do a line break
+                    // Can't set vaule as html because it doesn't like '<' and ignores all after it
+                    // Create tags yourself
+                    var lines = value.split(/\r\n|\n/);
+                    //if we are dealing with only one line, just reuse the old one
+                    if(spans.length === 1 && lines.length === 1) {
+                        spans[0].innerHTML = value;
+                        return;
+                    }
+
+                    // Wrap in span and p, style them accordingly.
+                    var span = $('<span></span>');
                     if(spans.length > 0) {
                         span.attr('style', $(spans[0]).attr('style'));
                         span.attr('id', $(spans[0]).attr('id'));
@@ -4459,11 +4655,11 @@ $axure.internal(function($ax) {
                     if(lines.length == 1) span.text(value);
                     else {
                         for(var i = 0; i < lines.length; i++) {
-                            if(i != 0) span.append($('<br>'));
+                            if(i != 0) span.append($('<br />'));
                             var line = lines[i];
                             if(line.length == 0) continue;
 
-                            var subSpan = $('<span>');
+                            var subSpan = $('<span />');
                             subSpan.text(line);
                             span.append(subSpan);
                         }
@@ -4817,9 +5013,75 @@ $axure.internal(function($ax) {
                 // if they never meet, return
                 if(l1p2.y < l2p1.y || l1p1.y > l2p2.y) return false;
                 var firstVert = l1p1.y >= l2p1.y ? l1p1 : l2p1;
-                var secondVert = l1p2.y <= l2p2.y="" ?="" l1p2="" :="" l2p2;="" first="" is="" from="" the="" perspective="" of="" l1="" retval.parallel="{" first:="" l1p1="=" l1.p1="" firstvert="" secondvert,="" second:="" l1.p2="" secondvert="" firstvert,="" samedirection:="" (l1p1="=" l1.p1)="=" (l2p1="=" l2.p1)="" };="" return="" retval;="" }="" var="" x1="l2Vert" l1p1.x="" l2p1.x;="" x2="l2Vert" l1p2.x="" l2p2.x;="" xvert="l2Vert" l2p1.x="" l1p1.x;="" y="l2Vert" l1p1.y="" +="" (xvert="" -="" x1)="" *="" m1="" l2p1.y="" m2;="" y1="l2Vert" l1p1.y;="" y2="l2Vert" l1p2.y;="" if(xvert="">= x1 && xVert <= x2="" &&="" y="">= y1 && y <= y2)="" {="" retval.point="{" x:="" xvert,="" y:="" y="" };="" retval.exiting="l2Vert" =="(y1" ?="" l2.p1.y="" :="" l1.p1.y))="=" (x1="=" (l2vert="" l1.p1.x="" l2.p1.x));="" retval.entering="!retval.exiting;" calculate="" ties="" if(x1="=" xvert)="" ties[l2vert="" 'l1'="" 'l2']="(x1" l2.p1.x))="" 'start'="" 'end';="" retval.ties="ties;" }="" else="" if(x2="=" l1.p2.x="" l2.p2.x))="" 'end'="" 'start';="" if(y1="=" y)="" 'l2'="" 'l1']="(y1" if(y2="=" l2.p2.y="" l1.p2.y))="" return="" retval;="" false;="" if="" here,="" no="" vertical="" lines="" if(m1="=" m2)="" the="" don't="" follow="" same="" path,="" if(l1p1.y="" !="(l2p1.y" +="" (l1p1.x="" -="" l2p1.x)="" *="" m1))="" they="" never="" meet,="" if(l1p2.x="" <="" l2p1.x="" ||="" l1p1.x=""> l2p2.x) return false;
+                var secondVert = l1p2.y <= l2p2.y ? l1p2 : l2p2;
+                // First is from the perspective of l1
+                retval.parallel = {
+                    first: l1p1 == l1.p1 ? firstVert : secondVert,
+                    second: l1p2 == l1.p2 ? secondVert : firstVert,
+                    sameDirection: (l1p1 == l1.p1) == (l2p1 == l2.p1)
+                };
+
+                return retval;
+            }
+
+            var x1 = l2Vert ? l1p1.x : l2p1.x;
+            var x2 = l2Vert ? l1p2.x : l2p2.x;
+            var xVert = l2Vert ? l2p1.x : l1p1.x;
+
+            var y = l2Vert ? l1p1.y + (xVert - x1) * m1 : l2p1.y + (xVert - x1) * m2;
+            var y1 = l2Vert ? l2p1.y : l1p1.y;
+            var y2 = l2Vert ? l2p2.y : l1p2.y;
+            if(xVert >= x1 && xVert <= x2 && y >= y1 && y <= y2) {
+                retval.point = { x: xVert, y: y };
+                retval.exiting = l2Vert == (y1 == (l2Vert ? l2.p1.y : l1.p1.y)) == (x1 == (l2Vert ? l1.p1.x : l2.p1.x));
+                retval.entering = !retval.exiting;
+
+                // Calculate ties
+                if(x1 == xVert) {
+                    ties[l2Vert ? 'l1' : 'l2'] = (x1 == (l2Vert ? l1.p1.x : l2.p1.x)) ? 'start' : 'end';
+                    retval.ties = ties;
+                } else if(x2 == xVert) {
+                    ties[l2Vert ? 'l1' : 'l2'] = (x2 == (l2Vert ? l1.p2.x : l2.p2.x)) ? 'end' : 'start';
+                    retval.ties = ties;
+                }
+                if(y1 == y) {
+                    ties[l2Vert ? 'l2' : 'l1'] = (y1 == (l2Vert ? l2.p1.y : l1.p1.y)) ? 'start' : 'end';
+                    retval.ties = ties;
+                } else if(y2 == y) {
+                    ties[l2Vert ? 'l2' : 'l1'] = (y2 == (l2Vert ? l2.p2.y : l1.p2.y)) ? 'end' : 'start';
+                    retval.ties = ties;
+                }
+
+                return retval;
+            }
+            return false;
+        }
+        // If here, no vertical lines
+
+        if(m1 == m2) {
+            // If the lines don't follow the same path, return
+            if(l1p1.y != (l2p1.y + (l1p1.x - l2p1.x) * m1)) return false;
+            // if they never meet, return
+            if(l1p2.x < l2p1.x || l1p1.x > l2p2.x) return false;
             var first = l1p1.x >= l2p1.x ? l1p1 : l2p1;
-            var second = l1p2.x <= l2p2.x="" ?="" l1p2="" :="" l2p2;="" first="" is="" from="" the="" perspective="" of="" l1="" retval.parallel="{" first:="" l1p1="=" l1.p1="" second,="" second:="" l1.p2="" second="" first,="" samedirection:="" (l1p1="=" l1.p1)="=" (l2p1="=" l2.p1)="" };="" return="" retval;="" }="" var="" x="(l2p1.y" -="" l2p1.x="" *="" m2="" l1p1.y="" +="" l1p1.x="" m1)="" (m1="" m2);="" check="" if="" out="" bounds="" if(x="">= l1p1.x && x <= l1p2.x="" &&="" x="">= l2p1.x && x <= l2p2.x)="" {="" var="" y="l1p1.y" +="" (x="" -="" l1p1.x)="" *="" m1;="" retval.point="{" x:="" x,="" y:="" };="" retval.entering="m1"> m2 == (l1p1 == l1.p1) == (l2p1 == l2.p1);
+            var second = l1p2.x <= l2p2.x ? l1p2 : l2p2;
+            // First is from the perspective of l1
+            retval.parallel = {
+                first: l1p1 == l1.p1 ? first : second,
+                second: l1p2 == l1.p2 ? second : first,
+                sameDirection: (l1p1 == l1.p1) == (l2p1 == l2.p1)
+            };
+
+            return retval;
+        }
+
+        var x = (l2p1.y - l2p1.x * m2 - l1p1.y + l1p1.x * m1) / (m1 - m2);
+
+        // Check if x is out of bounds
+        if(x >= l1p1.x && x <= l1p2.x && x >= l2p1.x && x <= l2p2.x) {
+            var y = l1p1.y + (x - l1p1.x) * m1;
+            retval.point = { x: x, y: y };
+            retval.entering = m1 > m2 == (l1p1 == l1.p1) == (l2p1 == l2.p1);
             retval.exiting = !retval.entering;
 
             // Calculate ties
@@ -4886,7 +5148,7 @@ $axure.internal(function($ax) {
 
             if(intersectInfo.parallel) {
                 // Only really care about this if it actually touches the point
-                if(intersectInfo.parallel.first.x <= point.x="" &&="" intersectinfo.parallel.second.x="">= point.x) return true;
+                if(intersectInfo.parallel.first.x <= point.x && intersectInfo.parallel.second.x >= point.x) return true;
                 continue;
             }
 
@@ -4988,9 +5250,197 @@ $axure.internal(function($ax) {
             var r1 = rects.target;
 
             // Right left of right, left right of left, top below top, bottom above bottom
-            var rlr = r0.Right() <= r1.right();="" var="" lrl="r0.Left()">= r1.Left();
+            var rlr = r0.Right() <= r1.Right();
+            var lrl = r0.Left() >= r1.Left();
             var tbt = r0.Top() >= r1.Top();
-            var bab = r0.Bottom() <= r1.bottom();="" var="" info="{" rlr:="" rlr,="" lrl:="" lrl,="" tbt:="" tbt,="" bab:="" bab="" };="" if((rlr="" &&="" lrl)="" ||="" (tbt="" bab))="" {="" points="getSmallPolygon(r0," r1,="" info);="" }="" else="" $ax.geometry.registerpolygon(label,="" points,="" callback,="" rects:="" rects="" });="" _flyoutmanager.registerflyout="_registerFlyout;" _getflyoutlabel="function(panelId)" return="" panelid="" +="" '_flyout';="" _reregisterallflyouts="function()" for(var="" in="" paneltosrc)="" _reregisterflyout(panelid);="" _flyoutmanager.reregisterallflyouts="_reregisterAllFlyouts;" _reregisterflyout="function(panelId)" _registerflyout(rects,="" panelid,="" paneltosrc[panelid]);="" this="" is="" the="" reduced="" size="" polygon="" connecting="" r0="" to="" r1="" by="" means="" of="" horizontal="" or="" vertical="" lines.="" getsmallpolygon="function(r0," info)="" note:="" currently="" i="" make="" assumption="" that="" if="" lines="" from="" src="" hit="" target="" meaning="" horizontal,="" rlr="" and="" lrl="" are="" true,="" vertical,="" tbt="" true.="" r0left="r0.Left();" r0right="r0.Right();" r0top="r0.Top();" r0bottom="r0.Bottom();" r1left="r1.Left();" r1right="r1.Right();" r1top="r1.Top();" r1bottom="r1.Bottom();" points.push(genpoint(r1left,="" r1top));="" if(!info.tbt)="" points.push(genpoint(r0left,="" r0top));="" points.push(genpoint(r0right,="" points.push(genpoint(r1right,="" if(!info.rlr)="" r0bottom));="" r1bottom));="" if(!info.bab)="" if(!info.lrl)="" points;="" original="" algorithm="" connects="" most="" extream="" corners="" getlargepolygon="function(r0," top="" lefts="" if(info.tbt)="" if(info.lrl)="" rights="" if(info.rlr)="" bottom="" if(info.bab)="" *******="" placeholder="" manager="" *********="" $axure.internal(function($ax)="" _placeholdermanager="$ax.placeholderManager" =="" {};="" idtoplaceholderinfo="{};" _registerplaceholder="function(elementId," text,="" password)="" idtoplaceholderinfo[elementid]="{" text:="" password:="" password,="" active:="" false="" _placeholdermanager.registerplaceholder="_registerPlaceholder;" _placeholdermanager.refreshplaceholder="function" (elementid)="" (!info="" !info.active)="" return;="" $ax.style.setwidgetplaceholder(elementid,="" info.text,="" info.password);="" _updateplaceholder="function(elementId," active,="" cleartext)="" inputid="$ax.repeater.applySuffixToElementId(elementId," '_input');="" if(!info="" info.active="=" active)="" if(active)="" value="info.text;" if(!android)="" ?="" ''="" :="" document.getelementbyid(inputid).value;="" currenttext="document.getElementById(inputId).value;" if(!cleartext)="" if(currenttext="=" info.text)="" ;="" lastindex="currentText.lastIndexOf(info.text);" here="" am="" assuming="" text="" always="" inserted="" front="" lastindex);="" value,="" _placeholdermanager.updateplaceholder="_updatePlaceholder;" _isactive="function(elementId)" boolean(info="" info.active);="" _placeholdermanager.isactive="_isActive;" _selectrange="function(elementId," start,="" end)="" $jobj(elementid).each(function()="" if(this.setselectionrange)="" validtypes="["text"," "search",="" "url",="" "tel",="" "password"];="" if(this.tagname.tolowercase()="" !="input" validtypes.indexof(this.type)=""> -1) {
+            var bab = r0.Bottom() <= r1.Bottom();
+
+            var info = { rlr: rlr, lrl: lrl, tbt: tbt, bab: bab };
+
+            if((rlr && lrl) || (tbt && bab)) {
+                points = getSmallPolygon(r0, r1, info);
+            } else {
+                points = getLargePolygon(r0, r1, info);
+            }
+        }
+
+        $ax.geometry.registerPolygon(label, points, callback, { rects: rects });
+    };
+    _flyoutManager.registerFlyout = _registerFlyout;
+
+    var _getFlyoutLabel = function(panelId) {
+        return panelId + '_flyout';
+    };
+
+    var _reregisterAllFlyouts = function() {
+        for(var panelId in panelToSrc) _reregisterFlyout(panelId);
+    };
+    _flyoutManager.reregisterAllFlyouts = _reregisterAllFlyouts;
+
+    var _reregisterFlyout = function(panelId) {
+        var rects = $ax.geometry.getPolygonInfo(getFlyoutLabel(panelId)).rects;
+        _registerFlyout(rects, panelId, panelToSrc[panelId]);
+    };
+
+    // This is the reduced size polygon connecting r0 to r1 by means of horizontal or vertical lines.
+    var getSmallPolygon = function(r0, r1, info) {
+        var points = [];
+
+        // NOTE: currently I make the assumption that if horizontal/vertical connecting lines from the src hit the target
+        //        Meaning if horizontal, rlr and lrl are true, and if vertical, tbt and bab are true.
+
+        var r0Left = r0.Left();
+        var r0Right = r0.Right();
+        var r0Top = r0.Top();
+        var r0Bottom = r0.Bottom();
+        var r1Left = r1.Left();
+        var r1Right = r1.Right();
+        var r1Top = r1.Top();
+        var r1Bottom = r1.Bottom();
+
+        points.push(genPoint(r1Left, r1Top));
+
+        if(!info.tbt) {
+            points.push(genPoint(r0Left, r1Top));
+            points.push(genPoint(r0Left, r0Top));
+            points.push(genPoint(r0Right, r0Top));
+            points.push(genPoint(r0Right, r1Top));
+        }
+
+        points.push(genPoint(r1Right, r1Top));
+
+        if(!info.rlr) {
+            points.push(genPoint(r1Right, r0Top));
+            points.push(genPoint(r0Right, r0Top));
+            points.push(genPoint(r0Right, r0Bottom));
+            points.push(genPoint(r1Right, r0Bottom));
+        }
+
+        points.push(genPoint(r1Right, r1Bottom));
+
+        if(!info.bab) {
+            points.push(genPoint(r0Right, r1Bottom));
+            points.push(genPoint(r0Right, r0Bottom));
+            points.push(genPoint(r0Left, r0Bottom));
+            points.push(genPoint(r0Left, r1Bottom));
+        }
+
+        points.push(genPoint(r1Left, r1Bottom));
+
+        if(!info.lrl) {
+            points.push(genPoint(r1Left, r0Bottom));
+            points.push(genPoint(r0Left, r0Bottom));
+            points.push(genPoint(r0Left, r0Top));
+            points.push(genPoint(r1Left, r0Top));
+        }
+
+        return points;
+    };
+
+    // This is the original algorithm that connects the most extream corners to make polygon
+    var getLargePolygon = function(r0, r1, info) {
+        var points = [];
+
+        var r0Left = r0.Left();
+        var r0Right = r0.Right();
+        var r0Top = r0.Top();
+        var r0Bottom = r0.Bottom();
+        var r1Left = r1.Left();
+        var r1Right = r1.Right();
+        var r1Top = r1.Top();
+        var r1Bottom = r1.Bottom();
+
+        // Top lefts
+        if(info.tbt) {
+            if(!info.lrl) points.push(genPoint(r0Left, r0Top));
+            points.push(genPoint(r1Left, r1Top));
+        } else {
+            if(info.lrl) points.push(genPoint(r1Left, r1Top));
+            points.push(genPoint(r0Left, r0Top));
+        }
+
+        // Top rights
+        if(info.tbt) {
+            points.push(genPoint(r1Right, r1Top));
+            if(!info.rlr) points.push(genPoint(r0Right, r0Top));
+        } else {
+            points.push(genPoint(r0Right, r0Top));
+            if(info.rlr) points.push(genPoint(r1Right, r1Top));
+        }
+
+        // Bottom rights
+        if(info.bab) {
+            if(!info.rlr) points.push(genPoint(r0Right, r0Bottom));
+            points.push(genPoint(r1Right, r1Bottom));
+        } else {
+            if(info.rlr) points.push(genPoint(r1Right, r1Bottom));
+            points.push(genPoint(r0Right, r0Bottom));
+        }
+
+        // Bottom Lefts
+        if(info.bab) {
+            points.push(genPoint(r1Left, r1Bottom));
+            if(!info.lrl) points.push(genPoint(r0Left, r0Bottom));
+        } else {
+            points.push(genPoint(r0Left, r0Bottom));
+            if(info.lrl) points.push(genPoint(r1Left, r1Bottom));
+        }
+        return points;
+    };
+});
+
+// ******* Placeholder Manager ********* //
+
+$axure.internal(function($ax) {
+    var _placeholderManager = $ax.placeholderManager = {};
+    var idToPlaceholderInfo = {};
+
+    var _registerPlaceholder = function(elementId, text, password) {
+        idToPlaceholderInfo[elementId] = { text: text, password: password, active: false };
+    };
+    _placeholderManager.registerPlaceholder = _registerPlaceholder;
+
+    _placeholderManager.refreshPlaceholder = function (elementId) {
+        var info = idToPlaceholderInfo[elementId];
+        if (!info || !info.active) return;
+        $ax.style.SetWidgetPlaceholder(elementId, true, info.text, info.password);
+    }
+
+    var _updatePlaceholder = function(elementId, active, clearText) {
+        var inputId = $ax.repeater.applySuffixToElementId(elementId, '_input');
+
+        var info = idToPlaceholderInfo[elementId];
+        if(!info || info.active == active) return;
+        info.active = active;
+
+        if(active) var value = info.text;
+        else if(!ANDROID) value = clearText ? '' : document.getElementById(inputId).value;
+        else {
+            var currentText = document.getElementById(inputId).value;
+            if(!clearText) value = currentText;
+            else if(currentText == info.text) value = "";
+            else {
+                var lastIndex = currentText.lastIndexOf(info.text);
+                //here i am assuming the text is always inserted in front
+                value = currentText.substring(0, lastIndex);
+            }
+        }
+
+        $ax.style.SetWidgetPlaceholder(elementId, active, value, info.password);
+    };
+    _placeholderManager.updatePlaceholder = _updatePlaceholder;
+
+    var _isActive = function(elementId) {
+        var info = idToPlaceholderInfo[elementId];
+        return Boolean(info && info.active);
+    };
+    _placeholderManager.isActive = _isActive;
+
+    var _selectRange = function(elementId, start, end) {
+        $jobj(elementId).each(function() {
+            if(this.setSelectionRange) {
+                var validTypes = ["text", "search", "url", "tel", "password"];
+                if(this.tagName.toLowerCase() != "input" || validTypes.indexOf(this.type) > -1) {
                     this.focus();
                     this.setSelectionRange(start, end);
                 }
@@ -5244,7 +5694,7 @@ $axure.internal(function($ax) {
         var viewId = $ax.adaptive.currentViewId;
         var imageInfo = viewId ? $ax.pageData.viewIdToBackgroundImageInfo && $ax.pageData.viewIdToBackgroundImageInfo[viewId] : $ax.pageData.defaultBackgroundImageInfo;
         if(imageInfo && imageInfo.path) {
-            if($('#bg_img').length == 0) $('body').append('<img id="bg_img">');
+            if($('#bg_img').length == 0) $('body').append('<img id="bg_img"/>');
             $('#bg_img').attr('src', imageInfo.path).css('position', 'fixed').css('z-index', '-10000');
             _resizeIEBackground();
         } else $('#bg_img').remove();
@@ -5567,7 +6017,29 @@ $axure.internal(function($ax) {
         if(itemsPregen) {
             var templateIds = [repeaterId];
             var processScriptIds = function (full, prop, id) {
-                if(id.indexOf('_') <= 0="" &&="" id.indexof('p')="=" -1)="" templateids.push('u'="" +="" id);="" };="" $('#'="" repeaterid="" '_script').html().replace(="" (id|for)="?u([0-9]+(p([0-9]){3})?(_[_a-z0-9]*)?)" ?="" g,="" processscriptids);="" for(var="" i="0;" <="" templateids.length;="" i++)="" {="" j="0;" orderedids.length;="" j++)="" ids.push(_createelementid(templateids[i],="" orderedids[j]));="" }="" pos="start;" end;="" pos++)="" var="" itemid="orderedIds[pos];" itemelementid="_createElementId(repeaterId," itemid);="" jobj="$jobj(itemElementId);" preeval="jobj.hasClass('preeval');" $ax.initializeobjectevents($ax('#'="" _createelementid(templateids[i],="" itemid)),="" !preeval);="" if(preeval)="" preevalmap[itemid]="true;" jobj.removeclass('preeval');="" else="" html="$('#'" '_script').html();="" container="$('<div">');
+                if(id.indexOf('_') <= 0 && id.indexOf('p') == -1) templateIds.push('u' + id);
+            };
+            $('#' + repeaterId + '_script').html().replace(/(id|for)="?u([0-9]+(p([0-9]){3})?(_[_a-z0-9]*)?)"?/g, processScriptIds);
+            for(var i = 0; i < templateIds.length; i++) {
+                for(var j = 0; j < orderedIds.length; j++) {
+                    ids.push(_createElementId(templateIds[i], orderedIds[j]));
+                }
+            }
+
+            for(var pos = start; pos < end; pos++) {
+                var itemId = orderedIds[pos];
+                itemElementId = _createElementId(repeaterId, itemId);
+                var jobj = $jobj(itemElementId);
+                var preeval = jobj.hasClass('preeval');
+                for(var i = 0; i < templateIds.length; i++) $ax.initializeObjectEvents($ax('#' + _createElementId(templateIds[i], itemId)), !preeval);
+                if(preeval) {
+                    preevalMap[itemId] = true;
+                    jobj.removeClass('preeval');
+                }
+            }
+        } else {
+            var html = $('#' + repeaterId + '_script').html();
+            //        var container = $('<div></div>');
             //        container.html(html);
             //        container.attr('id', '' + repeaterId + '_container');
             //        container.css({ position: 'absolute' });
@@ -5623,7 +6095,50 @@ $axure.internal(function($ax) {
                 var processId = function(full, prop, id) {
                     var elementId = _createElementId('u' + id, itemId);
                     //If there is a suffix (ex. _img), then don't push the id.
-                    if (id.indexOf('_') <= 0="" &&="" id.indexof('p')="=" -1)="" ids.push(elementid);="" return="" prop="" +="" '="' + elementId + '" ';="" };="" var="" copy="(useAlt" ?="" altdiv="" :="" div).clone();="" usealt="!useAlt;" copy.attr('id',="" itemelementid);="" copy.html(div.html().replace(="" (id|for)="?u([0-9]+(p([0-9]){3})?(_[_a-z0-9]*)?)" g,="" processid));="" if(obj.repeaterpropmap.isolateradio)="" {="" radiobuttons="copy.find(':radio');" for(var="" radioindex="0;" <="" radiobuttons.length;="" radioindex++)="" radio="$(radioButtons[radioIndex]);" oldname="radio.attr('name')" ||="" '';="" can't="" use="" create="" element="" id="" because="" there="" could="" be="" an="" underscore="" in="" name="" if(oldname)="" radio.attr('name',="" '-'="" itemid);="" }="" copy.css({="" 'position':="" 'absolute',="" 'top':="" top="" 'px',="" 'left':="" left="" 'width':="" obj.width="" 'height':="" obj.height="" 'px'="" });="" $('#'="" repeaterid).append(copy);="" i++;="" if(wrap="" !="-1" i="" %="" wrap="=" 0)="" if(vertical)="" else="" if="" (vertical)="" showncount="end" -="" start;="" repeatersize="{" width:="" paddingx,="" height:="" paddingy};="" if(showncount=""> 0) {
+                    if (id.indexOf('_') <= 0 && id.indexOf('p') == -1) ids.push(elementId);
+                    return prop + '="' + elementId + '"';
+                };
+
+                var copy = (useAlt ? altDiv : div).clone();
+                useAlt = !useAlt;
+                copy.attr('id', itemElementId);
+                copy.html(div.html().replace(/(id|for)="?u([0-9]+(p([0-9]){3})?(_[_a-z0-9]*)?)"?/g, processId));
+                if(obj.repeaterPropMap.isolateRadio) {
+                    var radioButtons = copy.find(':radio');
+                    for(var radioIndex = 0; radioIndex < radioButtons.length; radioIndex++) {
+                        var radio = $(radioButtons[radioIndex]);
+                        var oldName = radio.attr('name') || '';
+                        // Can't use create element id because there could be an underscore in name
+                        if(oldName) radio.attr('name', oldName + '-' + itemId);
+                    }
+                }
+                
+
+                copy.css({
+                    'position': 'absolute',
+                    'top': top + 'px',
+                    'left': left + 'px',
+                    'width': obj.width + 'px',
+                    'height': obj.height + 'px'
+                });
+                $('#' + repeaterId).append(copy);
+
+                i++;
+                if(wrap != -1 && i % wrap == 0) {
+                    if(vertical) {
+                        top = startTop;
+                        left += xOffset;
+                    } else {
+                        left = startLeft;
+                        top += yOffset;
+                    }
+                } else if (vertical) top += yOffset;
+                else left += xOffset;
+            }
+
+            var shownCount = end - start;
+            var repeaterSize = { width: paddingX, height: paddingY};
+            if(shownCount > 0) {
                 var primaryCount = wrap == -1 ? shownCount : Math.min(shownCount, wrap);
                 var secondaryCount = wrap == -1 ? 1 : Math.ceil(shownCount / wrap);
 
@@ -5849,7 +6364,57 @@ $axure.internal(function($ax) {
             // If past the end, move to last page
             if(start >= count) {
                 pageInfo.currPage = Math.floor((count - 1) / pageInfo.itemsPerPage) + 1;
-                if(pageInfo.currPage <= 1="" 0)="" pageinfo.currpage="1;" end="pageInfo.itemsPerPage" *="" pageinfo.currpage;="" start="end" -="" pageinfo.itemsperpage;="" }="" count);="" retval[0]="start;" retval[1]="end;" return="" retval;="" };="" _repeatermanager.getvisibledatacount="function(repeaterId)" {="" var="" bounds="_getVisibleDataBounds(repeaterToPageInfo[repeaterId]," repeatertoactivedataset[repeaterid].length);="" bounds[1]="" bounds[0];="" _repeatermanager.getdatacount="function(repeaterId)" repeatertocurrentdataset[repeaterid].length;="" _getfiltereddatacount="_repeaterManager.getFilteredDataCount" =="" function(repeaterid)="" repeatertoactivedataset[repeaterid].length;="" _repeatermanager.getpagecount="function(repeaterId)" info="repeaterToPageInfo[repeaterId];" info.nolimit="" ?="" :="" math.ceil(_getfiltereddatacount(repeaterid)="" info.itemsperpage);="" _repeatermanager.getpageindex="function(repeaterId)" info.currpage;="" getactivedataset="function(repeaterId)" active="$ax.deepCopy(repeaterToCurrentDataSet[repeaterId]);" set="" up="" indexing="" each="" item.="" for(var="" i="0;" <="" active.length;="" i++)="" active[i].index="i" +="" 1;="" active;="" getorderedids="function(repeaterId," eventinfo)="" data="repeaterToActiveDataSet[repeaterId]" getactivedataset(repeaterid);="" filter="" first="" so="" less="" to="" sort="" applyfilter(repeaterid,="" data,="" eventinfo);="" next="" sorts="repeaterToSorts[repeaterId]" ||="" [];="" if(sorts.length="" !="0" &&="" data.length=""> 1) {
+                if(pageInfo.currPage <= 0) pageInfo.currPage = 1;
+
+                end = pageInfo.itemsPerPage * pageInfo.currPage;
+                start = end - pageInfo.itemsPerPage;
+            }
+            end = Math.min(end, count);
+            retval[0] = start;
+            retval[1] = end;
+        }
+        return retval;
+    };
+
+    _repeaterManager.getVisibleDataCount = function(repeaterId) {
+        var bounds = _getVisibleDataBounds(repeaterToPageInfo[repeaterId], repeaterToActiveDataSet[repeaterId].length);
+        return bounds[1] - bounds[0];
+    };
+
+    _repeaterManager.getDataCount = function(repeaterId) {
+        return repeaterToCurrentDataSet[repeaterId].length;
+    };
+
+    var _getFilteredDataCount = _repeaterManager.getFilteredDataCount = function(repeaterId) {
+        return repeaterToActiveDataSet[repeaterId].length;
+    };
+
+    _repeaterManager.getPageCount = function(repeaterId) {
+        var info = repeaterToPageInfo[repeaterId];
+        return info.noLimit ? 1 : Math.ceil(_getFilteredDataCount(repeaterId) / info.itemsPerPage);
+    };
+
+    _repeaterManager.getPageIndex = function(repeaterId) {
+        var info = repeaterToPageInfo[repeaterId];
+        return info.noLimit ? 1 : info.currPage;
+    };
+
+    var getActiveDataSet = function(repeaterId) {
+        var active = $ax.deepCopy(repeaterToCurrentDataSet[repeaterId]);
+        // Set up 1 indexing each item.
+        for(var i = 0; i < active.length; i++) active[i].index = i + 1;
+        return active;
+    };
+
+    var getOrderedIds = function(repeaterId, eventInfo) {
+        var data = repeaterToActiveDataSet[repeaterId] = getActiveDataSet(repeaterId);
+
+        // Filter first so less to sort
+        applyFilter(repeaterId, data, eventInfo);
+
+        // Sort next
+        var sorts = repeaterToSorts[repeaterId] || [];
+        if(sorts.length != 0 && data.length > 1) {
             // TODO: Make this generic and factor out if we want to use it elsewhere...
             // Compare is a function that takes 2 arguments, and returns a number. A high number means the second should go first
             // Otherwise the first stays first.
@@ -5940,7 +6505,62 @@ $axure.internal(function($ax) {
         date.month = Number(sections[1]);
         date.day = Number(sections[2]);
         date.valid = !isNaN(date.year);
-        date.valid &= !isNaN(date.month) && date.month > 0 && date.month <= 12;="" date.valid="" &="!isNaN(date.day)" &&="" date.day=""> 0 && date.day <= dayspermonth(date.month,="" date.year);="" return="" date;="" };="" var="" getdate2="function(text)" {="" date="{" valid:="" false="" sections="text.split('-');" if(sections.length="=" 1)="" !="3)" date.month="Number(sections[0]);" date.day="Number(sections[1]);" date.year="Number(sections[2]);" date.valid="!isNaN(date.year);" &="!isNaN(date.month)" &&=""> 0 && date.month <= 12;="" date.valid="" &="!isNaN(date.day)" &&="" date.day=""> 0 && date.day <= 0="" 4="" 6="" 9="" 29="" 100="" 400="=" dayspermonth(date.month,="" date.year);="" return="" date;="" };="" var="" dayspermonth="function(month," year)="" {="" if(month="=" ||="" month="=" 11)="" 30;="" !="2)" 31;="" if(year="" %="" 28;="" 29;="" year="" ?="" :="" applyfilter="function(repeaterId," data,="" eventinfo)="" datafiltered="[];" filters="repeaterToFilters[repeaterId]" [];="" if="" (filters.length="" if(!eventinfo)="" eventinfo="$ax.getBasicEventInfo();" oldtarget="eventInfo.targetElement;" oldsrc="eventInfo.srcElement;" oldthis="eventInfo.thiswidget;" olditem="eventInfo.item;" idtowidgetinfo="{};" outer:="" for(var="" i="1;" <="data.length;" i++)="" j="0;" filters.length;="" j++)="" eventinfo.targetelement="_createElementId(repeaterId," i);="" eventinfo.srcelement="filters[j].thisId;" if(!idtowidgetinfo[eventinfo.srcelement])="" idtowidgetinfo[eventinfo.srcelement]="$ax.getWidgetInfo(eventInfo.srcElement);" eventinfo.thiswidget="idToWidgetInfo[eventInfo.srcElement];" eventinfo.item="$ax.getItemInfo(eventInfo.srcElement);" if($ax.expr.evaluateexpr(filters[j].filter,="" )="" continue="" outer;="" }="" datafiltered[datafiltered.length]="data[i" -="" 1];="" for(i="0;" datafiltered.length;="" data[i]="dataFiltered[i];" while(data.length=""> dataFiltered.length) data.pop();
+        date.valid &= !isNaN(date.month) && date.month > 0 && date.month <= 12;
+        date.valid &= !isNaN(date.day) && date.day > 0 && date.day <= daysPerMonth(date.month, date.year);
+        return date;
+    };
+
+    var getDate2 = function(text) {
+        var date = { valid: false };
+        var sections = text.split('-');
+        if(sections.length == 1) sections = text.split('/');
+        if(sections.length != 3) return date;
+        date.month = Number(sections[0]);
+        date.day = Number(sections[1]);
+        date.year = Number(sections[2]);
+        date.valid = !isNaN(date.year);
+        date.valid &= !isNaN(date.month) && date.month > 0 && date.month <= 12;
+        date.valid &= !isNaN(date.day) && date.day > 0 && date.day <= daysPerMonth(date.month, date.year);
+        return date;
+    };
+
+    var daysPerMonth = function(month, year) {
+        if(month == 9 || month == 4 || month == 6 || month == 11) return 30;
+        if(month != 2) return 31;
+
+        if(year % 4 != 0) return 28;
+        if(year % 100 != 0) return 29;
+        return year % 400 == 0 ? 29 : 28;
+    };
+
+    var applyFilter = function(repeaterId, data, eventInfo) {
+        var dataFiltered = [];
+        var filters = repeaterToFilters[repeaterId] || [];
+        if (filters.length != 0) {
+            if(!eventInfo) eventInfo = $ax.getBasicEventInfo();
+            var oldTarget = eventInfo.targetElement;
+            var oldSrc = eventInfo.srcElement;
+            var oldThis = eventInfo.thiswidget;
+            var oldItem = eventInfo.item;
+
+            var idToWidgetInfo = {};
+
+            outer:
+            for(var i = 1; i <= data.length; i++) {
+                for(var j = 0; j < filters.length; j++) {
+                    eventInfo.targetElement = _createElementId(repeaterId, i);
+                    eventInfo.srcElement = filters[j].thisId;
+                    if(!idToWidgetInfo[eventInfo.srcElement]) idToWidgetInfo[eventInfo.srcElement] = $ax.getWidgetInfo(eventInfo.srcElement);
+                    eventInfo.thiswidget = idToWidgetInfo[eventInfo.srcElement];
+                    eventInfo.item = $ax.getItemInfo(eventInfo.srcElement);
+
+                    if($ax.expr.evaluateExpr(filters[j].filter, eventInfo) != 'true') continue outer;
+                }
+                dataFiltered[dataFiltered.length] = data[i - 1];
+            }
+
+            for(i = 0; i < dataFiltered.length; i++) data[i] = dataFiltered[i];
+            while(data.length > dataFiltered.length) data.pop();
 
             eventInfo.targetElement = oldTarget;
             eventInfo.srcElement = oldSrc;
@@ -6501,7 +7121,9 @@ $axure.internal(function($ax) {
         if(!elementId) return elementId;
         var sections = elementId.split('-');
         var retval = sections[0];
-        if(sections.length <= 1)="" return="" retval;="" sections="sections[1].split('_');" sections.length=""> 1 ? retval + '_' + sections[1] : retval;
+        if(sections.length <= 1) return retval;
+        sections = sections[1].split('_');
+        return sections.length > 1 ? retval + '_' + sections[1] : retval;
     };
     _repeaterManager.getScriptIdFromElementId = _getScriptIdFromElementId;
 
@@ -6542,7 +7164,235 @@ $axure.internal(function($ax) {
     //        var wrap = _getAdaptiveProp(repeater.repeaterPropMap, 'wrap', viewId);
     //        var vertical = _getAdaptiveProp(repeater.repeaterPropMap, 'vertical', viewId);
 
-    //        if(wrap == -1 || itemCount <= 0="" 2="" wrap)="" {="" if(vertical)="" height="" +="heightIncrement" *="" (itemcount="" -="" 1);="" else="" width="" }="" var="" primarydim="wrap;" secondarydim="Math.ceil(itemCount" primarydim);="" (primarydim="" (secondarydim="" return="" width:="" width,="" height:="" };="" _repeatermanager.getrepeatersize="_getRepeaterSize;" });="" *******="" dynamic="" panel="" manager="" ********="" $axure.internal(function($ax)="" todo:="" probably="" a="" lot="" of="" the="" functions="" from="" pagescript="" should="" be="" moved="" here="" at="" some="" point...="" _dynamicpanelmanager="$ax.dynamicPanelManager" =="" {};="" _isidfittocontent="_dynamicPanelManager.isIdFitToContent" function(id)="" obj="$obj(id);" if="" (!obj="" ||="" !$ax.public.fn.isdynamicpanel(obj.type)="" !obj.fittocontent)="" false;="" jpanel="$jobj(id);" !jpanel.attr('data-notfit');="" this="" function="" fit="" parent="" panel,="" also="" check="" for="" layer="" or="" repeaters="" _fitparentpanel="function" (widgetid)="" parentlayer="getParentLayer(widgetId);" if(parentlayer)="" if(_updatelayerrectcache(parentlayer))="" _fitparentpanel(parentlayer);="" return;="" find="" there="" is="" one.="" parentpanelinfo="getParentPanel(widgetId);" if(parentpanelinfo)="" parentid="parentPanelInfo.parent;" if(_updatefitpanel(parentid,="" parentpanelinfo.state))="" _fitparentpanel(parentid);="" otherwise,="" try="" to="" get="" repeater="" parentrepeaterid="$ax.getParentRepeaterFromElementId(widgetId);" repeaterobj="$obj(parentRepeaterId);" if(!repeaterobj="" widgetid="=" !repeaterobj.repeaterpropmap.fittocontent)="" itemid="$ax.repeater.getItemIdFromElementId(widgetId);" size="getContainerSize($ax.repeater.createElementId(parentRepeaterId," itemid));="" $ax.repeater.setitemsize(parentrepeaterid,="" itemid,="" size.width,="" size.height);="" _dynamicpanelmanager.fitparentpanel="_fitParentPanel;" _dynamicpanelmanager.initialize="function()" $axure.resize(_handleresize);="" percentpaneltoleftcache="[];" percentpanelsinitialized="false;" _handleresize="function()" if(percentpanelsinitialized)="" for(var="" key="" in="" percentpaneltoleftcache)="" could="" optimize="" only="" update="" non-contained="" panels="" _updatepanelpercentwidth(key);="" $ax('*').each(function(obj,="" elementid)="" if(_ispercentwidthpanel(obj))="" _updatepanelpercentwidth(elementid);="" _ispercentwidthpanel="_dynamicPanelManager.isPercentWidthPanel" function(obj)="" &&="" $ax.public.fn.isdynamicpanel(obj.type)="" obj.percentwidth;="" _dynamicpanelmanager.updatepanelcontentpercentwidth="function(elementId)" if(_ispercentwidthpanel($obj(elementid)))="" statechildrenquery="$jobj(elementId).children('.panel_state');" statechildrenquery.children('.panel_state_content').each(="" function()="" $(this).children('.ax_dynamic_panel').each(="" _updatepanelpercentwidth(this.id);="" );="" _dynamicpanelmanager.updatepercentpanelcache="function(query)" query.each(function(obj,="" if(_updatepercentpaneltoleftcache(obj,="" elementid,="" true))="" _dynamicpanelmanager.resetfixedpanel="function(obj," domelement)="" if(obj.fixedhorizontal="=" 'center')="" domelement.style.marginleft="" ;="" if(obj.fixedvertical="=" 'middle')="" domelement.style.margintop="" _dynamicpanelmanager.resetadaptivepercentpanel="function(obj," if(!_ispercentwidthpanel(obj))="" 'right')="" domelement.style.width="" _updatepercentpaneltoleftcache="function(obj," overwrite)="" wasupdated="false;" jobj="$jobj(elementId);" axobj="$ax('#'" elementid);="" if(percentpaneltoleftcache[elementid]="=" undefined="" percentpaneltoleftcache[elementid]="Number(jObj.css('margin-left').replace("px"," ""));="" number(jobj.css('right').replace("px",="" 'right'="" _isidfittocontent(elementid))="" fitwidth="getContainerSize($ax.visibility.GetPanelState(elementId)" '_content').width;="" wasupdated;="" _updatepanelpercentwidth="_dynamicPanelManager.updatePanelPercentWidth" function(elementid)="" _updatepercentpaneltoleftcache(obj,="" false);="" width;="" x;="" if(obj.fixedhorizontal)="" x="0;" parentid).width();="" parentobj="$obj(parentId);" if(parentobj.percentwidth)="" stateid="$ax.repeater.applySuffixToElementId(parentId," '_state'="" parentpanelinfo.state);="" statecontentid="stateId" '_content';="" parentrepeater="$ax.getParentRepeaterFromScriptId($ax.repeater.getScriptIdFromElementId(elementId));" if(parentrepeater)="" itemcontainerid="$ax.repeater.createElementId(parentRepeater," itemid);="" itemcontainerid).width();="" $window="$(window);" bodyleft="Number($('body').css('left').replace("px"," bodywidth="Number($('body').css('width').replace("px"," iscenter="$ax.adaptive.getPageStyle().pageAlignment" bodywidth);="" ?="" -(width="" bodywidth)="" :="" 0;="" 'left')="" jobj.css('left',="" 'px');="" jobj.css('margin-left',="" jobj.css('width',="" panelleft="percentPanelToLeftCache[elementId];" stateparent="jObj;" while(stateparent.children()[0].id.indexof($ax.visibility.container_suffix)="" !="-1)" statechildrenquery.css('width',="" statechildrenquery.children('.panel_state_content').css('left',="" '50%').css('margin-left',="" statechildrenquery.children('.panel_state_content').css('margin-left',="" _dynamicpanelmanager.updateparentsofnondefaultfitpanels="function" ()="" $ax('*').each(function="" (diagramobject,="" if(!$ax.public.fn.isdynamicpanel(diagramobject.type)="" !diagramobject.fittocontent)="" if($ax.visibility.iselementidlimboorinlimbocontainer(elementid))="" if(stateid="" '_state0'))="" _fitparentpanel(elementid);="" _dynamicpanelmanager.updateallfitpanelsandlayersizecaches="function()" fittocontent="[];" layers="[];" (obj,="" isfitpanel="$ax.public.fn.IsDynamicPanel(obj.type)" obj.fittocontent;="" islayer="$ax.public.fn.IsLayer(obj.type);" if(!isfitpanel="" !islayer)="" if(isfitpanel)="" fittocontent[fittocontent.length]="elementId;" if(islayer)="" layers[layers.length]="elementId;" i="fitToContent.length" 1;="">= 0; i--) {
+    //        if(wrap == -1 || itemCount <= wrap) {
+    //            if(vertical) height += heightIncrement * (itemCount - 1);
+    //            else width += widthIncrement * (itemCount - 1);
+    //        } else {
+    //            var primaryDim = wrap;
+    //            var secondaryDim = Math.ceil(itemCount / primaryDim);
+
+    //            if(vertical) {
+    //                height += heightIncrement * (primaryDim - 1);
+    //                width += widthIncrement * (secondaryDim - 1);
+    //            } else {
+    //                width += widthIncrement * (primaryDim - 1);
+    //                height += heightIncrement * (secondaryDim - 1);
+    //            }
+    //        }
+    //        return { width: width, height: height };
+    //    };
+    //    _repeaterManager.getRepeaterSize = _getRepeaterSize;
+
+});
+
+// ******* Dynamic Panel Manager ******** //
+$axure.internal(function($ax) {
+    // TODO: Probably a lot of the dynamic panel functions from pagescript should be moved here at some point...
+    var _dynamicPanelManager = $ax.dynamicPanelManager = {};
+
+    var _isIdFitToContent = _dynamicPanelManager.isIdFitToContent = function(id) {
+        var obj = $obj(id);
+        if (!obj || !$ax.public.fn.IsDynamicPanel(obj.type) || !obj.fitToContent) return false;
+
+        var jpanel = $jobj(id);
+        return !jpanel.attr('data-notfit');
+    };
+
+    //this function fit parent panel, also check for parent layer or repeaters
+    var _fitParentPanel = function (widgetId) {
+
+        var parentLayer = getParentLayer(widgetId);
+        if(parentLayer) {
+            if(_updateLayerRectCache(parentLayer)) _fitParentPanel(parentLayer);
+            return;
+        }
+
+        // Find parent panel if there is one.
+        var parentPanelInfo = getParentPanel(widgetId);
+        if(parentPanelInfo) {
+            var parentId = parentPanelInfo.parent;
+            if(_updateFitPanel(parentId, parentPanelInfo.state)) _fitParentPanel(parentId);
+            return;
+        }
+
+        // Otherwise, try to get parent repeater
+        var parentRepeaterId = $ax.getParentRepeaterFromElementId(widgetId);
+        var repeaterObj = $obj(parentRepeaterId);
+        if(!repeaterObj || widgetId == parentRepeaterId || !repeaterObj.repeaterPropMap.fitToContent) return;
+        var itemId = $ax.repeater.getItemIdFromElementId(widgetId);
+        var size = getContainerSize($ax.repeater.createElementId(parentRepeaterId, itemId));
+        $ax.repeater.setItemSize(parentRepeaterId, itemId, size.width, size.height);
+    };
+    _dynamicPanelManager.fitParentPanel = _fitParentPanel;
+
+    _dynamicPanelManager.initialize = function() {
+        $axure.resize(_handleResize);
+    };
+
+    var percentPanelToLeftCache = [];
+    var percentPanelsInitialized = false;
+    var _handleResize = function() {
+        if(percentPanelsInitialized) {
+            for(var key in percentPanelToLeftCache) {
+                //could optimize to only update non-contained panels
+                _updatePanelPercentWidth(key);
+            }
+        } else {
+            $ax('*').each(function(obj, elementId) {
+                if(_isPercentWidthPanel(obj)) _updatePanelPercentWidth(elementId);
+            });
+            percentPanelsInitialized = true;
+        }
+    };
+
+    var _isPercentWidthPanel = _dynamicPanelManager.isPercentWidthPanel = function(obj) {
+        return obj && $ax.public.fn.IsDynamicPanel(obj.type) && obj.percentWidth;
+    };
+
+    _dynamicPanelManager.updatePanelContentPercentWidth = function(elementId) {
+        //        if(_isPercentWidthPanel($obj(elementId))) return;
+        var stateChildrenQuery = $jobj(elementId).children('.panel_state');
+        stateChildrenQuery.children('.panel_state_content').each(
+            function() {
+                $(this).children('.ax_dynamic_panel').each(
+                    function() { _updatePanelPercentWidth(this.id); }
+                );
+            }
+        );
+    };
+
+    _dynamicPanelManager.updatePercentPanelCache = function(query) {
+        query.each(function(obj, elementId) {
+            if(_isPercentWidthPanel(obj)) {
+                if(_updatePercentPanelToLeftCache(obj, elementId, true)) {
+                    _updatePanelPercentWidth(elementId);
+                }
+            }
+        });
+    };
+
+    _dynamicPanelManager.resetFixedPanel = function(obj, domElement) {
+        if(obj.fixedHorizontal == 'center') domElement.style.marginLeft = "";
+        if(obj.fixedVertical == 'middle') domElement.style.marginTop = "";
+    };
+
+    _dynamicPanelManager.resetAdaptivePercentPanel = function(obj, domElement) {
+        if(!_isPercentWidthPanel(obj)) return;
+
+        if(obj.fixedHorizontal == 'center') domElement.style.marginLeft = "";
+        else if(obj.fixedHorizontal == 'right') domElement.style.width = "";
+    };
+
+    var _updatePercentPanelToLeftCache = function(obj, elementId, overwrite) {
+        var wasUpdated = false;
+        var jObj = $jobj(elementId);
+        var axObj = $ax('#' + elementId);
+        if(percentPanelToLeftCache[elementId] == undefined || overwrite) {
+            if(obj.fixedHorizontal == 'center') percentPanelToLeftCache[elementId] = Number(jObj.css('margin-left').replace("px", ""));
+            else if(obj.fixedHorizontal == 'right') percentPanelToLeftCache[elementId] = axObj.width() + Number(jObj.css('right').replace("px", ""));
+            else percentPanelToLeftCache[elementId] = Number(jObj.css('left').replace("px", ""));
+            wasUpdated = true;
+        }
+
+        if(obj.fixedHorizontal == 'right' && _isIdFitToContent(elementId)) {
+            var fitWidth = getContainerSize($ax.visibility.GetPanelState(elementId) + '_content').width;
+            percentPanelToLeftCache[elementId] = fitWidth + Number(jObj.css('right').replace("px", ""));
+            wasUpdated = true;
+        }
+        return wasUpdated;
+    };
+
+    var _updatePanelPercentWidth = _dynamicPanelManager.updatePanelPercentWidth = function(elementId) {
+        var obj = $obj(elementId);
+        if(!_isPercentWidthPanel(obj)) return;
+
+        _updatePercentPanelToLeftCache(obj, elementId, false);
+
+        var width;
+        var x;
+
+        if(obj.fixedHorizontal) {
+            x = 0;
+            width = $(window).width();
+        } else {
+            var parentPanelInfo = getParentPanel(elementId);
+            if(parentPanelInfo) {
+                var parentId = parentPanelInfo.parent;
+                width = $ax('#' + parentId).width();
+                var parentObj = $obj(parentId);
+                if(parentObj.percentWidth) {
+                    var stateId = $ax.repeater.applySuffixToElementId(parentId, '_state' + parentPanelInfo.state);
+                    var stateContentId = stateId + '_content';
+                    x = -Number($jobj(stateContentId).css('margin-left').replace("px", ""));
+                } else x = 0;
+            } else {
+                var parentRepeater = $ax.getParentRepeaterFromScriptId($ax.repeater.getScriptIdFromElementId(elementId));
+                if(parentRepeater) {
+                    var itemId = $ax.repeater.getItemIdFromElementId(elementId);
+                    var itemContainerId = $ax.repeater.createElementId(parentRepeater, itemId);
+                    x = 0;
+                    width = $ax('#' + itemContainerId).width();
+                } else {
+                    var $window = $(window);
+                    width = $window.width();
+                    var bodyLeft = Number($('body').css('left').replace("px", ""));
+                    var bodyWidth = Number($('body').css('width').replace("px", ""));
+                    var isCenter = $ax.adaptive.getPageStyle().pageAlignment == 'center';
+                    width = Math.max(width, bodyWidth);
+                    x = isCenter ? -(width - bodyWidth) / 2 - bodyLeft : 0;
+                }
+            }
+        }
+
+        var jObj = $jobj(elementId);
+        if(obj.fixedHorizontal == 'left') jObj.css('left', x + 'px');
+        else if(obj.fixedHorizontal == 'center') {
+            jObj.css('left', x + 'px');
+            jObj.css('margin-left', 0 + 'px');
+        } else jObj.css('left', x + 'px');
+
+        jObj.css('width', width + 'px');
+
+        var panelLeft = percentPanelToLeftCache[elementId];
+        var stateParent = jObj;
+        while(stateParent.children()[0].id.indexOf($ax.visibility.CONTAINER_SUFFIX) != -1) stateParent = stateParent.children();
+        var stateChildrenQuery = stateParent.children('.panel_state');
+        stateChildrenQuery.css('width', width + 'px');
+
+        if(obj.fixedHorizontal == 'center')
+            stateChildrenQuery.children('.panel_state_content').css('left', '50%').css('margin-left', panelLeft + 'px');
+        else if(obj.fixedHorizontal == 'right')
+            stateChildrenQuery.children('.panel_state_content').css('left', width - panelLeft + 'px');
+        else stateChildrenQuery.children('.panel_state_content').css('margin-left', panelLeft - x + 'px');
+    };
+
+
+    _dynamicPanelManager.updateParentsOfNonDefaultFitPanels = function () {
+        $ax('*').each(function (diagramObject, elementId) {
+            if(!$ax.public.fn.IsDynamicPanel(diagramObject.type) || !diagramObject.fitToContent) return;
+            if($ax.visibility.isElementIdLimboOrInLimboContainer(elementId)) return;
+
+            var stateId = $ax.visibility.GetPanelState(elementId);
+            if(stateId != $ax.repeater.applySuffixToElementId(elementId, '_state0')) _fitParentPanel(elementId);
+        });
+    };
+
+    //_dynamicPanelManager.updateAllFitPanelsAndLayerSizeCaches = function() {
+    //    var fitToContent = [];
+    //    var layers = [];
+    //    $ax('*').each(function (obj, elementId) {
+    //        var isFitPanel = $ax.public.fn.IsDynamicPanel(obj.type) && obj.fitToContent;
+    //        var isLayer = $ax.public.fn.IsLayer(obj.type);
+    //        if(!isFitPanel && !isLayer) return;
+    //        if($ax.visibility.isElementIdLimboOrInLimboContainer(elementId)) return;
+
+    //        if(isFitPanel) {
+    //            fitToContent[fitToContent.length] = elementId;
+    //        } else if(isLayer) {
+    //            layers[layers.length] = elementId;
+    //        }
+    //    });
+    //    for(var i = fitToContent.length - 1; i >= 0; i--) {
     //        var panelId = fitToContent[i];
     //        var stateCount = $obj(panelId).diagrams.length;
     //        for(var j = 0; j < stateCount; j++) {
@@ -7070,7 +7920,7 @@ $axure.internal(function($ax) {
             childClamp[1] = childClamp[0] + sizeChild[clamp.offset]();
 
             if(isNaN(marker) || isNaN(childClamp[0]) || isNaN(childClamp[1]) ||
-                marker < threshold || childClamp[1] <= clamp.start="" ||="" childclamp[0]="">= clamp.end) {
+                marker < threshold || childClamp[1] <= clamp.start || childClamp[0] >= clamp.end) {
                 allMove = false;
                 continue;
             }
@@ -7309,8 +8159,9 @@ $axure.internal(function($ax) {
     _binOps['%'] = function(left, right) { return Number(left) % Number(right); };
     _binOps['=='] = function(left, right) { return _getBool(left) == _getBool(right); };
     _binOps['!='] = function(left, right) { return _getBool(left) != _getBool(right); };
-    _binOps['<'] =="" function(left,="" right)="" {="" return="" number(left)="" <="" number(right);="" };="" _binops['<="] = function(left, right) { return Number(left) <= Number(right); };
-    _binOps[">'] = function(left, right) { return Number(left) > Number(right); };
+    _binOps['<'] = function(left, right) { return Number(left) < Number(right); };
+    _binOps['<='] = function(left, right) { return Number(left) <= Number(right); };
+    _binOps['>'] = function(left, right) { return Number(left) > Number(right); };
     _binOps['>='] = function(left, right) { return Number(left) >= Number(right); };
     _binOps['&&'] = function(left, right) { return _getBool(left) && _getBool(right); };
     _binOps['||'] = function(left, right) { return _getBool(left) || _getBool(right); };
@@ -7367,7 +8218,64 @@ $axure.internal(function($ax) {
     var _escapeRichText = function(text) {
         if(typeof (text) != 'string') return text;
 
-        return text.replace('<', '&lt;');="" };="" });="" *****="" utils.temp.js="" *******="" deep="" copy="" ********="" $axure.internal(function($ax)="" {="" todo:="" [ben]="" ah,="" infinite="" loops="" cause="" major="" issues="" here.="" tried="" saving="" objects="" we've="" already="" hit,="" but="" that="" didn't="" seem="" to="" work="" (at="" least="" at="" my="" first="" shot).="" continue="" from="" above,="" added="" a="" filter="" out="" problem="" keys.="" will="" need="" better="" way="" of="" sorting="" this="" eventually.="" var="" _deepcopy="function" (original,="" trackcopies,="" filter)="" if(trackcopies)="" index="_getCopyIndex(original);" if(index="" !="-1)" return="" _originaltocopy[index][1];="" }="" isarray="original" instanceof="" array;="" isobject="!(original" function)="" &&="" !(original="" date)="" (original="" object);="" if(!isarray="" !isobject)="" original;="" ?="" []="" :="" _originaltocopy.push([original,="" copy]);="" deepcopyarray(original,="" copy,="" deepcopyobject(original,="" filter);="" copy;="" $ax.deepcopy="_deepCopy;" hacky="" event="" info.="" copying="" draginfo="" causes="" due="" hashmap="" doesn't="" map="" well.="" it="" just="" tostrings="" them,="" making="" them="" all="" the="" same="" key.="" has="" be="" slow...="" _originaltocopy="[];" _getcopyindex="function(original)" for(var="" i="0;" <="" _originaltocopy.length;="" i++)="" if(original="==" _originaltocopy[i][0])="" i;="" -1;="" $ax.eventcopy="function(eventInfo)" true,="" ['draginfo',="" 'elementquery',="" 'obj']);="" reset="" map.="" may="" elsewhere="" too,="" is="" only="" it's="" used="" currently="" deepcopyarray="function(original," original.length;="" copy[i]="_deepCopy(original[i]," deepcopyobject="function(original," key="" in="" original)="" if(!original.hasownproperty(key))="" continue;="" if="" prop="" was="" not="" put="" there="" like="" dictionary,="" native="" part="" object="" if(filter="" filter.indexof[key]="" copy[key]="original[key];" filtered="" out,="" skip="" recursion="" on="" it.="" else="" our="" implementation="" splice="" because="" broken="" ie8...="" $ax.splice="function(array," startindex,="" count)="" retval="[];" if(startindex="">= array.length || startIndex < 0 || count == 0) return retval;
+        return text.replace('<', '&lt;');
+    };
+});
+//***** utils.temp.js *****//
+// ******* Deep Copy ******** //
+$axure.internal(function($ax) {
+    // TODO: [ben] Ah, infinite loops cause major issues here. Tried saving objects we've already hit, but that didn't seem to work (at least at my first shot).
+    // TODO:  [ben] To continue from above, added a filter to filter out problem keys. Will need a better way of sorting this out eventually.
+    var _deepCopy = function (original, trackCopies, filter) {
+        if(trackCopies) {
+            var index = _getCopyIndex(original);
+            if(index != -1) return _originalToCopy[index][1];
+        }
+        var isArray = original instanceof Array;
+        var isObject = !(original instanceof Function) && !(original instanceof Date) && (original instanceof Object);
+        if(!isArray && !isObject) return original;
+        var copy = isArray ? [] : { };
+        if(trackCopies) _originalToCopy.push([original, copy]);
+        isArray ? deepCopyArray(original, trackCopies, copy, filter) : deepCopyObject(original, trackCopies, copy, filter);
+        return copy;
+    };
+    $ax.deepCopy = _deepCopy;
+
+    // Hacky way to copy event info. Copying dragInfo causes major issues due to infinite loops
+    // Hashmap doesn't map objects well. It just toStrings them, making them all the same key. This has to be slow...
+    var _originalToCopy = [];
+    var _getCopyIndex = function(original) {
+        for(var i = 0; i < _originalToCopy.length; i++) if(original === _originalToCopy[i][0]) return i;
+        return -1;
+    };
+
+    $ax.eventCopy = function(eventInfo) {
+        var copy = _deepCopy(eventInfo, true, ['dragInfo', 'elementQuery', 'obj']);
+        // reset the map. TODO: May need to reset elsewhere too, but this is the only way it's used currently
+        _originalToCopy = [];
+
+        return copy;
+    };
+
+    var deepCopyArray = function(original, trackCopies, copy, filter) {
+        for(var i = 0; i < original.length; i++) {
+            copy[i] = _deepCopy(original[i], trackCopies, filter);
+        }
+    };
+
+    var deepCopyObject = function(original, trackCopies, copy, filter) {
+        for(var key in original) {
+            if(!original.hasOwnProperty(key)) continue; // Continue if the prop was not put there like a dictionary, but just a native part of the object
+
+            if(filter && filter.indexOf[key] != -1) copy[key] = original[key]; // If that key is filtered out, skip recursion on it.
+            else copy[key] = _deepCopy(original[key], trackCopies, filter);
+        }
+    };
+
+    // Our implementation of splice because it is broken in IE8...
+    $ax.splice = function(array, startIndex, count) {
+        var retval = [];
+        if(startIndex >= array.length || startIndex < 0 || count == 0) return retval;
         if(!count || startIndex + count > array.length) count = array.length - startIndex;
         for(var i = 0; i < count; i++) retval[i] = array[startIndex + i];
         for(i = startIndex + count; i < array.length; i++) array[i - count] = array[i];
@@ -7400,7 +8308,7 @@ $axure.internal(function($ax) {
             }
 
             if($ax.document.configuration.linkFlowsToPagesNewWindow) {
-                $('#' + elementId + "_ref").append("<div id="" + elementId + "PagePopup" class="refpageimage"></div>");
+                $('#' + elementId + "_ref").append("<div id='" + elementId + "PagePopup' class='refpageimage'></div>");
                 $('#' + elementId + "PagePopup").click(function() {
                     $ax.navigate({
                         url: dObj.referencePageUrl,
@@ -8144,7 +9052,511 @@ $axure.internal(function($ax) {
 
         var rotation = { degree: 0 };
 
-        if(!options.easing || options.easing === 'none' || options.duration <= 0="" 1="" 8="" 0)="" {="" stepfunc(degreedelta);="" oncomplete();="" }="" else="" $(rotation).animate({="" degree:="" degreedelta="" },="" duration:="" options.duration,="" easing:="" options.easing,="" queue:="" false,="" step:="" stepfunc,="" complete:="" oncomplete="" });="" };="" rotate="" a="" widget="" by="" degree,="" center="" is="" 50%="" _move.rotate="function" (id,="" easing,="" duration,="" to,="" shouldfire,="" completioncallback)="" var="" currentdegree="_move.getRotationDegree(id);" if(to)="" degree="degree" -="" currentdegree;="" if(degree="==" if="" (shouldfire)="" $ax.action.fireanimationfromqueue(id,="" $ax.action.queuetypes.rotate);="" return;="" query="$jobj(id);" stepfunc="function(now)" rotation.degree;="" newdegree="currentDegree" +="" degreedelta;="" query.css($ax.public.fn.settransformhowever("rotate("="" "deg)"));="" if(shouldfire)="" $ax.action.fireanimationfromqueue($ax.public.fn.compoundidfromcomponent(id),="" if(completioncallback)="" completioncallback();="" $ax.annotation.adjusticonlocation(id);="" rotation="{" no="" animation,="" setting="" duration="" to="" 1,="" prevent="" rangeerror="" in="" loops="" without="" animation="" if(!easing="" ||="" easing="==" 'none'="" <="0)" stepfunc(degree);="" _move.compoundrotatearound="function" degreedelta,="" centerpoint,="" movedelta,="" rotatablemove,="" resizeoffset,="" fireanimationqueue,="" (degreedelta="==" _norotateonlymove($ax.public.fn.compoundidfromcomponent(id),="" completioncallback,="" elem="$jobj(id);" (!easing="" ;="" it="" doesn't="" matter="" anymore="" here...="" originalwidth="Number(elem.css('width').replace('px'," ''));="" originalheight="Number(elem.css('height').replace('px'," originalleft="Number(elem.css('left').replace('px'," originaltop="Number(elem.css('top').replace('px'," function="" (newdegree)="" transform="$ax.public.fn.transformFromElement(elem[0]);" originalcenter="{" x:="" 0.5="" *="" originalwidth,="" y:="" originalheight};="" componentcenter="{" originalcenter.x="" transform[4],="" originalcenter.y="" transform[5]="" deg="newDegree" ratio="deg" xdelta="(moveDelta.x" rotatablemove.x)="" ratio;="" ydelta="(moveDelta.y" rotatablemove.y)="" (resizeoffset)="" resizeshift="{};" resizeshift.x="resizeOffset.x" resizeshift.y="resizeOffset.y" $axure.fn.getpointafterrotate(rotation.degree,="" resizeshift,="" 0,="" rotationmatrix="$ax.public.fn.rotationMatrix(deg);" compositiontransform="$ax.public.fn.matrixMultiplyMatrix(rotationMatrix," m11:="" transform[0],="" m21:="" transform[1],="" m12:="" transform[2],="" m22:="" transform[3]="" console.log("widget="" of="" "="" id="" x="" widgetcenter.x="" y="" widgetcenter.y);="" widgetnewcenter="$axure.fn.getPointAfterRotate(deg," componentcenter,="" centerpoint);="" newmatrix="$ax.public.fn.matrixString(compositionTransform.m11," compositiontransform.m21,="" compositiontransform.m12,="" compositiontransform.m22,="" widgetnewcenter.x="" xdelta,="" widgetnewcenter.y="" ydelta);="" elem.css($ax.public.fn.settransformhowever(newmatrix));="" ()="" (fireanimationqueue)="" $ax.action.fireanimationfromqueue(elem.parent()[0].id,="" _move.getrotationdegreefromelement="function(element)" if(element="=" null)="" return="" nan;="" transformstring="element.style['transform']" element.style['-o-transform']="" element.style['-ms-transform']="" element.style['-moz-transform']="" element.style['-webkit-transform'];="" if(transformstring)="" rotateregex="/rotate\(([-?0-9]+)deg\)/;" degreematch="rotateRegex.exec(transformString);" if(degreematch="" &&="" degreematch[1])="" parsefloat(degreematch[1]);="" if(window.getcomputedstyle)="" st="window.getComputedStyle(element," null);="" console.log('rotation="" not="" supported="" for="" ie="" and="" below="" this="" version="" axure="" rp');="" 0;="" tr="st.getPropertyValue("transform")" st.getpropertyvalue("-o-transform")="" st.getpropertyvalue("-ms-transform")="" st.getpropertyvalue("-moz-transform")="" st.getpropertyvalue("-webkit-transform");="" if(!tr="" 'none')="" values="tr.split('(')[1];" b="values[1];" radians="Math.atan2(b," a);="" if(radians="" math.pi);="" (180="" _move.getrotationdegree="function(elementId)" if($ax.public.fn.islayer($obj(elementid).type))="" $jobj(elementid).data('layerdegree');="" _move.getrotationdegreefromelement(document.getelementbyid(elementid));="" *****="" visibility.js="" $axure.internal(function($ax)="" document="window.document;" _visibility="{};" $ax.visibility="_visibility;" _defaulthidden="{};" _defaultlimbo="{};" ******************="" visibility="" state="" functions="" _isidvisible="$ax.visibility.IsIdVisible" =="" function(id)="" $ax.visibility.isvisible(window.document.getelementbyid(id));="" $ax.visibility.isvisible="function(element)" cannot="" use="" css('visibility')="" because="" that="" gets="" the="" effective="" visiblity="" e.g.="" won't="" be="" able="" set="" on="" panels="" inside="" hidden element.style.visibility="" !="hidden" $ax.visibility.setidvisible="function(id," visible)="" $ax.visibility.setvisible(window.document.getelementbyid(id),="" visible);="" hide="" lightbox="" necessary="" if(!visible)="" $jobj($ax.repeater.applysuffixtoelementid(id,="" '_lightbox')).remove();="" $ax.flyoutmanager.unregisterpanel(id,="" true);="" _setallvisible="function(query," for(var="" i="0;" query.length;="" i++)="" _visibility.setvisible(query[i],="" $ax.visibility.setvisible="function" (element,="" display="" none="" optimize="" measuring="" if(visible)="" if($(element).hasclass(hidden_class))="" $(element).removeclass(hidden_class);="" if($(element).hasclass(unplaced_class))="" $(element).removeclass(unplaced_class);="" element.style.display="" _setwidgetvisibility="$ax.visibility.SetWidgetVisibility" (elementid,="" options)="" visible="$ax.visibility.IsIdVisible(elementId);" limboed,="" just="" fire="" next="" action="" then="" leave.="" if(visible="=" options.value="" _limboids[elementid])="" if(!_limboids[elementid])="" options.oncomplete="" options.oncomplete();="" $ax.action.fireanimationfromqueue(elementid,="" $ax.action.queuetypes.fade);="" options.containinner="true;" parentid="query.parent().attr('id');" axobj="$obj(elementId);" preservescroll="false;" ispanel="$ax.public.fn.IsDynamicPanel(axObj.type);" islayer="$ax.public.fn.IsLayer(axObj.type);" if(!options.nocontainer="" (ispanel="" islayer))="" dp="" has="" scrollbar,="" save="" its="" scroll="" position="" if(ispanel="" axobj.scrollbars="" )="" shownstate="$ax.dynamicPanelManager.getShownState(elementId);" before="" hiding,="" try="" location="" if(!options.value="" shownstate)="" dpstateandscroll[elementid]="{" shownid:="" shownstate.attr('id'),="" left:="" shownstate.scrollleft(),="" top:="" shownstate.scrolltop()="" _pushcontainer(elementid,="" ispanel);="" !options.value)="" _tryresumescrollfordp(elementid);="" complete="options.onComplete;" if(complete)="" complete();="" _popcontainer(elementid,="" using="" containers="" stops="" mouseleave="" from="" firing="" edge="" firefox="" $ax.event.mouseoverobjectid="" (firefox="" $axure.browser.isedge="" ie))="" mouseoveredelement="$('#'" $ax.event.mouseoverobjectid);="" if(mouseoveredelement="" !mouseoveredelement.is(":visible"))="" if(($ax.public.fn.isdynamicpanel(axobj.type)="" $ax.public.fn.islayer(axobj.type))="" axobj.propagate)="" mouseoveredelement.trigger('mouseleave');="" mouseoveredelement.trigger('mouseleave.ixstyle');="" after="" showing="" dp,="" restore="" scoll="" options.value)="" _tryresumescrollfordp(elementid,="" options.containerexists="true;" _setvisibility(parentid,="" elementid,="" options,="" preservescroll);="" annotation="" box="" as="" well="" exists="" ann="document.getElementById(elementId" "_ann");="" if(ann)="" _visibility.setvisible(ann,="" options.value);="" ref="" flow="" shape,="" '_ref');="" if(ref)="" _visibility.setvisible(ref,="" _setvisibility="function(parentId," childid,="" preservescroll)="" wrapped="$jobj(childId);" completetotal="1;" $ax.action.fireanimationfromqueue(childid,="" child="$jobj(childId);" size="options.size" (options.containerexists="" ?="" $(child.children()[0])="" :="" child);="" isidfittocontent="$ax.dynamicPanelManager.isIdFitToContent(parentId);" fade="" resize="" work="" together="" when="" there="" container...="" but="" we="" still="" needs="" container="" fit="" content="" dps="" needcontainer="options.easing" options.easing="" (options.easing="" isidfittocontent);="" cullposition="options.cull" options.cull.css('position')="" '';="" containerexists="options.containerExists;" isfullwidth="$ax.dynamicPanelManager.isPercentWidthPanel($obj(childId));" fixed="" panel,="" must="" it.="" will="" otherwise,="" absolute="" position.="" needsetsize="false;" sizeobj="{};" if(needcontainer)="" sizeid="" if($ax.dynamicpanelmanager.isidfittocontent(childid))="" panelid="$ax.repeater.removeSuffixFromElementId(childId);" if($ax.dynamicpanelmanager.isidfittocontent(panelid))="" if(sizeid)="" newsize="options.cull" sizeobj;="" newaxsize="$ax('#'" newsize.attr('id'));="" sizeobj.width(newaxsize.width());="" sizeobj.height(newaxsize.height());="" wrappedoffset="{" visiblewrapped="wrapped;" childobj="$obj(childId);" (options.cull)="" axcull="$ax('#'" options.cull.attr('id'));="" containerwidth="axCull.width();" containerheight="axCull.height();" if(childobj="" ($ax.public.fn.islayer(childobj.type)))="" childobj.generatecompound))="" boundingrectangle="$ax.public.fn.getWidgetBoundingRect(childId);" wrappedoffset.left="boundingRectangle.left;" wrappedoffset.top="boundingRectangle.top;" (childobj="" childobj.generatecompound)="" image="$jobj(childId" '_img');="" childid).width();="" childid).height();="" containerid="$ax.visibility.applyWidgetContainer(childId);" options.cull="" boundingrectangle,="" isfullwidth,="" 'flip',="" wrappedoffset,="" options.containerexists);="" containerwidth,="" containerheight,="" if(options.containinner)="" filter="" visibile="" children="" (var="" wrapped.length;="" if($ax.visibility.isvisible(wrapped[i]))="" visiblewrapped.push(wrapped[i]);="" if(!containerexists)="" container.prependto(child);="" offset="" items="" if(!containerexists="" (wrappedoffset.left="" inner="$(wrapped[i]);" inner.css('left',="" $ax.getnumfrompx(inner.css('left'))="" wrappedoffset.left);="" inner.css('top',="" $ax.getnumfrompx(inner.css('top'))="" wrappedoffset.top);="" parent="" layer="" now="" so="" have="" conatiner="" since="" it's="" real="" size.="" should="" all="" time?="" may="" make="" things="" easier="" too.="" container.insertbefore(child);="" wrapped.appendto(container);="" (options.value="" options.containinner)="" first="" flip="" show="" invisible="" _setallvisible(visiblewrapped,="" false);="" _updatechildalignment(childid);="" _setallvisible(child,="" completecount="0;" completecount++;="" (needcontainer="" completetotal)="" ($ax.public.fn.iscompoundvectorhtml(container.parent()[0]))="" (options.containinner="" !containerexists="" (i="0;" ($ax.public.fn.iscompoundvectorcomponenthtml(inner[0]))="" break;="" if(options.containinner="" if(containerexists)="" if(!options.settingchild)="" container.css('position',="" 'relative;');="" wrapped.insertbefore(container);="" container.remove();="" $ax.public.fn.isdynamicpanel(childobj.type)="" window.modifieddynamicpanleparentoverflowprop)="" child.css('overflow',="" 'hidden');="" window.modifieddynamicpanleparentoverflowprop="false;" if(options.value)="" if(!needcontainer="" completecount)="" if(options.cull)="" options.cull.css('position',="" cullposition);="" if(needsetsize)="" sizeobj.css('width',="" 'auto');="" sizeobj.css('height',="" if(options.fire)="" $ax.event.raisesyntheticevent(childid,="" 'onshow'="" 'onhide');="" nothing="" actually="" being="" animated,="" elements="" if(!visiblewrapped.length)="" if(!options.easing="" $ax.visibility.setidvisible(childid,="" window.settimeout(function()="" 1;="" },options.duration);="" if(options.easing="=" 'fade')="" if(preservescroll)="" visiblewrapped.css('opacity',="" 0);="" visiblewrapped.css('visibility',="" 'inherit');="" visiblewrapped.css('display',="" 'block');="" was="" hoping="" could="" fadein="" here,="" need="" _tryresumescrollfordp(childid);="" visiblewrapped.animate({="" opacity:="" 'swing',="" function()="" '');="" can't="" $ax.visibility.setidvisible,="" only="" want="" visible,="" don't="" display,="" handle="" that.="" visiblewrapped.fadein({="" fading="" here="" strange...="" }});="" 'flip')="" hold="" trapscroll="_trapScrollLoc(childId);" innercontainer="$('<div">');
+        if(!options.easing || options.easing === 'none' || options.duration <= 0) {
+            stepFunc(degreeDelta);
+            onComplete();
+        } else {
+            $(rotation).animate({ degree: degreeDelta }, {
+                duration: options.duration,
+                easing: options.easing,
+                queue: false,
+                step: stepFunc,
+                complete: onComplete
+            });
+        }
+    };
+
+    //rotate a widget by degree, center is 50% 50%
+    _move.rotate = function (id, degree, easing, duration, to, shouldFire, completionCallback) {
+        var currentDegree = _move.getRotationDegree(id);
+        if(to) degree = degree - currentDegree;
+
+        if(degree === 0) {
+            if (shouldFire) $ax.action.fireAnimationFromQueue(id, $ax.action.queueTypes.rotate);
+            return;
+        }
+
+        var query = $jobj(id);
+        var stepFunc = function(now) {
+            var degreeDelta = now - rotation.degree;
+            var newDegree = currentDegree + degreeDelta;
+            query.css($ax.public.fn.setTransformHowever("rotate(" + newDegree + "deg)"));
+            currentDegree = newDegree;
+        };
+
+        var onComplete = function() {
+            if(shouldFire) {
+                $ax.action.fireAnimationFromQueue($ax.public.fn.compoundIdFromComponent(id), $ax.action.queueTypes.rotate);
+            }
+            if(completionCallback) completionCallback();
+
+            $ax.annotation.adjustIconLocation(id);
+        };
+
+        var rotation = { degree: 0 };
+        
+        
+        //if no animation, setting duration to 1, to prevent RangeError in rotation loops without animation
+        if(!easing || easing === 'none' || duration <= 0) {
+            stepFunc(degree);
+            onComplete();
+        } else {
+            $(rotation).animate({ degree: degree }, {
+                duration: duration,
+                easing: easing,
+                queue: false,
+                step: stepFunc,
+                complete: onComplete
+            });
+        }
+    };
+
+    _move.compoundRotateAround = function (id, degreeDelta, centerPoint, moveDelta, rotatableMove, resizeOffset, easing, duration, fireAnimationQueue, completionCallback) {
+        if (degreeDelta === 0) {
+            _noRotateOnlyMove($ax.public.fn.compoundIdFromComponent(id), moveDelta, rotatableMove, fireAnimationQueue, easing, duration, completionCallback, $ax.action.queueTypes.rotate);
+            return;
+        }
+        var elem = $jobj(id);
+        var rotation = { degree: 0 };
+
+        if (!easing || easing === 'none' || duration <= 0) {
+            duration = 1;
+            easing = 'linear'; //it doesn't matter anymore here...
+        }
+
+        var originalWidth = Number(elem.css('width').replace('px', ''));
+        var originalHeight = Number(elem.css('height').replace('px', ''));
+        var originalLeft = Number(elem.css('left').replace('px', ''));
+        var originalTop = Number(elem.css('top').replace('px', ''));
+
+        $(rotation).animate({ degree: degreeDelta }, {
+            duration: duration,
+            easing: easing,
+            queue: false,
+            step: function (newDegree) {
+                var transform = $ax.public.fn.transformFromElement(elem[0]);
+                var originalCenter = { x: originalLeft + 0.5 * originalWidth, y: originalTop + 0.5 * originalHeight};
+                var componentCenter = { x: originalCenter.x + transform[4], y: originalCenter.y + transform[5] };
+                var deg = newDegree - rotation.degree;
+                var ratio = deg / degreeDelta;
+                var xdelta = (moveDelta.x + rotatableMove.x) * ratio;
+                var ydelta = (moveDelta.y + rotatableMove.y) * ratio;
+                if (resizeOffset) {
+                    var resizeShift = {};
+                    resizeShift.x = resizeOffset.x * ratio;
+                    resizeShift.y = resizeOffset.y * ratio;
+                    $axure.fn.getPointAfterRotate(rotation.degree, resizeShift, { x: 0, y: 0 });
+                    xdelta += resizeShift.x;
+                    ydelta += resizeShift.y;
+                }
+
+                var rotationMatrix = $ax.public.fn.rotationMatrix(deg);
+                var compositionTransform = $ax.public.fn.matrixMultiplyMatrix(rotationMatrix,
+                    { m11: transform[0], m21: transform[1], m12: transform[2], m22: transform[3] });
+
+                //console.log("widget center of " + id + " x " + widgetCenter.x + " y " + widgetCenter.y);
+                var widgetNewCenter = $axure.fn.getPointAfterRotate(deg, componentCenter, centerPoint);
+                var newMatrix = $ax.public.fn.matrixString(compositionTransform.m11, compositionTransform.m21, compositionTransform.m12, compositionTransform.m22,
+                    widgetNewCenter.x - originalCenter.x + xdelta, widgetNewCenter.y - originalCenter.y + ydelta);
+                elem.css($ax.public.fn.setTransformHowever(newMatrix));
+            },
+            complete: function () {
+                if (fireAnimationQueue) {
+                    $ax.action.fireAnimationFromQueue(elem.parent()[0].id, $ax.action.queueTypes.rotate);
+                }
+
+                if(completionCallback) completionCallback();
+            }
+        });
+    };
+
+    _move.getRotationDegreeFromElement = function(element) {
+        if(element == null) return NaN;
+
+        var transformString = element.style['transform'] ||
+            element.style['-o-transform'] ||
+            element.style['-ms-transform'] ||
+            element.style['-moz-transform'] ||
+            element.style['-webkit-transform'];
+
+        if(transformString) {
+            var rotateRegex = /rotate\(([-?0-9]+)deg\)/;
+            var degreeMatch = rotateRegex.exec(transformString);
+            if(degreeMatch && degreeMatch[1]) return parseFloat(degreeMatch[1]);
+        }
+
+        if(window.getComputedStyle) {
+            var st = window.getComputedStyle(element, null);
+        } else {
+            console.log('rotation is not supported for ie 8 and below in this version of axure rp');
+            return 0;
+        }
+
+        var tr = st.getPropertyValue("transform") ||
+            st.getPropertyValue("-o-transform") ||
+            st.getPropertyValue("-ms-transform") ||
+            st.getPropertyValue("-moz-transform") ||
+            st.getPropertyValue("-webkit-transform");
+
+        if(!tr || tr === 'none') return 0;
+        var values = tr.split('(')[1];
+        values = values.split(')')[0],
+        values = values.split(',');
+
+        var a = values[0];
+        var b = values[1];
+
+        var radians = Math.atan2(b, a);
+        if(radians < 0) {
+            radians += (2 * Math.PI);
+        }
+
+        return radians * (180 / Math.PI);
+    };
+
+    _move.getRotationDegree = function(elementId) {
+        if($ax.public.fn.IsLayer($obj(elementId).type)) {
+            return $jobj(elementId).data('layerDegree');
+        }
+        return _move.getRotationDegreeFromElement(document.getElementById(elementId));
+    }
+});
+//***** visibility.js *****//
+$axure.internal(function($ax) {
+    var document = window.document;
+    var _visibility = {};
+    $ax.visibility = _visibility;
+
+    var _defaultHidden = {};
+    var _defaultLimbo = {};
+
+    // ******************  Visibility and State Functions ****************** //
+
+    var _isIdVisible = $ax.visibility.IsIdVisible = function(id) {
+        return $ax.visibility.IsVisible(window.document.getElementById(id));
+    };
+
+    $ax.visibility.IsVisible = function(element) {
+        //cannot use css('visibility') because that gets the effective visiblity
+        //e.g. won't be able to set visibility on panels inside hidden panels
+        return element.style.visibility != 'hidden';
+    };
+
+    $ax.visibility.SetIdVisible = function(id, visible) {
+        $ax.visibility.SetVisible(window.document.getElementById(id), visible);
+        // Hide lightbox if necessary
+        if(!visible) {
+            $jobj($ax.repeater.applySuffixToElementId(id, '_lightbox')).remove();
+            $ax.flyoutManager.unregisterPanel(id, true);
+        }
+    };
+
+    var _setAllVisible = function(query, visible) {
+        for(var i = 0; i < query.length; i++) {
+            _visibility.SetVisible(query[i], visible);
+        }
+    }
+
+    $ax.visibility.SetVisible = function (element, visible) {
+        //not setting display to none to optimize measuring
+        if(visible) {
+            if($(element).hasClass(HIDDEN_CLASS)) $(element).removeClass(HIDDEN_CLASS);
+            if($(element).hasClass(UNPLACED_CLASS)) $(element).removeClass(UNPLACED_CLASS);
+            element.style.display = '';
+            element.style.visibility = 'inherit';
+        } else {
+            element.style.display = 'none';
+            element.style.visibility = 'hidden';
+        }
+    };
+
+    var _setWidgetVisibility = $ax.visibility.SetWidgetVisibility = function (elementId, options) {
+        var visible = $ax.visibility.IsIdVisible(elementId);
+        // If limboed, just fire the next action then leave.
+        if(visible == options.value || _limboIds[elementId]) {
+            if(!_limboIds[elementId]) options.onComplete && options.onComplete();
+            $ax.action.fireAnimationFromQueue(elementId, $ax.action.queueTypes.fade);
+            return;
+        }
+
+        options.containInner = true;
+        var query = $jobj(elementId);
+        var parentId = query.parent().attr('id');
+        var axObj = $obj(elementId);
+        var preserveScroll = false;
+        var isPanel = $ax.public.fn.IsDynamicPanel(axObj.type);
+        var isLayer = $ax.public.fn.IsLayer(axObj.type);
+        if(!options.noContainer && (isPanel || isLayer)) {
+            //if dp has scrollbar, save its scroll position
+            if(isPanel && axObj.scrollbars != 'none') {
+                var shownState = $ax.dynamicPanelManager.getShownState(elementId);
+                preserveScroll = true;
+                //before hiding, try to save scroll location
+                if(!options.value && shownState) {
+                    DPStateAndScroll[elementId] = {
+                        shownId: shownState.attr('id'),
+                        left: shownState.scrollLeft(),
+                        top: shownState.scrollTop()
+                    }
+                }
+            }
+
+            _pushContainer(elementId, isPanel);
+            if(isPanel && !options.value) _tryResumeScrollForDP(elementId);
+            var complete = options.onComplete;
+            options.onComplete = function () {
+                if(complete) complete();
+                _popContainer(elementId, isPanel);
+                //using containers stops mouseleave from firing on IE/Edge and FireFox
+                if(!options.value && $ax.event.mouseOverObjectId && (FIREFOX || $axure.browser.isEdge || IE)) {
+                    var mouseOveredElement = $('#' + $ax.event.mouseOverObjectId);
+                    if(mouseOveredElement && !mouseOveredElement.is(":visible")) {
+                        var axObj = $obj($ax.event.mouseOverObjectId);
+
+                        if(($ax.public.fn.IsDynamicPanel(axObj.type) || $ax.public.fn.IsLayer(axObj.type)) && axObj.propagate) {
+                            mouseOveredElement.trigger('mouseleave');
+                        } else mouseOveredElement.trigger('mouseleave.ixStyle');
+                    }
+                }
+                //after showing dp, restore the scoll position
+                if(isPanel && options.value) _tryResumeScrollForDP(elementId, true);
+            }
+            options.containerExists = true;
+        }
+        _setVisibility(parentId, elementId, options, preserveScroll);
+
+        //set the visibility of the annotation box as well if it exists
+        var ann = document.getElementById(elementId + "_ann");
+        if(ann) _visibility.SetVisible(ann, options.value);
+
+        //set ref visibility for ref of flow shape, if that exists
+        var ref = document.getElementById(elementId + '_ref');
+        if(ref) _visibility.SetVisible(ref, options.value);
+    };
+
+    var _setVisibility = function(parentId, childId, options, preserveScroll) {
+        var wrapped = $jobj(childId);
+        var completeTotal = 1;
+        var visible = $ax.visibility.IsIdVisible(childId);
+
+        if(visible == options.value) {
+            options.onComplete && options.onComplete();
+            $ax.action.fireAnimationFromQueue(childId, $ax.action.queueTypes.fade);
+            return;
+        }
+
+        var child = $jobj(childId);
+        var size = options.size || (options.containerExists ? $(child.children()[0]) : child);
+
+        var isIdFitToContent = $ax.dynamicPanelManager.isIdFitToContent(parentId);
+        //fade and resize won't work together when there is a container... but we still needs the container for fit to content DPs
+        var needContainer = options.easing && options.easing != 'none' && (options.easing != 'fade' || isIdFitToContent);
+        var cullPosition = options.cull ? options.cull.css('position') : '';
+        var containerExists = options.containerExists;
+
+        var isFullWidth = $ax.dynamicPanelManager.isPercentWidthPanel($obj(childId));
+
+        // If fixed fit to content panel, then we must set size on it. It will be size of 0 otherwise, because container in it is absolute position.
+        var needSetSize = false;
+        var sizeObj = {};
+        if(needContainer) {
+            var sizeId = '';
+            if($ax.dynamicPanelManager.isIdFitToContent(childId)) sizeId = childId;
+            else {
+                var panelId = $ax.repeater.removeSuffixFromElementId(childId);
+                if($ax.dynamicPanelManager.isIdFitToContent(panelId)) sizeId = panelId;
+            }
+
+            if(sizeId) {
+                needSetSize = true;
+
+                sizeObj = $jobj(sizeId);
+                var newSize = options.cull || sizeObj;
+                var newAxSize = $ax('#' + newSize.attr('id'));
+                sizeObj.width(newAxSize.width());
+                sizeObj.height(newAxSize.height());
+            }
+        }
+
+        var wrappedOffset = { left: 0, top: 0 };
+        var visibleWrapped = wrapped;
+        if(needContainer) {
+            var childObj = $obj(childId);
+            if (options.cull) {
+                var axCull = $ax('#' + options.cull.attr('id'));
+                var containerWidth = axCull.width();
+                var containerHeight = axCull.height();
+            } else {
+                if(childObj && ($ax.public.fn.IsLayer(childObj.type))) {// || childObj.generateCompound)) {
+                    var boundingRectangle = $ax.public.fn.getWidgetBoundingRect(childId);
+                    wrappedOffset.left = boundingRectangle.left;
+                    wrappedOffset.top = boundingRectangle.top;
+                    containerWidth = boundingRectangle.width;
+                    containerHeight = boundingRectangle.height;
+                } else if (childObj && childObj.generateCompound) {
+                    var image = $jobj(childId + '_img');
+                    containerWidth = $ax.getNumFromPx(image.css('width'));
+                    containerHeight = $ax.getNumFromPx(image.css('height'));
+                    wrappedOffset.left = $ax.getNumFromPx(image.css('left'));
+                    wrappedOffset.top = $ax.getNumFromPx(image.css('top'));
+                } else {
+                    containerWidth = $ax('#' + childId).width();
+                    containerHeight = $ax('#' + childId).height();
+                }
+            }
+
+            var containerId = $ax.visibility.applyWidgetContainer(childId);
+//            var container = _makeContainer(containerId, options.cull || boundingRectangle, isFullWidth, options.easing == 'flip', wrappedOffset, options.containerExists);
+            var container = _makeContainer(containerId, containerWidth, containerHeight, isFullWidth, options.easing == 'flip', wrappedOffset, options.containerExists);
+
+            if(options.containInner) {
+                wrapped = _wrappedChildren(containerExists ? $(child.children()[0]) : child);
+
+                // Filter for visibile wrapped children
+                visibleWrapped = [];
+                for (var i = 0; i < wrapped.length; i++) if($ax.visibility.IsVisible(wrapped[i])) visibleWrapped.push(wrapped[i]);
+                visibleWrapped = $(visibleWrapped);
+
+                completeTotal = visibleWrapped.length;
+                if(!containerExists) container.prependTo(child);
+
+                // Offset items if necessary
+                if(!containerExists && (wrappedOffset.left != 0 || wrappedOffset.top != 0)) {
+                    for(var i = 0; i < wrapped.length; i++) {
+                        var inner = $(wrapped[i]);
+                        inner.css('left', $ax.getNumFromPx(inner.css('left')) - wrappedOffset.left);
+                        inner.css('top', $ax.getNumFromPx(inner.css('top')) - wrappedOffset.top);
+                        // Parent layer is now size 0, so have to have to use conatiner since it's the real size.
+                        //  Should we use container all the time? This may make things easier for fit panels too.
+                        size = container;
+                    }
+                }
+            } else if(!containerExists) container.insertBefore(child);
+            if(!containerExists) wrapped.appendTo(container);
+
+            if (options.value && options.containInner) {
+                //has to set children first because flip to show needs children invisible
+                _setAllVisible(visibleWrapped, false);
+                _updateChildAlignment(childId);
+                _setAllVisible(child, true);
+            }
+        }
+
+        var completeCount = 0;
+        var onComplete = function () {
+            completeCount++;
+            if (needContainer && completeCount == completeTotal) {
+                if ($ax.public.fn.isCompoundVectorHtml(container.parent()[0])) {
+                    wrappedOffset.left = $ax.getNumFromPx(container.css('left'));
+                    wrappedOffset.top = $ax.getNumFromPx(container.css('top'));
+                }
+
+                if (options.containInner && !containerExists && (wrappedOffset.left != 0 || wrappedOffset.top != 0)) {
+                    for (i = 0; i < wrapped.length; i++) {
+                        inner = $(wrapped[i]);
+                        //if ($ax.public.fn.isCompoundVectorComponentHtml(inner[0])) break;
+                        inner.css('left', $ax.getNumFromPx(inner.css('left')) + wrappedOffset.left);
+                        inner.css('top', $ax.getNumFromPx(inner.css('top')) + wrappedOffset.top);
+                    }
+                }
+
+                if(options.containInner && !options.value) {
+                    _setAllVisible(child, false);
+                    _setAllVisible(visibleWrapped, true);
+                }
+
+                if(containerExists) {
+                    if(!options.settingChild) container.css('position', 'relative;');
+                } else {
+                    wrapped.insertBefore(container);
+                    container.remove();
+                }
+
+                if(childObj && $ax.public.fn.IsDynamicPanel(childObj.type) && window.modifiedDynamicPanleParentOverflowProp) {
+                    child.css('overflow', 'hidden');
+                    window.modifiedDynamicPanleParentOverflowProp = false;
+                }
+            }
+
+            if(options.value) _updateChildAlignment(childId);
+
+            if(!needContainer || completeTotal == completeCount) {
+                if(options.cull) options.cull.css('position', cullPosition);
+
+                if(needSetSize) {
+                    sizeObj.css('width', 'auto');
+                    sizeObj.css('height', 'auto');
+                }
+
+                options.onComplete && options.onComplete();
+
+                if(options.fire) {
+                    $ax.event.raiseSyntheticEvent(childId, options.value ? 'onShow' : 'onHide');
+                    $ax.action.fireAnimationFromQueue(childId, $ax.action.queueTypes.fade);
+                }
+            }
+        };
+
+        // Nothing actually being animated, all wrapped elements invisible
+        if(!visibleWrapped.length) {
+            if(!options.easing || options.easing == 'none') {
+                $ax.visibility.SetIdVisible(childId, options.value);
+                completeTotal = 1;
+                onComplete();
+            } else {
+                window.setTimeout(function() {
+                    completeCount = completeTotal - 1;
+                    onComplete();
+                },options.duration);
+            }
+
+            return;
+        }
+
+        if(!options.easing || options.easing == 'none') {
+            $ax.visibility.SetIdVisible(childId, options.value);
+            completeTotal = 1;
+            onComplete();
+        } else if(options.easing == 'fade') {
+            if(options.value) {
+                if(preserveScroll) {
+                    visibleWrapped.css('opacity', 0);
+                    visibleWrapped.css('visibility', 'inherit');
+                    visibleWrapped.css('display', 'block');
+                    //was hoping we could just use fadein here, but need to set display before set scroll position
+                    _tryResumeScrollForDP(childId);
+                    visibleWrapped.animate({ opacity: 1 }, {
+                        duration: options.duration,
+                        easing: 'swing',
+                        queue: false,
+                        complete: function() {
+                            $ax.visibility.SetIdVisible(childId, true);
+                            visibleWrapped.css('opacity', '');
+                            onComplete();
+                        }
+                    });
+                } else {
+                    // Can't use $ax.visibility.SetIdVisible, because we only want to set visible, we don't want to set display, fadeIn will handle that.
+                    visibleWrapped.css('visibility', 'inherit');
+                    visibleWrapped.fadeIn({
+                        queue: false,
+                        duration: options.duration, 
+                        complete: onComplete
+                    });
+                }
+            } else {
+                // Fading here is being strange...
+                visibleWrapped.animate({ opacity: 0 }, { duration: options.duration, easing: 'swing', queue: false, complete: function() {
+                    $ax.visibility.SetIdVisible(childId, false);
+                    visibleWrapped.css('opacity', '');
+
+                    onComplete();
+                }});
+            }
+        } else if (options.easing == 'flip') {
+            //this container will hold 
+            var trapScroll = _trapScrollLoc(childId);
+            var innerContainer = $('<div></div>');
             innerContainer.attr('id', containerId + "_inner");
             innerContainer.data('flip', options.direction == 'left' || options.direction == 'right' ? 'y' : 'x');
             innerContainer.css({
@@ -10501,7 +11913,15 @@ $axure.internal(function($ax) {
             var viewWidth = view1.size.width || 1000000;
             var viewHeight = view1.size.height || 1000000;
 
-            return width <= viewwidth="" &&="" height="" <="viewHeight;" };="" var="" greater="undefined;" less="undefined;" for(var="" i="0;" _enabledviews.length;="" i++)="" {="" view="_enabledViews[i];" if(view.condition="=" "="">=") {
+            return width <= viewWidth && height <= viewHeight;
+        };
+
+        var greater = undefined;
+        var less = undefined;
+
+        for(var i = 0; i < _enabledViews.length; i++) {
+            var view = _enabledViews[i];
+            if(view.condition == ">=") {
                 if(_isWindowGreaterThanView(view, winWidth, winHeight)) {
                     if(!greater || _isViewOneGreaterThanTwo(view, greater)) greater = view;
                 }
@@ -10942,7 +12362,8 @@ $axure.internal(function($ax) {
             }).$().children().bind('touchstart', function() {
                 var target = this;
                 var top = target.scrollTop;
-                if(top <= 0)="" target.scrolltop="1;" if(top="" +="" target.offsetheight="">= target.scrollHeight) target.scrollTop = target.scrollHeight - target.offsetHeight - 1;
+                if(top <= 0) target.scrollTop = 1;
+                if(top + target.offsetHeight >= target.scrollHeight) target.scrollTop = target.scrollHeight - target.offsetHeight - 1;
             });
         }
 
@@ -11185,8 +12606,8 @@ $axure.internal(function($ax) {
         var retVal = "";
         for(var noteName in annJson) {
             if(noteName != "label" && noteName != "id") {
-                retVal += "<div class="annotationName">" + noteName + "</div>";
-                retVal += "<div class="annotationValue">" + linkify(annJson[noteName]) + "</div>";
+                retVal += "<div class='annotationName'>" + noteName + "</div>";
+                retVal += "<div class='annotationValue'>" + linkify(annJson[noteName]) + "</div>";
             }
         }
         return retVal;
@@ -11752,4 +13173,4 @@ $axure.internal(function($ax) {
             //transformShift: { x: matrix[4], y: matrix[5] }
         }
     }
-});</=></=></id></=></',></']></=></=></=></=></=></=></=></=></=></=></=></=></=></=></=></=></=></=></=></span></'></=':></':></=></=></=>
+});
