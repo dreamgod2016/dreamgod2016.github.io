@@ -403,6 +403,129 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2018/08/05/An error when installing dlib on Ubuntu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="松鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="松鹅的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/05/An error when installing dlib on Ubuntu/" itemprop="url">An error when installing dlib on Ubuntu</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-05T20:02:25+08:00">
+                2018-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>最近复现代码的时候，需要安装Dlib的Python库，本以为pip就可以解决这个问题，结果出现了如下的错误：
+</code></pre><blockquote>
+<p>[ 79%] Built target dlib<br>Scanning dependencies of target dlib_python<br>[ 79%] Building CXX object CMakeFiles/dlib_python.dir/src/matrix.cpp.o<br>[ 80%] Building CXX object CMakeFiles/dlib_python.dir/src/dlib.cpp.o<br>[ 81%] Building CXX object CMakeFiles/dlib_python.dir/src/vector.cpp.o<br>[ 82%] Building CXX object CMakeFiles/dlib_python.dir/src/svm_c_trainer.cpp.o<br>[ 83%] Building CXX object CMakeFiles/dlib_python.dir/src/svm_rank_trainer.cpp.o<br>[ 83%] Building CXX object CMakeFiles/dlib_python.dir/src/decision_functions.cpp.o<br>[ 84%] Building CXX object CMakeFiles/dlib_python.dir/src/other.cpp.o<br>[ 85%] Building CXX object CMakeFiles/dlib_python.dir/src/basic.cpp.o<br>[ 86%] Building CXX object CMakeFiles/dlib_python.dir/src/cca.cpp.o<br>[ 86%] Building CXX object CMakeFiles/dlib_python.dir/src/sequence_segmenter.cpp.o<br>[ 87%] Building CXX object CMakeFiles/dlib_python.dir/src/svm_struct.cpp.o<br>[ 88%] Building CXX object CMakeFiles/dlib_python.dir/src/image.cpp.o<br>[ 89%] Building CXX object CMakeFiles/dlib_python.dir/src/image2.cpp.o<br>[ 90%] Building CXX object CMakeFiles/dlib_python.dir/src/image3.cpp.o<br>[ 90%] Building CXX object CMakeFiles/dlib_python.dir/src/image4.cpp.o<br>[ 91%] Building CXX object CMakeFiles/dlib_python.dir/src/rectangles.cpp.o<br>[ 92%] Building CXX object CMakeFiles/dlib_python.dir/src/object_detection.cpp.o<br>[ 93%] Building CXX object CMakeFiles/dlib_python.dir/src/shape_predictor.cpp.o<br>[ 93%] Building CXX object CMakeFiles/dlib_python.dir/src/correlation_tracker.cpp.o<br>[ 94%] Building CXX object CMakeFiles/dlib_python.dir/src/face_recognition.cpp.o<br>[ 95%] Building CXX object CMakeFiles/dlib_python.dir/src/cnn_face_detector.cpp.o<br>c++: internal compiler error: Killed (program cc1plus)<br>Please submit a full bug report,<br>with preprocessed source if appropriate.<br>See <a href="file:///usr/share/doc/gcc-7/README.Bugs" target="_blank" rel="external">file:///usr/share/doc/gcc-7/README.Bugs</a> for instructions.<br>CMakeFiles/dlib_python.dir/build.make:518: recipe for target ‘CMakeFiles/dlib_python.dir/src/face_recognition.cpp.o’ failed<br>make[2]: <strong><em> [CMakeFiles/dlib_python.dir/src/face_recognition.cpp.o] Error 4<br>make[2]: </em></strong> Waiting for unfinished jobs….<br>CMakeFiles/Makefile2:67: recipe for target ‘CMakeFiles/dlib_python.dir/all’ failed<br>make[1]: <strong><em> [CMakeFiles/dlib_python.dir/all] Error 2<br>Makefile:83: recipe for target ‘all’ failed<br>make: </em></strong> [all] Error 2<br>Traceback (most recent call last):<br>  File “setup.py”, line 257, in <module><br>    ‘Topic :: Software Development’,<br>  File “/home/songe/lip_reading/venv/lib/python3.6/site-packages/setuptools-39.1.0-py3.6.egg/setuptools/<strong>init</strong>.py”, line 129, in setup<br>  File “/usr/lib/python3.6/distutils/core.py”, line 148, in setup<br>    dist.run_commands()<br>  File “/usr/lib/python3.6/distutils/dist.py”, line 955, in run_commands<br>    self.run_command(cmd)<br>  File “/usr/lib/python3.6/distutils/dist.py”, line 974, in run_command<br>    cmd_obj.run()<br>  File “/home/songe/lip_reading/venv/lib/python3.6/site-packages/setuptools-39.1.0-py3.6.egg/setuptools/command/install.py”, line 67, in run<br>  File “/home/songe/lip_reading/venv/lib/python3.6/site-packages/setuptools-39.1.0-py3.6.egg/setuptools/command/install.py”, line 109, in do_egg_install<br>  File “/usr/lib/python3.6/distutils/cmd.py”, line 313, in run_command<br>    self.distribution.run_command(command)<br>  File “/usr/lib/python3.6/distutils/dist.py”, line 974, in run_command<br>    cmd_obj.run()<br>  File “/home/songe/lip_reading/venv/lib/python3.6/site-packages/setuptools-39.1.0-py3.6.egg/setuptools/command/bdist_egg.py”, line 172, in run<br>  File “/home/songe/lip_reading/venv/lib/python3.6/site-packages/setuptools-39.1.0-py3.6.egg/setuptools/command/bdist_egg.py”, line 158, in call_command<br>  File “/usr/lib/python3.6/distutils/cmd.py”, line 313, in run_command<br>    self.distribution.run_command(command)<br>  File “/usr/lib/python3.6/distutils/dist.py”, line 974, in run_command<br>    cmd_obj.run()<br>  File “/home/songe/lip_reading/venv/lib/python3.6/site-packages/setuptools-39.1.0-py3.6.egg/setuptools/command/install_lib.py”, line 11, in run<br>  File “/usr/lib/python3.6/distutils/command/install_lib.py”, line 109, in build<br>    self.run_command(‘build_ext’)<br>  File “/usr/lib/python3.6/distutils/cmd.py”, line 313, in run_command<br>    self.distribution.run_command(command)<br>  File “/usr/lib/python3.6/distutils/dist.py”, line 974, in run_command<br>    cmd_obj.run()<br>  File “setup.py”, line 133, in run<br>    self.build_extension(ext)<br>  File “setup.py”, line 173, in build_extension<br>    subprocess.check_call(cmake_build, cwd=build_folder)<br>  File “/usr/lib/python3.6/subprocess.py”, line 291, in check_call<br>    raise CalledProcessError(retcode, cmd)<br>subprocess.CalledProcessError: Command ‘[‘cmake’, ‘–build’, ‘.’, ‘–config’, ‘Release’, ‘–’, ‘-j2’]’ returned non-zero exit status 2.<br>    在网上查的主流解决方法是检查Python、Python-dev的版本匹配的问题，有人是安装了Python3-dev就可以了。但是我的问题一直没有解决，偶然查到了一个issue：<a href="https://github.com/Valloric/ycmd/issues/224" target="_blank" rel="external">c++: internal compiler error: Killed (program cc1plus) </a>.<br>    micbou说这是memory的问题，我把自己的虚拟机Memory调到了3.6G，编译的进度从85%崩变成了96%崩了。最后确定就是Memory不足的问题，调成4G的Memory以后就解决了这个困扰我两天的坑=.=</module></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2018/05/03/papers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1756,154 +1879,6 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2017/11/09/Some-Wrong-of-Verilog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="松鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="松鹅的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/09/Some-Wrong-of-Verilog/" itemprop="url">在Verilog中遇到的坑们。</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T21:33:00+08:00">
-                2017-11-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/" itemprop="url" rel="index">
-                    <span itemprop="name">notes</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="在Verilog中遇到的坑们。"><a href="#在Verilog中遇到的坑们。" class="headerlink" title="在Verilog中遇到的坑们。"></a>在Verilog中遇到的坑们。</h1><blockquote>
-<p>本文持续更新。<br>谨以此文献给Bug们。</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/09/Some-Wrong-of-Verilog/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1953,7 +1928,7 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
