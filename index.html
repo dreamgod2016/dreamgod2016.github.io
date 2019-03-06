@@ -377,6 +377,136 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2019/02/25/A c++ compile time error/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="松鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="松鹅的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/25/A c++ compile time error/" itemprop="url">A c++ compile time error.</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-25T22:27:04+08:00">
+                2019-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>C++ compile time error: expected identifier before numeric constant</p>
+<blockquote>
+<p>source: <a href="https://stackoverflow.com/questions/11490988/c-compile-time-error-expected-identifier-before-numeric-constant" target="_blank" rel="external">https://stackoverflow.com/questions/11490988/c-compile-time-error-expected-identifier-before-numeric-constant</a></p>
+</blockquote>
+<p>You cannot do this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vector&lt;string&gt; name(5); //error in these 2 lines</div><div class="line">vector&lt;int&gt; val(5,0);</div></pre></td></tr></table></figure>
+<p>in a class outside of a method.<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/25/A c++ compile time error/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2019/02/02/UTF-8 with BOM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -641,6 +771,136 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># begin和step的type可能是不同的！</span></div><div class="line">result = type(begin + step)(begin)</div><div class="line">index += <span class="number">1</span></div><div class="line"><span class="comment"># 防止浮点误差的积累效应</span></div><div class="line">result = begin + index * step</div></pre></td></tr></table></figure>
 <h5 id="itertools模块"><a href="#itertools模块" class="headerlink" title="itertools模块"></a>itertools模块</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> itertools</div><div class="line"><span class="comment"># 会无限生成</span></div><div class="line">gen = itertools.count(<span class="number">1</span>, <span class="number">.5</span>)</div><div class="line"><span class="comment"># 在条件为False的时候就会停止。</span></div><div class="line">gen2 = itertools.takewhile(<span class="keyword">lambda</span> n: n &lt; <span class="number">3</span>, count(<span class="number">1</span>, <span class="number">.5</span>))</div></pre></td></tr></table></figure>
 <h5 id="标准库中的生成器函数"><a href="#标准库中的生成器函数" class="headerlink" title="标准库中的生成器函数"></a>标准库中的生成器函数</h5>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2018/10/01/docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="松鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="松鹅的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/01/docker/" itemprop="url">docker</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-01T14:25:36+08:00">
+                2018-10-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Always-with-sudo"><a href="#Always-with-sudo" class="headerlink" title="Always with sudo"></a>Always with <code>sudo</code></h2><h2 id="How-to-copy-Docker-images"><a href="#How-to-copy-Docker-images" class="headerlink" title="How to copy Docker images?"></a>How to copy Docker images?</h2><p>save:<br><code>docker save -o &lt;path for generated tar file&gt; &lt;image name&gt;</code><br>load:<br><code>docker load -i &lt;path to image tar file&gt;</code><br>e.g.<br><code>docker save -o c:/myfile.tar centos:16</code></p>
+<blockquote>
+<p>source: <a href="https://stackoverflow.com/questions/23935141/how-to-copy-docker-images-from-one-host-to-another-without-using-a-repository" target="_blank" rel="external">stackoverflow</a></p>
+</blockquote>
+<h2 id="How-to-run-a-bash-in-Docker"><a href="#How-to-run-a-bash-in-Docker" class="headerlink" title="How to run a bash in Docker?"></a>How to run a bash in Docker?</h2><p><code>docker run -it &lt;image name&gt; bash</code></p>
+<h2 id="How-can-I-use-the-datasets-in-the-host"><a href="#How-can-I-use-the-datasets-in-the-host" class="headerlink" title="How can I use the datasets in the host"></a>How can I use the datasets in the host</h2><p>In <a href="https://docs.docker.com/storage/" target="_blank" rel="external">docker docs</a>, there are three methods to mount.<br>First, I tried to create a new volume but I cannot read the dictionary because I was <code>Permission denied</code>.<br>Second, I decided to create <code>bind mounts</code> by<br><code>docker run &lt;others&gt; --mount type=bind, source=&lt;the dir you want to mount&gt; target=&lt;the dir in the container&gt;, [readonly] &lt;others&gt;</code>.</p>
+<h2 id="Can-I-change-the-content-in-my-image"><a href="#Can-I-change-the-content-in-my-image" class="headerlink" title="Can I change the content in my image?"></a>Can I change the content in my image?</h2><ol>
+<li>Do something in a container created by your image.</li>
+<li>exit or ctrl+D</li>
+<li><code>docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</code></li>
+</ol>
+
           
         
       
@@ -1593,286 +1853,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2018/02/08/《Python机器学习及实践：从零开始通往Kaggle竞赛之路》笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="松鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="松鹅的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/08/《Python机器学习及实践：从零开始通往Kaggle竞赛之路》笔记/" itemprop="url">《Python机器学习及实践：从零开始通往Kaggle竞赛之路》笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-08T22:58:00+08:00">
-                2018-02-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
-<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
-<h2 id="第一章-简介篇"><a href="#第一章-简介篇" class="headerlink" title="第一章 简介篇"></a>第一章 简介篇</h2><h3 id="1-1-机器学习综述"><a href="#1-1-机器学习综述" class="headerlink" title="1.1 机器学习综述"></a>1.1 机器学习综述</h3><p>所谓具备“学习”能力的程序都是指它能够从不断地从经历和数据中吸取经验教训，从而应对未来的预测任务。这种对未知的预测能力叫做<strong>泛化力（Generalization）</strong>。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/08/《Python机器学习及实践：从零开始通往Kaggle竞赛之路》笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2018/02/03/set容器自定义排序/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="松鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="松鹅的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/03/set容器自定义排序/" itemprop="url">set容器自定义排序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-03T16:43:00+08:00">
-                2018-02-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/" itemprop="url" rel="index">
-                    <span itemprop="name">notes</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="仿函数"><a href="#仿函数" class="headerlink" title="仿函数"></a>仿函数</h3><p>仿函数（functor），就是使一个类的使用看上去像一个函数。就是类中实现一个operator()，这个类就有了类似函数的行为。</p>
-<p>要使用STL内建的仿函数，必须包含<code>&lt;functional&gt;</code>头文件。而头文件中包含的仿函数分类包括</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/03/set容器自定义排序/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1922,7 +1902,7 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
