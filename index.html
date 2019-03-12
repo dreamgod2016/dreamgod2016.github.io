@@ -1026,6 +1026,8 @@
 <li>exit or ctrl+D</li>
 <li><code>docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</code></li>
 </ol>
+<h2 id="Why-cannot-I-use-–mount"><a href="#Why-cannot-I-use-–mount" class="headerlink" title="Why cannot I use –mount?"></a>Why cannot I use –mount?</h2><p>Because of the version of your docker.<br>But you can use <code>-v</code> instead of <code>--mount</code>, the command in the official document is:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> docker run -d \</div><div class="line">  -it \</div><div class="line">  --name devtest \</div><div class="line">  -v "$(pwd)"/target:/app \</div><div class="line">  nginx:latest</div></pre></td></tr></table></figure></p>
+<p>As a sample: <code>docker run -it -v /home/songe/datasets:/opt/dataset dlib bash</code>.</p>
 
           
         

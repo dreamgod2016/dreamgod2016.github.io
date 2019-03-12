@@ -337,6 +337,8 @@
 <li>exit or ctrl+D</li>
 <li><code>docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</code></li>
 </ol>
+<h2 id="Why-cannot-I-use-–mount"><a href="#Why-cannot-I-use-–mount" class="headerlink" title="Why cannot I use –mount?"></a>Why cannot I use –mount?</h2><p>Because of the version of your docker.<br>But you can use <code>-v</code> instead of <code>--mount</code>, the command in the official document is:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> docker run -d \</div><div class="line">  -it \</div><div class="line">  --name devtest \</div><div class="line">  -v "$(pwd)"/target:/app \</div><div class="line">  nginx:latest</div></pre></td></tr></table></figure></p>
+<p>As a sample: <code>docker run -it -v /home/songe/datasets:/opt/dataset dlib bash</code>.</p>
 
       
     </div>
@@ -526,7 +528,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Always-with-sudo"><span class="nav-number">1.</span> <span class="nav-text">Always with sudo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-copy-Docker-images"><span class="nav-number">2.</span> <span class="nav-text">How to copy Docker images?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-run-a-bash-in-Docker"><span class="nav-number">3.</span> <span class="nav-text">How to run a bash in Docker?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-can-I-use-the-datasets-in-the-host"><span class="nav-number">4.</span> <span class="nav-text">How can I use the datasets in the host</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Can-I-change-the-content-in-my-image"><span class="nav-number">5.</span> <span class="nav-text">Can I change the content in my image?</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Always-with-sudo"><span class="nav-number">1.</span> <span class="nav-text">Always with sudo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-copy-Docker-images"><span class="nav-number">2.</span> <span class="nav-text">How to copy Docker images?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-run-a-bash-in-Docker"><span class="nav-number">3.</span> <span class="nav-text">How to run a bash in Docker?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-can-I-use-the-datasets-in-the-host"><span class="nav-number">4.</span> <span class="nav-text">How can I use the datasets in the host</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Can-I-change-the-content-in-my-image"><span class="nav-number">5.</span> <span class="nav-text">Can I change the content in my image?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-cannot-I-use-–mount"><span class="nav-number">6.</span> <span class="nav-text">Why cannot I use –mount?</span></a></li></ol></div>
             
 
           </div>
