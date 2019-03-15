@@ -723,8 +723,7 @@
 
       
         
-          
-            <h1 id="流畅的Python"><a href="#流畅的Python" class="headerlink" title="流畅的Python"></a>流畅的Python</h1><h3 id="可迭代的对象、迭代器和生成器"><a href="#可迭代的对象、迭代器和生成器" class="headerlink" title="可迭代的对象、迭代器和生成器"></a>可迭代的对象、迭代器和生成器</h3><blockquote>
+          <h1 id="流畅的Python"><a href="#流畅的Python" class="headerlink" title="流畅的Python"></a>流畅的Python</h1><h3 id="可迭代的对象、迭代器和生成器"><a href="#可迭代的对象、迭代器和生成器" class="headerlink" title="可迭代的对象、迭代器和生成器"></a>可迭代的对象、迭代器和生成器</h3><blockquote>
 <p>python2.2开始引入yield关键字</p>
 </blockquote>
 <p>迭代器从集合中<strong>取出</strong>元素，生成器用于“凭空”生成元素。</p>
@@ -738,40 +737,13 @@
 <p>Python3.4开始，检验对象x是否可以迭代：iter(x)</p>
 </blockquote>
 <p>Python从可迭代对象中获取迭代器。</p>
-<p>迭代器到头会抛出StopIteration异常，Python内置的已经处理了。如果是自己写迭代器话，需要处理这个异常。也只有这个办法，不能检查是否有遗留元素。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">'Test'</span></div><div class="line">it = iter(x)</div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">	<span class="keyword">try</span>:</div><div class="line">		print(next(it))</div><div class="line">	<span class="keyword">except</span> StopIteration:</div><div class="line">		<span class="keyword">del</span> it</div><div class="line">		<span class="keyword">break</span></div></pre></td></tr></table></figure>
-<h5 id="标准迭代器接口："><a href="#标准迭代器接口：" class="headerlink" title="标准迭代器接口："></a>标准迭代器接口：</h5><ol>
-<li><p>__next__()方法：</p>
-<p>返回下一个可用的元素，如果没有就抛出StopIteration。</p>
-</li>
-<li><p>__iter__()方法：</p>
-<p>返回self。</p>
-</li>
-</ol>
-<h5 id="迭代器可以迭代，但是可迭代对象不是迭代器。"><a href="#迭代器可以迭代，但是可迭代对象不是迭代器。" class="headerlink" title="迭代器可以迭代，但是可迭代对象不是迭代器。"></a><strong>迭代器可以迭代，但是可迭代对象不是迭代器。</strong></h5><h5 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h5><ul>
-<li><p>访问一个聚合对象的内容而无需暴露它的内部表示</p>
-</li>
-<li><p>支持对聚合对象的多种遍历</p>
-</li>
-<li><p>为遍历不同的聚合结构提供一个统一的接口（多态迭代）。</p>
-<p>必须能从同一个可迭代的实例中获取多个独立的迭代器，而且每个迭代器要能维护自身的内部状态。</p>
-</li>
-</ul>
-<p>但是，用一个新的类太不Python了，所以常用生成器函数。</p>
-<p>生成器函数：有<code>yield</code>关键字。</p>
-<p>调用生成器函数时，会返回一个生成器对象。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen_a</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">"good morning"</span>)</div><div class="line">    <span class="keyword">yield</span> <span class="string">'10:00'</span></div><div class="line">    print(<span class="string">"good afternoon"</span>)</div><div class="line">    <span class="keyword">yield</span> <span class="string">'12:30'</span></div><div class="line">    print(<span class="string">"good night"</span>)</div><div class="line">    <span class="keyword">yield</span> <span class="string">"18:30"</span></div><div class="line"><span class="keyword">for</span> c <span class="keyword">in</span> gen_a():</div><div class="line">    print(<span class="string">'the time is:'</span>, c)</div><div class="line">---</div><div class="line">output:</div><div class="line">good morning</div><div class="line">the time <span class="keyword">is</span>: <span class="number">10</span>:<span class="number">00</span></div><div class="line">good afternoon</div><div class="line">the time <span class="keyword">is</span>: <span class="number">12</span>:<span class="number">30</span></div><div class="line">good night</div><div class="line">the time <span class="keyword">is</span>: <span class="number">18</span>:<span class="number">30</span></div></pre></td></tr></table></figure>
-<h5 id="lazy-evaluation-and-eager-evalution"><a href="#lazy-evaluation-and-eager-evalution" class="headerlink" title="lazy evaluation and eager evalution"></a>lazy evaluation and eager evalution</h5><p>`懒惰求值和及早求值。</p>
-<p>re.finditer<code>函数是</code>re.findall`的惰性版本。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></div><div class="line">	<span class="keyword">for</span> match <span class="keyword">in</span> RE_WORD.finditer(self.text):</div><div class="line">		<span class="keyword">yield</span> match.group()</div></pre></td></tr></table></figure>
-<h5 id="生成器表达式（语法糖"><a href="#生成器表达式（语法糖" class="headerlink" title="生成器表达式（语法糖"></a>生成器表达式（语法糖</h5><p>使用列表推导式的时候，它迫不及待地推导出结果。而生成器表达式只在要生成的时候才生成。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">__iter</span><span class="params">(self)</span>:</span></div><div class="line">    <span class="keyword">return</span> (match.group() <span class="keyword">for</span> match <span class="keyword">in</span> RE_WORD.finditer(self.text))</div></pre></td></tr></table></figure>
-<p>如何判断：如果是生成器表达式需要分行写，就倾向于生成器函数。另外生成器函数可以复用。</p>
-<p>@优雅</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># begin和step的type可能是不同的！</span></div><div class="line">result = type(begin + step)(begin)</div><div class="line">index += <span class="number">1</span></div><div class="line"><span class="comment"># 防止浮点误差的积累效应</span></div><div class="line">result = begin + index * step</div></pre></td></tr></table></figure>
-<h5 id="itertools模块"><a href="#itertools模块" class="headerlink" title="itertools模块"></a>itertools模块</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> itertools</div><div class="line"><span class="comment"># 会无限生成</span></div><div class="line">gen = itertools.count(<span class="number">1</span>, <span class="number">.5</span>)</div><div class="line"><span class="comment"># 在条件为False的时候就会停止。</span></div><div class="line">gen2 = itertools.takewhile(<span class="keyword">lambda</span> n: n &lt; <span class="number">3</span>, count(<span class="number">1</span>, <span class="number">.5</span>))</div></pre></td></tr></table></figure>
-<h5 id="标准库中的生成器函数"><a href="#标准库中的生成器函数" class="headerlink" title="标准库中的生成器函数"></a>标准库中的生成器函数</h5>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/19/Fluent_Python_14/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

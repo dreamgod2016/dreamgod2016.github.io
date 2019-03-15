@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="松鹅的博客">
 <meta property="og:description" content="流畅的Python可迭代的对象、迭代器和生成器 python2.2开始引入yield关键字  迭代器从集合中取出元素，生成器用于“凭空”生成元素。 解释器需要迭代对象x时，会自动调用iter(x)。  检查对象是否实现了__iter__()方法，如果实现就调用它产生一个迭代器 如果实现了__getitem__()方法，Python就创建一个迭代器，尝试按顺序（从索引0开始）按顺序获取 TypeEr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-19T10:51:58.669Z">
+<meta property="og:updated_time" content="2019-03-15T15:59:57.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fluent_Python_14">
 <meta name="twitter:description" content="流畅的Python可迭代的对象、迭代器和生成器 python2.2开始引入yield关键字  迭代器从集合中取出元素，生成器用于“凭空”生成元素。 解释器需要迭代对象x时，会自动调用iter(x)。  检查对象是否实现了__iter__()方法，如果实现就调用它产生一个迭代器 如果实现了__getitem__()方法，Python就创建一个迭代器，尝试按顺序（从索引0开始）按顺序获取 TypeEr">
@@ -362,6 +362,7 @@
 <p>Python3.4开始，检验对象x是否可以迭代：iter(x)</p>
 </blockquote>
 <p>Python从可迭代对象中获取迭代器。</p>
+<a id="more"></a>
 <p>迭代器到头会抛出StopIteration异常，Python内置的已经处理了。如果是自己写迭代器话，需要处理这个异常。也只有这个办法，不能检查是否有遗留元素。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">'Test'</span></div><div class="line">it = iter(x)</div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">	<span class="keyword">try</span>:</div><div class="line">		print(next(it))</div><div class="line">	<span class="keyword">except</span> StopIteration:</div><div class="line">		<span class="keyword">del</span> it</div><div class="line">		<span class="keyword">break</span></div></pre></td></tr></table></figure>
 <h5 id="标准迭代器接口："><a href="#标准迭代器接口：" class="headerlink" title="标准迭代器接口："></a>标准迭代器接口：</h5><ol>
