@@ -255,6 +255,130 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2019/03/16/gcc-version/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="松鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="松鹅的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/16/gcc-version/" itemprop="url">GCC、G++ versions</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-16T00:02:36+08:00">
+                2019-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Change-the-default-version-of-gcc-and-g"><a href="#Change-the-default-version-of-gcc-and-g" class="headerlink" title="Change the default version of gcc and g++"></a>Change the default version of gcc and g++</h2><ol>
+<li>查看所安装的gcc：<code>ls /usr/bin/gcc* -l</code></li>
+<li>删除已有的软链接：<code>sudo rm /usr/bin/gcc</code></li>
+<li>建立新的：<code>sudo ln -s /usr/bin/gcc-4.4 /usr/bin/gcc</code></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2019/02/28/DO-NOT-sudo-pip/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1000,130 +1124,6 @@
 </ol>
 <h2 id="Why-cannot-I-use-–mount"><a href="#Why-cannot-I-use-–mount" class="headerlink" title="Why cannot I use –mount?"></a>Why cannot I use –mount?</h2><p>Because of the version of your docker.<br>But you can use <code>-v</code> instead of <code>--mount</code>, the command in the official document is:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> docker run -d \</div><div class="line">  -it \</div><div class="line">  --name devtest \</div><div class="line">  -v "$(pwd)"/target:/app \</div><div class="line">  nginx:latest</div></pre></td></tr></table></figure></p>
 <p>As a sample: <code>docker run -it -v /home/songe/datasets:/opt/dataset dlib bash</code>.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2018/10/01/gcc-version/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="松鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="松鹅的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/01/gcc-version/" itemprop="url">GCC、G++ versions</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-01T14:25:36+08:00">
-                2018-10-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Change-the-default-version-of-gcc-and-g"><a href="#Change-the-default-version-of-gcc-and-g" class="headerlink" title="Change the default version of gcc and g++"></a>Change the default version of gcc and g++</h2><ol>
-<li>查看所安装的gcc：<code>ls /usr/bin/gcc* -l</code></li>
-<li>删除已有的软链接：<code>sudo rm /usr/bin/gcc</code></li>
-<li>建立新的：<code>sudo ln -s /usr/bin/gcc-4.4 /usr/bin/gcc</code></li>
-</ol>
 
           
         
