@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="coding," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -95,18 +95,13 @@
 
 
 
-<meta name="description" content="利用正则表达式删除代码中的注释 背景： ​    在实现某功能的过程中，为了方便看，频繁的copy其他模块的内容，导致代码中充满了没意义的注释，需要删除。">
-<meta name="keywords" content="coding">
-<meta property="og:type" content="article">
-<meta property="og:title" content="利用正则表达式删除代码中的注释">
-<meta property="og:url" content="http://www.mengfansong.me/2018/03/07/delete-code-comments-by-regexp/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="松鹅的博客">
+<meta property="og:url" content="http://www.mengfansong.me/tags/coding/page/3/index.html">
 <meta property="og:site_name" content="松鹅的博客">
-<meta property="og:description" content="利用正则表达式删除代码中的注释 背景： ​    在实现某功能的过程中，为了方便看，频繁的copy其他模块的内容，导致代码中充满了没意义的注释，需要删除。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-11T03:54:19.179Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用正则表达式删除代码中的注释">
-<meta name="twitter:description" content="利用正则表达式删除代码中的注释 背景： ​    在实现某功能的过程中，为了方便看，频繁的copy其他模块的内容，导致代码中充满了没意义的注释，需要删除。">
+<meta name="twitter:title" content="松鹅的博客">
 
 
 
@@ -136,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://www.mengfansong.me/2018/03/07/delete-code-comments-by-regexp/"/>
+  <link rel="canonical" href="http://www.mengfansong.me/tags/coding/page/3/"/>
 
 
 
 
 
-  <title>利用正则表达式删除代码中的注释 | 松鹅的博客</title>
+  <title>标签: coding | 松鹅的博客</title>
   
 
 
@@ -161,7 +156,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -245,184 +240,58 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block tag">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>coding<small>标签</small>
+        </h1>
+      </div>
 
-  
-  
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2018/03/07/delete-code-comments-by-regexp/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="松鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="松鹅的博客">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
-        
-          <h1 class="post-title" itemprop="name headline">利用正则表达式删除代码中的注释</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
+            <a class="post-title-link" href="/2017/10/08/1000_hours'_coding/" itemprop="url">
               
-                <span class="post-meta-item-text">发表于</span>
+                <span itemprop="name">1000 hours' coding</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T23:05:32+08:00">
-                2018-03-07
-              </time>
-            
+            </a>
+        
+      </h2>
 
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-10-08T23:05:14+08:00"
+              content="2017-10-08" >
+          10-08
+        </time>
+      </div>
 
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="利用正则表达式删除代码中的注释"><a href="#利用正则表达式删除代码中的注释" class="headerlink" title="利用正则表达式删除代码中的注释"></a>利用正则表达式删除代码中的注释</h2><blockquote>
-<p>背景：</p>
-<p>​    在实现某功能的过程中，为了方便看，频繁的copy其他模块的内容，导致代码中充满了没意义的注释，需要删除。</p>
-</blockquote>
-<a id="more"></a>
-<h3 id="单行注释的处理"><a href="#单行注释的处理" class="headerlink" title="单行注释的处理"></a>单行注释的处理</h3><p>在一行代码中，<code>//</code>及之后的内容都是注释，直接匹配去掉即可。</p>
-<p>本打算使用<code>//.*</code>，但是遇到如<code>//hello everyone</code>之类有空格的情况时，无法删除完整，所以采用另一种办法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">//[\S ]*</div></pre></td></tr></table></figure>
-<h3 id="多行注释的处理"><a href="#多行注释的处理" class="headerlink" title="多行注释的处理"></a>多行注释的处理</h3><p>与单行的注释不同，多行注释<code>/* */</code>中可能存在换行符，<code>.</code>只能代表除换行符以外字符。</p>
-<table>
-<thead>
-<tr>
-<th>字符</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>\s</td>
-<td>匹配任何空白字符，等价于[\f\n\r\t\v]</td>
-</tr>
-<tr>
-<td>\S</td>
-<td>匹配任何非空白字符</td>
-</tr>
-</tbody>
-</table>
-<p>利用<code>[\s\S]</code>即可表示任意的字符组合，<code>[\s\S]*</code>就是任意数量的任意字符组合。</p>
-<p>但注意到一个问题，正则表达式匹配的过程中默认采用<code>贪婪模式</code>。而我们希望的是匹配到每一段注释，这里就需要使用<code>非贪婪模式</code>。在匹配优先量词后加上<code>?</code>即变成属于非贪婪模式的量词。</p>
-<p>所以代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/\*[\s\S]*?\*/</div></pre></td></tr></table></figure>
-<p>当然，可以整合一下两种注释：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">//[\S ]*| /\*[\s\S]*?\*/</div></pre></td></tr></table></figure>
-<p>这样就可以去掉不想要的注释啦~不过作为一个程序猿，多写注释还是一个比较好的习惯呢，这只是在特定情景下的需求啦~</p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/coding/" rel="tag"># coding</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/02/08/《Python机器学习及实践：从零开始通往Kaggle竞赛之路》笔记/" rel="next" title="《Python机器学习及实践：从零开始通往Kaggle竞赛之路》笔记">
-                <i class="fa fa-chevron-left"></i> 《Python机器学习及实践：从零开始通往Kaggle竞赛之路》笔记
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/20/PAT-B/" rel="prev" title="PAT-乙级题目汇总及回顾">
-                PAT-乙级题目汇总及回顾 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
       
     </div>
+
   </div>
+  
+  
+  
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/tags/coding/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/tags/coding/">1</a><a class="page-number" href="/tags/coding/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
 
 
           </div>
@@ -430,10 +299,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -454,17 +319,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <p class="site-author-name" itemprop="name">松鹅</p>
@@ -539,22 +395,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#利用正则表达式删除代码中的注释"><span class="nav-number">1.</span> <span class="nav-text">利用正则表达式删除代码中的注释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单行注释的处理"><span class="nav-number">1.1.</span> <span class="nav-text">单行注释的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多行注释的处理"><span class="nav-number">1.2.</span> <span class="nav-text">多行注释的处理</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -689,10 +529,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-
 
   
 
