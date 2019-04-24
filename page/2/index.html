@@ -255,6 +255,138 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2018/10/01/docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="松鹅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="松鹅的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/01/docker/" itemprop="url">docker</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-01T14:25:36+08:00">
+                2018-10-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Always-with-sudo"><a href="#Always-with-sudo" class="headerlink" title="Always with sudo"></a>Always with <code>sudo</code></h2><h2 id="How-to-copy-Docker-images"><a href="#How-to-copy-Docker-images" class="headerlink" title="How to copy Docker images?"></a>How to copy Docker images?</h2><p>save:<br><code>docker save -o &lt;path for generated tar file&gt; &lt;image name&gt;</code><br>load:<br><code>docker load -i &lt;path to image tar file&gt;</code><br>e.g.<br><code>docker save -o c:/myfile.tar centos:16</code></p>
+<blockquote>
+<p>source: <a href="https://stackoverflow.com/questions/23935141/how-to-copy-docker-images-from-one-host-to-another-without-using-a-repository" target="_blank" rel="external">stackoverflow</a></p>
+</blockquote>
+<h2 id="How-to-run-a-bash-in-Docker"><a href="#How-to-run-a-bash-in-Docker" class="headerlink" title="How to run a bash in Docker?"></a>How to run a bash in Docker?</h2><p><code>docker run -it &lt;image name&gt; bash</code></p>
+<h2 id="How-can-I-use-the-datasets-in-the-host"><a href="#How-can-I-use-the-datasets-in-the-host" class="headerlink" title="How can I use the datasets in the host"></a>How can I use the datasets in the host</h2><p>In <a href="https://docs.docker.com/storage/" target="_blank" rel="external">docker docs</a>, there are three methods to mount.<br>First, I tried to create a new volume but I cannot read the dictionary because I was <code>Permission denied</code>.<br>Second, I decided to create <code>bind mounts</code> by<br><code>docker run &lt;others&gt; --mount type=bind, source=&lt;the dir you want to mount&gt;, target=&lt;the dir in the container&gt;, [readonly] &lt;others&gt;</code>.</p>
+<h2 id="Can-I-change-the-content-in-my-image"><a href="#Can-I-change-the-content-in-my-image" class="headerlink" title="Can I change the content in my image?"></a>Can I change the content in my image?</h2><ol>
+<li>Do something in a container created by your image.</li>
+<li>exit or ctrl+D</li>
+<li><code>docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</code></li>
+</ol>
+<h2 id="Why-cannot-I-use-–mount"><a href="#Why-cannot-I-use-–mount" class="headerlink" title="Why cannot I use –mount?"></a>Why cannot I use –mount?</h2><p>Because of the version of your docker.<br>But you can use <code>-v</code> instead of <code>--mount</code>, the command in the official document is:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> docker run -d \</div><div class="line">  -it \</div><div class="line">  --name devtest \</div><div class="line">  -v "$(pwd)"/target:/app \</div><div class="line">  nginx:latest</div></pre></td></tr></table></figure></p>
+<p>As a sample: <code>docker run -it -v /home/songe/datasets:/opt/dataset dlib bash</code>.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2018/08/05/An error when installing dlib on Ubuntu/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1732,154 +1864,6 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2017/11/09/Some-Wrong-of-Verilog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="松鹅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="松鹅的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/09/Some-Wrong-of-Verilog/" itemprop="url">在Verilog中遇到的坑们。</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T21:33:00+08:00">
-                2017-11-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/notes/" itemprop="url" rel="index">
-                    <span itemprop="name">notes</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="在Verilog中遇到的坑们。"><a href="#在Verilog中遇到的坑们。" class="headerlink" title="在Verilog中遇到的坑们。"></a>在Verilog中遇到的坑们。</h1><blockquote>
-<p>本文持续更新。<br>谨以此文献给Bug们。</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/09/Some-Wrong-of-Verilog/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1929,7 +1913,7 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
