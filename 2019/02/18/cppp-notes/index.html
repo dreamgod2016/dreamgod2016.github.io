@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="松鹅的博客">
 <meta property="og:description" content="迭代器取中间值mid = beg + (end-beg)/2;而不是mid = (beg + end)/2;  没有两个迭代器相加的operator 可能overflow  数组复杂的数组声明int (*Parray)[10] 首先是指针，然后是10个数组，数组里是整数。是一个指向一个包含十个int的数组的指针。int *(&amp;amp;array)[10] 首先是个引用，10个数组，是整数指针，所以">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-25T15:51:46.881Z">
+<meta property="og:updated_time" content="2019-08-10T04:33:45.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cpp primer notes">
 <meta name="twitter:description" content="迭代器取中间值mid = beg + (end-beg)/2;而不是mid = (beg + end)/2;  没有两个迭代器相加的operator 可能overflow  数组复杂的数组声明int (*Parray)[10] 首先是指针，然后是10个数组，数组里是整数。是一个指向一个包含十个int的数组的指针。int *(&amp;amp;array)[10] 首先是个引用，10个数组，是整数指针，所以">
@@ -335,6 +335,34 @@
 <h4 id="begin函数"><a href="#begin函数" class="headerlink" title="begin函数"></a>begin函数</h4><p>C++11中可以使用<code>begin()</code>和<code>end()</code>来获得。在<code>iterator</code>头文件中。</p>
 <p><em>指针也是迭代器</em></p>
 <h4 id="比较字符串"><a href="#比较字符串" class="headerlink" title="比较字符串"></a>比较字符串</h4><p>如果是数组，比较的是指针。<code>string</code>比较的是值。</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h4 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h4><p><code>inline</code></p>
+<p>将它在每个调用点上“内联地”展开，可以消除函数运行时的开销。</p>
+<h4 id="函数指针"><a href="#函数指针" class="headerlink" title="函数指针"></a>函数指针</h4><p><code>bool (*pf) (const string &amp;)</code></p>
+<p>注意，函数指针的括号不可以升略。</p>
+<h4 id="debug技巧"><a href="#debug技巧" class="headerlink" title="debug技巧"></a>debug技巧</h4><p><code>__func__</code>存放当前调试的函数名</p>
+<p><code>__FILE__</code>存放文件名的字符串字面值</p>
+<p><code>__LINE__</code>存放当前行号的字面值</p>
+<p><code>__TIME__</code>存放文件编译时间</p>
+<p><code>__DATE__</code>存放编译的日期</p>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>类的基本思想是<strong>数据抽象（data abstraction）</strong>和<strong>封装（encapsulation）</strong>。</p>
+<p>数据抽象是一种依赖于<strong>接口（interface）</strong>和<strong>实现（implementation）</strong>分离的编程技术。</p>
+<h4 id="const成员函数"><a href="#const成员函数" class="headerlink" title="const成员函数"></a><code>const</code>成员函数</h4><p><strong>常量成员函数（const member function）</strong></p>
+<p>允许把<code>const</code>关键字放在成员函数的参数列表之后，紧跟在参数列表后面的<code>const</code>表示<code>this</code>是一个指向常量的指针。这样使用<code>const</code>的成员函数被称为常量成员函数。</p>
+<p><strong>编译器处理类</strong>：</p>
+<ol>
+<li>编译成员的声明</li>
+<li>成员函数体</li>
+</ol>
+<p>所以无需在意类中的其他成员的出现顺序。</p>
+<h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><p>名字和类名一样，没有返回类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Sales_data</span>&#123;</span></div><div class="line">    Sales_data() = <span class="keyword">default</span>; <span class="comment">// C++11标准，可以写上default要求编译器生成构造器。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>构造函数初始值列表（constructor initialize list）</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Sales_data(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;s) : bookNo(s) &#123; &#125;</div><div class="line">Sales_data(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;s, <span class="keyword">unsigned</span> n, <span class="keyword">double</span> p) : bookNo(s) , units_sold(n) , revenue(p*n)&#123; &#125;</div></pre></td></tr></table></figure>
+<h4 id="访问控制与封装（隐藏）"><a href="#访问控制与封装（隐藏）" class="headerlink" title="访问控制与封装（隐藏）"></a>访问控制与封装（隐藏）</h4><p><code>class</code>和<code>struct</code>的区别：<code>class</code>的默认权限是<code>private</code>，<code>struct</code>的默认权限是<code>public</code>。</p>
+<p><strong>友元（friend）</strong></p>
+<p>类允许其他类或函数访问它的非公有成员。</p>
+<p><strong>可变数据成员（mutable data member）</strong></p>
+<p><code>const</code>成员函数可以改变一个可变成员的值，任何函数都可以改变它的值。</p>
 
       
     </div>
@@ -526,7 +554,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代器"><span class="nav-number">1.</span> <span class="nav-text">迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#取中间值"><span class="nav-number">1.1.</span> <span class="nav-text">取中间值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组"><span class="nav-number">2.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复杂的数组声明"><span class="nav-number">2.1.</span> <span class="nav-text">复杂的数组声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#begin函数"><span class="nav-number">2.2.</span> <span class="nav-text">begin函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#比较字符串"><span class="nav-number">2.3.</span> <span class="nav-text">比较字符串</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代器"><span class="nav-number">1.</span> <span class="nav-text">迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#取中间值"><span class="nav-number">1.1.</span> <span class="nav-text">取中间值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组"><span class="nav-number">2.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复杂的数组声明"><span class="nav-number">2.1.</span> <span class="nav-text">复杂的数组声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#begin函数"><span class="nav-number">2.2.</span> <span class="nav-text">begin函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#比较字符串"><span class="nav-number">2.3.</span> <span class="nav-text">比较字符串</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">3.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内联函数"><span class="nav-number">3.1.</span> <span class="nav-text">内联函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数指针"><span class="nav-number">3.2.</span> <span class="nav-text">函数指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#debug技巧"><span class="nav-number">3.3.</span> <span class="nav-text">debug技巧</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类"><span class="nav-number">4.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#const成员函数"><span class="nav-number">4.1.</span> <span class="nav-text">const成员函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数"><span class="nav-number">4.2.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问控制与封装（隐藏）"><span class="nav-number">4.3.</span> <span class="nav-text">访问控制与封装（隐藏）</span></a></li></ol></li></ol></div>
             
 
           </div>
