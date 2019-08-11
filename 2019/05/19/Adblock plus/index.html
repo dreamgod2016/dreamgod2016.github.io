@@ -95,18 +95,18 @@
 
 
 
-<meta name="description" content="When I tried to import a module which was installed by sudo pip install ..., I got an ImportError. But sudo pip install ... was telling me “package already installed”, which made me sooooo puzzled. Th">
+<meta name="description" content="基本规则 将视频页中模板匹配的部分去掉，重新修改分类器。针对57个视频站点，选取了15000个网页，准确率93.3%，召回率82.0%。 调研广告内容识别。  例外规则@@ 匹配网址开头/结尾swf|会阻挡swf结尾的 |http://example.com会阻挡以这些开头的 ||example.com/banner.gif会阻挡所有http://example.com或者https://www.">
 <meta name="keywords" content="coding">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DO NOT sudo pip">
-<meta property="og:url" content="http://www.mengfansong.me/2019/02/28/DO-NOT-sudo-pip/index.html">
+<meta property="og:title" content="Adblock Plus 过滤规则介绍">
+<meta property="og:url" content="http://www.mengfansong.me/2019/05/19/Adblock plus/index.html">
 <meta property="og:site_name" content="松鹅的博客">
-<meta property="og:description" content="When I tried to import a module which was installed by sudo pip install ..., I got an ImportError. But sudo pip install ... was telling me “package already installed”, which made me sooooo puzzled. Th">
+<meta property="og:description" content="基本规则 将视频页中模板匹配的部分去掉，重新修改分类器。针对57个视频站点，选取了15000个网页，准确率93.3%，召回率82.0%。 调研广告内容识别。  例外规则@@ 匹配网址开头/结尾swf|会阻挡swf结尾的 |http://example.com会阻挡以这些开头的 ||example.com/banner.gif会阻挡所有http://example.com或者https://www.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-05T02:42:48.543Z">
+<meta property="og:updated_time" content="2019-08-11T09:18:48.132Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DO NOT sudo pip">
-<meta name="twitter:description" content="When I tried to import a module which was installed by sudo pip install ..., I got an ImportError. But sudo pip install ... was telling me “package already installed”, which made me sooooo puzzled. Th">
+<meta name="twitter:title" content="Adblock Plus 过滤规则介绍">
+<meta name="twitter:description" content="基本规则 将视频页中模板匹配的部分去掉，重新修改分类器。针对57个视频站点，选取了15000个网页，准确率93.3%，召回率82.0%。 调研广告内容识别。  例外规则@@ 匹配网址开头/结尾swf|会阻挡swf结尾的 |http://example.com会阻挡以这些开头的 ||example.com/banner.gif会阻挡所有http://example.com或者https://www.">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://www.mengfansong.me/2019/02/28/DO-NOT-sudo-pip/"/>
+  <link rel="canonical" href="http://www.mengfansong.me/2019/05/19/Adblock plus/"/>
 
 
 
 
 
-  <title>DO NOT sudo pip | 松鹅的博客</title>
+  <title>Adblock Plus 过滤规则介绍 | 松鹅的博客</title>
   
 
 
@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2019/02/28/DO-NOT-sudo-pip/">
+    <link itemprop="mainEntityOfPage" href="http://www.mengfansong.me/2019/05/19/Adblock plus/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="松鹅">
@@ -276,7 +276,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">DO NOT sudo pip</h1>
+          <h1 class="post-title" itemprop="name headline">Adblock Plus 过滤规则介绍</h1>
         
 
         <div class="post-meta">
@@ -288,8 +288,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T15:23:44+08:00">
-                2019-02-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-19T20:41:36+08:00">
+                2019-05-19
               </time>
             
 
@@ -304,8 +304,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-05T10:42:48+08:00">
-                2019-03-05
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-11T17:18:48+08:00">
+                2019-08-11
               </time>
             
           </span>
@@ -338,9 +338,48 @@
       
 
       
-        <p>When I tried to import a module which was installed by <code>sudo pip install ...</code>, I got an ImportError. But <code>sudo pip install ...</code> was telling me “package already installed”, which made me sooooo puzzled.</p>
-<p>The solution I found was to run pip <strong>without sudo</strong>, just <code>pip install ...</code>.</p>
-<p>The solution link : <a href="https://stackoverflow.com/questions/14295680/unable-to-import-a-module-that-is-definitely-installed" target="_blank" rel="external">stackoverflow</a></p>
+        <h3 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a>基本规则</h3><ol>
+<li>将视频页中模板匹配的部分去掉，重新修改分类器。针对57个视频站点，选取了15000个网页，准确率93.3%，召回率82.0%。</li>
+<li>调研广告内容识别。</li>
+</ol>
+<h4 id="例外规则"><a href="#例外规则" class="headerlink" title="例外规则"></a>例外规则</h4><p><code>@@</code></p>
+<h4 id="匹配网址开头-结尾"><a href="#匹配网址开头-结尾" class="headerlink" title="匹配网址开头/结尾"></a>匹配网址开头/结尾</h4><p><code>swf|</code>会阻挡swf结尾的</p>
+<p><code>|http://example.com</code>会阻挡以这些开头的</p>
+<p><code>||example.com/banner.gif</code>会阻挡所有<code>http://example.com</code>或者<code>https://www.example.com</code></p>
+<h4 id="标记分隔符"><a href="#标记分隔符" class="headerlink" title="标记分隔符"></a>标记分隔符</h4><p><code>^</code>是分隔符，除字母、数字或者<code>_-.%</code>之外的任何字符。</p>
+<p><code>http://example.com:8000/foo.bar?a=12&amp;b=%D1%82%D0%B5%D1%81%D1%82</code>可以通过<code>^example^</code>或者<code>^%D1%82%D0%B5%D1%81%D1%82^</code>或者<code>^foo.bar^</code>来过滤。</p>
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p><code>!</code>开始的是注释</p>
+<p>特殊注释用来设置参数。</p>
+<h4 id="Adblock-Plus的过滤列表分为两种："><a href="#Adblock-Plus的过滤列表分为两种：" class="headerlink" title="Adblock Plus的过滤列表分为两种："></a>Adblock Plus的过滤列表分为两种：</h4><ol>
+<li><p>加载时，拦截的url</p>
+<p>根据url拦截HTTP请求的，不返回数据。</p>
+<p>例子：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">||baidu.com/adver?</div><div class="line">/js/jsstyle-$third-party</div><div class="line">/js/mob/cpc_bottom.js</div><div class="line">/qqliveweb/*.swf</div></pre></td></tr></table></figure>
+</li>
+<li><p>加载后，隐藏的elements</p>
+<p>网页加载后，匹配elements（如div）的id或class，命中则改<code>display</code>属性。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">##<span class="selector-id">#body</span> &gt; <span class="selector-id">#right-promotion</span></div><div class="line">##<span class="selector-id">#bottomAD</span></div><div class="line">##<span class="selector-class">.listok</span> &gt; <span class="selector-tag">a</span> &gt; <span class="selector-tag">img</span><span class="selector-attr">[style^="width:980px;height:"]</span></div><div class="line">##<span class="selector-class">.loc-home-top-adv-new</span></div><div class="line">#<span class="selector-id">#a</span><span class="selector-attr">[href*=".yyk2.com/"]</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="我们可以利用的部分："><a href="#我们可以利用的部分：" class="headerlink" title="我们可以利用的部分："></a>我们可以利用的部分：</h4><ol>
+<li><p>拦截url部分</p>
+<p>这个部分我们可以匹配<code>&lt;img&gt;</code>的<code>src</code>属性、<code>&lt;a&gt;</code>的<code>href</code>属性等正则匹配，命中则标记为广告。</p>
+</li>
+<li><p>隐藏elements部分</p>
+<p>可以在遍历<code>&lt;div&gt;</code>标签时，匹配<code>id</code>和<code>class</code>属性。</p>
+</li>
+</ol>
+<h4 id="需要解决的问题"><a href="#需要解决的问题" class="headerlink" title="需要解决的问题"></a>需要解决的问题</h4><ol>
+<li><p>匹配速度</p>
+</li>
+<li><p>精选过滤列表</p>
+<p>可以抽取一部分页面来匹配，统计过滤列表的命中数，筛选高频规则。</p>
+</li>
+<li><p>对复杂规则的解析</p>
+<p>ABP中包括了<code>options</code>，比如是否是<code>script</code>加载，是否是<code>img</code>，是否同源等。</p>
+<p>ABP中包括了一些否定的情况。</p>
+</li>
+</ol>
 
       
     </div>
@@ -371,8 +410,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/25/A c++ compile time error/" rel="next" title="A c++ compile time error.">
-                <i class="fa fa-chevron-left"></i> A c++ compile time error.
+              <a href="/2019/04/24/How to delete redundancy in the text/" rel="next" title="How to delete redundancy in the text">
+                <i class="fa fa-chevron-left"></i> How to delete redundancy in the text
               </a>
             
           </div>
@@ -381,8 +420,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/16/gcc-version/" rel="prev" title="GCC、G++ versions">
-                GCC、G++ versions <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/12/MongoDB/" rel="prev" title="MongoDB简介">
+                MongoDB简介 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -435,8 +474,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <p class="site-author-name" itemprop="name">松鹅</p>
@@ -511,6 +559,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本规则"><span class="nav-number">1.</span> <span class="nav-text">基本规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#例外规则"><span class="nav-number">1.1.</span> <span class="nav-text">例外规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匹配网址开头-结尾"><span class="nav-number">1.2.</span> <span class="nav-text">匹配网址开头/结尾</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标记分隔符"><span class="nav-number">1.3.</span> <span class="nav-text">标记分隔符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注释"><span class="nav-number">1.4.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adblock-Plus的过滤列表分为两种："><span class="nav-number">1.5.</span> <span class="nav-text">Adblock Plus的过滤列表分为两种：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我们可以利用的部分："><span class="nav-number">1.6.</span> <span class="nav-text">我们可以利用的部分：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需要解决的问题"><span class="nav-number">1.7.</span> <span class="nav-text">需要解决的问题</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
