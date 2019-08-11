@@ -302,7 +302,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-11T17:17:33+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-11T20:10:09+08:00">
                 2019-08-11
               </time>
             
@@ -337,8 +337,7 @@
 
       
         
-          
-            <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>C++编写的，分布式文件存储的开源数据库系统。</p>
+          <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>C++编写的，分布式文件存储的开源数据库系统。</p>
 <p>MongoDB将数据存储为一个文档，数据接口由键值（<code>key</code>-&gt;<code>value</code>）对组成，类似JSON。</p>
 <table>
 <thead>
@@ -387,95 +386,13 @@
 </tbody>
 </table>
 <p>BSON 是一种类似 JSON 的二进制形式的存储格式，是 Binary JSON 的简称。</p>
-<h4 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h4><h5 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h5><p>插入有<code>insert()</code>和<code>save()</code>两种方法；不指定<code>_id</code>字段的<code>save()</code>类似于<code>insert()</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.COLLECTION_NAME.insert(document)</div></pre></td></tr></table></figure>
-<h5 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h5><p><code>Update()</code>和<code>save()</code>两种方法来更新集合中的文档。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">db.collection.update(</div><div class="line">   &lt;query&gt;,</div><div class="line">   &lt;update&gt;,</div><div class="line">   &#123;</div><div class="line">     upsert: &lt;boolean&gt;,</div><div class="line">     multi: &lt;boolean&gt;,</div><div class="line">     writeConcern: &lt;document&gt;</div><div class="line">   &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>query</strong> : update的查询条件，类似sql update查询内where后面的。</li>
-<li><strong>update</strong> : update的对象和一些更新的操作符（如$,$inc…）等，也可以理解为sql update查询内set后面的</li>
-<li><strong>upsert</strong> : 可选，这个参数的意思是，如果不存在update的记录，是否插入objNew,true为插入，默认是false，不插入。</li>
-<li><strong>multi</strong> : 可选，mongodb 默认是false,只更新找到的第一条记录，如果这个参数为true,就把按条件查出来多条记录全部更新。</li>
-<li><strong>writeConcern</strong> :可选，抛出异常的级别。</li>
-</ul>
-<p>至于<code>save()</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.save(&#123;</div><div class="line">    &quot;_id&quot; : ObjectId(&quot;56064f89ade2f21f36b03136&quot;),</div><div class="line">    &quot;title&quot; : &quot;MongoDB&quot;,</div><div class="line">    &quot;description&quot; : &quot;MongoDB 是一个 Nosql 数据库&quot;,</div><div class="line">    &quot;by&quot; : &quot;Runoob&quot;,</div><div class="line">    &quot;url&quot; : &quot;http://www.runoob.com&quot;,</div><div class="line">    &quot;tags&quot; : [</div><div class="line">            &quot;mongodb&quot;,</div><div class="line">            &quot;NoSQL&quot;</div><div class="line">    ],</div><div class="line">    &quot;likes&quot; : 110</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h5 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">db.collection.remove(</div><div class="line">   &lt;query&gt;,</div><div class="line">   &#123;</div><div class="line">     justOne: &lt;boolean&gt;,</div><div class="line">     writeConcern: &lt;document&gt;</div><div class="line">   &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>query</strong> :（可选）删除的文档的条件。</li>
-<li><strong>justOne</strong> : （可选）如果设为 true 或 1，则只删除一个文档，如果不设置该参数，或使用默认值 false，则删除所有匹配条件的文档。</li>
-<li><strong>writeConcern</strong> :（可选）抛出异常的级别。</li>
-</ul>
-<p>删除之前最好要查询一下！</p>
-<p>如果要删除所有数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;db.col.remove(&#123;&#125;)</div></pre></td></tr></table></figure>
-<p><code>remove()</code>方法 并不会真正释放空间。</p>
-<p>需要继续执行<code>db.repairDatabase()</code>来回收磁盘空间。</p>
-<p>现在官方推荐使用 deleteOne() 和 deleteMany() 方法。</p>
-<p>如删除集合下全部文档：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.inventory.deleteMany(&#123;&#125;)</div></pre></td></tr></table></figure>
-<p>删除 status 等于 A 的全部文档：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.inventory.deleteMany(&#123; status : &quot;A&quot; &#125;)</div></pre></td></tr></table></figure>
-<p>删除 status 等于 D 的一个文档：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.inventory.deleteOne( &#123; status: &quot;D&quot; &#125; )</div></pre></td></tr></table></figure>
-<h5 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.find(query, projection)</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>query</strong> ：可选，使用查询操作符指定查询条件</li>
-<li><strong>projection</strong> ：可选，使用投影操作符指定返回的键。查询时返回文档中所有键值， 只需省略该参数即可（默认省略）。</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">操作</th>
-<th style="text-align:left">格式</th>
-<th style="text-align:left">范例</th>
-<th style="text-align:left">RDBMS中的类似语句</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">等于</td>
-<td style="text-align:left"><code>{&lt;key&gt;:&lt;value&gt;</code>}</td>
-<td style="text-align:left"><code>db.col.find({&quot;by&quot;:&quot;菜鸟教程&quot;}).pretty()</code></td>
-<td style="text-align:left"><code>where by = &#39;菜鸟教程&#39;</code></td>
-</tr>
-<tr>
-<td style="text-align:left">小于</td>
-<td style="text-align:left"><code>{&lt;key&gt;:{$lt:&lt;value&gt;}}</code></td>
-<td style="text-align:left"><code>db.col.find({&quot;likes&quot;:{$lt:50}}).pretty()</code></td>
-<td style="text-align:left"><code>where likes &lt; 50</code></td>
-</tr>
-<tr>
-<td style="text-align:left">小于或等于</td>
-<td style="text-align:left"><code>{&lt;key&gt;:{$lte:&lt;value&gt;}}</code></td>
-<td style="text-align:left"><code>db.col.find({&quot;likes&quot;:{$lte:50}}).pretty()</code></td>
-<td style="text-align:left"><code>where likes &lt;= 50</code></td>
-</tr>
-<tr>
-<td style="text-align:left">大于</td>
-<td style="text-align:left"><code>{&lt;key&gt;:{$gt:&lt;value&gt;}}</code></td>
-<td style="text-align:left"><code>db.col.find({&quot;likes&quot;:{$gt:50}}).pretty()</code></td>
-<td style="text-align:left"><code>where likes &gt; 50</code></td>
-</tr>
-<tr>
-<td style="text-align:left">大于或等于</td>
-<td style="text-align:left"><code>{&lt;key&gt;:{$gte:&lt;value&gt;}}</code></td>
-<td style="text-align:left"><code>db.col.find({&quot;likes&quot;:{$gte:50}}).pretty()</code></td>
-<td style="text-align:left"><code>where likes &gt;= 50</code></td>
-</tr>
-<tr>
-<td style="text-align:left">不等于</td>
-<td style="text-align:left"><code>{&lt;key&gt;:{$ne:&lt;value&gt;}}</code></td>
-<td style="text-align:left"><code>db.col.find({&quot;likes&quot;:{$ne:50}}).pretty()</code></td>
-<td style="text-align:left"><code>where likes != 50</code></td>
-</tr>
-</tbody>
-</table>
-<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p>createIndex()方法基本语法格式如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;db.collection.createIndex(keys, options)</div></pre></td></tr></table></figure>
-<p>语法中 Key 值为你要创建的索引字段，1 为指定按升序创建索引，如果你想按降序来创建索引指定为 -1 即可。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/12/MongoDB/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -569,8 +486,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-11T17:18:48+08:00">
-                2019-08-11
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-19T20:41:36+08:00">
+                2019-05-19
               </time>
             
           </span>
@@ -604,51 +521,17 @@
 
       
         
-          
-            <h3 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a>基本规则</h3><ol>
+          <h3 id="基本规则效果"><a href="#基本规则效果" class="headerlink" title="基本规则效果"></a>基本规则效果</h3><ol>
 <li>将视频页中模板匹配的部分去掉，重新修改分类器。针对57个视频站点，选取了15000个网页，准确率93.3%，召回率82.0%。</li>
 <li>调研广告内容识别。</li>
 </ol>
-<h4 id="例外规则"><a href="#例外规则" class="headerlink" title="例外规则"></a>例外规则</h4><p><code>@@</code></p>
-<h4 id="匹配网址开头-结尾"><a href="#匹配网址开头-结尾" class="headerlink" title="匹配网址开头/结尾"></a>匹配网址开头/结尾</h4><p><code>swf|</code>会阻挡swf结尾的</p>
-<p><code>|http://example.com</code>会阻挡以这些开头的</p>
-<p><code>||example.com/banner.gif</code>会阻挡所有<code>http://example.com</code>或者<code>https://www.example.com</code></p>
-<h4 id="标记分隔符"><a href="#标记分隔符" class="headerlink" title="标记分隔符"></a>标记分隔符</h4><p><code>^</code>是分隔符，除字母、数字或者<code>_-.%</code>之外的任何字符。</p>
-<p><code>http://example.com:8000/foo.bar?a=12&amp;b=%D1%82%D0%B5%D1%81%D1%82</code>可以通过<code>^example^</code>或者<code>^%D1%82%D0%B5%D1%81%D1%82^</code>或者<code>^foo.bar^</code>来过滤。</p>
-<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p><code>!</code>开始的是注释</p>
-<p>特殊注释用来设置参数。</p>
-<h4 id="Adblock-Plus的过滤列表分为两种："><a href="#Adblock-Plus的过滤列表分为两种：" class="headerlink" title="Adblock Plus的过滤列表分为两种："></a>Adblock Plus的过滤列表分为两种：</h4><ol>
-<li><p>加载时，拦截的url</p>
-<p>根据url拦截HTTP请求的，不返回数据。</p>
-<p>例子：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">||baidu.com/adver?</div><div class="line">/js/jsstyle-$third-party</div><div class="line">/js/mob/cpc_bottom.js</div><div class="line">/qqliveweb/*.swf</div></pre></td></tr></table></figure>
-</li>
-<li><p>加载后，隐藏的elements</p>
-<p>网页加载后，匹配elements（如div）的id或class，命中则改<code>display</code>属性。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">##<span class="selector-id">#body</span> &gt; <span class="selector-id">#right-promotion</span></div><div class="line">##<span class="selector-id">#bottomAD</span></div><div class="line">##<span class="selector-class">.listok</span> &gt; <span class="selector-tag">a</span> &gt; <span class="selector-tag">img</span><span class="selector-attr">[style^="width:980px;height:"]</span></div><div class="line">##<span class="selector-class">.loc-home-top-adv-new</span></div><div class="line">#<span class="selector-id">#a</span><span class="selector-attr">[href*=".yyk2.com/"]</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="我们可以利用的部分："><a href="#我们可以利用的部分：" class="headerlink" title="我们可以利用的部分："></a>我们可以利用的部分：</h4><ol>
-<li><p>拦截url部分</p>
-<p>这个部分我们可以匹配<code>&lt;img&gt;</code>的<code>src</code>属性、<code>&lt;a&gt;</code>的<code>href</code>属性等正则匹配，命中则标记为广告。</p>
-</li>
-<li><p>隐藏elements部分</p>
-<p>可以在遍历<code>&lt;div&gt;</code>标签时，匹配<code>id</code>和<code>class</code>属性。</p>
-</li>
-</ol>
-<h4 id="需要解决的问题"><a href="#需要解决的问题" class="headerlink" title="需要解决的问题"></a>需要解决的问题</h4><ol>
-<li><p>匹配速度</p>
-</li>
-<li><p>精选过滤列表</p>
-<p>可以抽取一部分页面来匹配，统计过滤列表的命中数，筛选高频规则。</p>
-</li>
-<li><p>对复杂规则的解析</p>
-<p>ABP中包括了<code>options</code>，比如是否是<code>script</code>加载，是否是<code>img</code>，是否同源等。</p>
-<p>ABP中包括了一些否定的情况。</p>
-</li>
-</ol>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/19/Adblock plus/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
