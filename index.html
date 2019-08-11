@@ -569,33 +569,14 @@
 
       
         
-          
-            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>多范式的编程语言。Scala基于java之上。</p>
-<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
-<li>纯面向对象语言</li>
-<li>函数式编程</li>
-<li>静态类型</li>
-<li>拓展性</li>
-</ul>
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>scala和java的最大区别：结尾的分号可选<br>scala程序是对象的集合，通过调用彼此的方法来实现消息传递。</p>
-<p>大小写敏感<br>类名：第一个字母大写<br>方法名：驼峰<br>文件名：和类名完全匹配</p>
-<p>scala是面向行的语言，语句可以用<code>;</code>结束或者换行符</p>
-<h3 id="包："><a href="#包：" class="headerlink" title="包："></a>包：</h3><ol>
-<li><code>package com.runoob</code></li>
-<li><code>package com.runoob {/*  class */}</code></li>
-</ol>
-<h3 id="引用："><a href="#引用：" class="headerlink" title="引用："></a>引用：</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.awt.<span class="type">Color</span></div><div class="line"><span class="keyword">import</span> java.awt._</div><div class="line"><span class="keyword">import</span> java.awt.&#123;<span class="type">Color</span>, <span class="type">Font</span>&#125;</div><div class="line"><span class="keyword">import</span> java.util.&#123;<span class="type">HashMap</span> =&gt; _, _&#125; <span class="comment">// 引入了util包的所有成员，但是HashMap被隐藏了</span></div></pre></td></tr></table></figure>
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>和Java相同的数据类型。</p>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p><code>var myVar : String = &quot;foo&quot;</code>声明变量<br><code>val myVar : String = &quot;foo&quot;</code>声明常量<br><code>var VariableName : DataType [= Initial Value]</code><br>数据类型不是必须的，可以通过初始值自动判断。</p>
-<h3 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h3><p><code>private</code>，<code>protected</code>，<code>public</code></p>
-<h3 id="方法和函数"><a href="#方法和函数" class="headerlink" title="方法和函数"></a>方法和函数</h3><p>函数是一个完整的对象，继承了Trait的类的对象。<br>用<code>val</code>定义函数，<code>def</code>定义方法。<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">functionName</span> </span>([参数列表]) : [<span class="keyword">return</span> <span class="class"><span class="keyword">type</span>] </span>= &#123;</div><div class="line">function body</div><div class="line"><span class="keyword">return</span> [expr]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>如果没有返回值，可以返回<code>Unit</code>，类似java的void。</p>
-<h3 id="传名调用（call-by-name）"><a href="#传名调用（call-by-name）" class="headerlink" title="传名调用（call by name）"></a>传名调用（call by name）</h3><ul>
-<li>传值调用（call by value）<br>进入函数内部前，就已经把函数表达式的值计算完毕。</li>
-<li>传名调用（call by name）<br>在函数内部进行参数表达式的值的计算。</li>
-</ul>
-
-          
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>多范式的编程语言。Scala基于java之上。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/19/scala/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -712,30 +693,15 @@
 
       
         
-          
-            <h2 id="Spark简介"><a href="#Spark简介" class="headerlink" title="Spark简介"></a>Spark简介</h2><h3 id="Spark是啥"><a href="#Spark是啥" class="headerlink" title="Spark是啥"></a>Spark是啥</h3><p>Spark 项目包含多个紧密集成的组件。Spark 的核心是一个对由很多计算任务组成的、运行 在多个工作机器或者是一个计算集群上的应用进行调度、分发以及监控的计算引擎。</p>
+          <h2 id="Spark简介"><a href="#Spark简介" class="headerlink" title="Spark简介"></a>Spark简介</h2><h3 id="Spark是啥"><a href="#Spark是啥" class="headerlink" title="Spark是啥"></a>Spark是啥</h3><p>Spark 项目包含多个紧密集成的组件。Spark 的核心是一个对由很多计算任务组成的、运行 在多个工作机器或者是一个计算集群上的应用进行调度、分发以及监控的计算引擎。</p>
 <p>Spark是scala写的，运行在JVM上。</p>
-<h3 id="存储层次"><a href="#存储层次" class="headerlink" title="存储层次"></a>存储层次</h3><p>Spark支持任何实现Hadoop接口的存储系统。</p>
-<h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><p>每个Spark应用都由一个驱动器程序（driver program）来发起集群上的操作，驱动器程序管理多个执行器（executor）节点。</p>
-<h2 id="RDD编程"><a href="#RDD编程" class="headerlink" title="RDD编程"></a>RDD编程</h2><p>Resilient Distributed Dataset</p>
-<h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><p>RDD就是一个不可变的分布式对象集合。</p>
-<h4 id="创建RDD："><a href="#创建RDD：" class="headerlink" title="创建RDD："></a>创建RDD：</h4><ol>
-<li><p>读取外部数据集</p>
-<p><code>lines = sc.textFile(&quot;README.MD&quot;)</code></p>
-</li>
-<li><p>在driver program中分发驱动器程序中的对象集合。</p>
-</li>
-</ol>
-<h4 id="RDD操作"><a href="#RDD操作" class="headerlink" title="RDD操作"></a>RDD操作</h4><ol>
-<li>转化操作</li>
-</ol>
-<p>​    转化操作是产生一个新的RDD的过程。 </p>
-<ol>
-<li>行动操作</li>
-</ol>
-<p>​    返回计算结果或把结果写入外部系统。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/15/spark/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
